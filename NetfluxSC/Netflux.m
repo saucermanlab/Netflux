@@ -514,7 +514,7 @@ ylabel('Fractional Species Activation');
         set(developerTextBox,'Position', [2 90 300 75]);
         set(developerTextBox,'horizontalalignment','center','fontsize',12,'String','Developed by Alex Paap, Stephen Dang, and Jeff Saucerman at the University of Virginia');
         
-        labelStr = '<html><center><a href="">Website: http://code.google.com/p/netflux/';
+        labelStr = '<html><center><a href="">Website: https://github.com/saucerman/Netflux';
         cbStr = 'web(''http://code.google.com/p/netflux/'');';
         hButton = uicontrol('string',labelStr,'pos',[50,65,200,35],'callback',cbStr);
         set(hButton,'BackgroundColor',colorOfFigureWindow);
