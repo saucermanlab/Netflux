@@ -514,16 +514,16 @@ ylabel('Fractional Species Activation');
         set(developerTextBox,'Position', [2 90 300 75]);
         set(developerTextBox,'horizontalalignment','center','fontsize',12,'String','Developed by Alex Paap, Stephen Dang, and Jeff Saucerman at the University of Virginia');
         
-        labelStr = '<html><center><a href="">Website: https://github.com/saucerman/Netflux';
-        cbStr = 'web(''http://code.google.com/p/netflux/'');';
-        hButton = uicontrol('string',labelStr,'pos',[50,65,200,35],'callback',cbStr);
-        set(hButton,'BackgroundColor',colorOfFigureWindow);
-        jButton = util.findjobj(hButton); % get FindJObj from the File Exchange
-        jButton.setCursor(java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));        
-        jButton.setBorder([]);
-        
-        labelStr2 = '<html><center><a href="">Documentation can be found at: <br> http://code.google.com/p/netflux/downloads/list';
-        cbStr2 = 'web(''http://code.google.com/p/netflux/downloads/list'');';
+%         labelStr = '<html><center><a href="">Website: https://github.com/saucerman/Netflux';
+%         cbStr = 'web(''https://github.com/saucerman/Netflux'');';
+%         hButton = uicontrol('string',labelStr,'pos',[50,65,200,35],'callback',cbStr);
+%         set(hButton,'BackgroundColor',colorOfFigureWindow);
+%         jButton = util.findjobj(hButton); % get FindJObj from the File Exchange
+%         jButton.setCursor(java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));        
+%         jButton.setBorder([]);
+%         
+        labelStr2 = '<html><center><a href="">Website and documentation: <br> https://github.com/saucerman/Netflux';
+        cbStr2 = 'web(''https://github.com/saucerman/Netflux'');';
         hButton2 = uicontrol('string',labelStr2,'pos',[25,20,250,35],'callback',cbStr2);
         set(hButton2,'BackgroundColor',colorOfFigureWindow);
         jButton2 = util.findjobj(hButton2); % get FindJObj from the File Exchange
