@@ -1,6 +1,0 @@
-ant:
-<ant>
-  <mkdir dir="C:\Users\amp2hj\Documents\MATLAB\Netflux\for_redistribution" />
-  <mkdir dir="C:\Users\amp2hj\Documents\MATLAB\Netflux\for_testing" />
-</ant>
-mcc -C -o Netflux -W WinMain:Netflux -T link:exe -d C:\Users\amp2hj\Documents\MATLAB\Netflux\for_testing -v C:\Users\amp2hj\Documents\MATLAB\NetfluxSC\Netflux.m 
