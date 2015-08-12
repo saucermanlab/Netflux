@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deployment-project plugin="plugin.ezdeploy" plugin-version="1.0">
+  <configuration target="target.ezdeploy.standalone" target-name="MATLAB Compiler for Standalone Applications" name="Netflux" location="C:\Users\amp2hj\Documents\MATLAB" file="C:\Users\amp2hj\Documents\MATLAB\Netflux.prj" preferred-package-type="package.type.exe" build-checksum="418575282" preferred-package-location="C:\Users\amp2hj\Documents\MATLAB\Netflux\for_redistribution">
+    <param.appname>Netflux</param.appname>
+    <param.authnamewatermark />
+    <param.email />
+    <param.company />
+    <param.icon />
+    <param.icons />
+    <param.summary />
+    <param.description />
+    <param.screenshot />
+    <param.version>1.0</param.version>
+    <param.namespace>Netflux</param.namespace>
+    <param.guid />
+    <param.installpath.string>\Netflux\</param.installpath.string>
+    <param.installpath.combo>option.installpath.programfiles</param.installpath.combo>
+    <param.logo />
+    <param.install.notes />
+    <param.intermediate>${PROJECT_ROOT}\Netflux\for_testing</param.intermediate>
+    <param.output>${PROJECT_ROOT}\Netflux\for_redistribution</param.output>
+    <param.embed.ctf>true</param.embed.ctf>
+    <param.target.type>subtarget.standalone</param.target.type>
+    <param.classorg />
+    <param.web.mcr>false</param.web.mcr>
+    <param.package.mcr>true</param.package.mcr>
+    <param.no.mcr>false</param.no.mcr>
+    <param.web.mcr.name>MyAppInstaller_web</param.web.mcr.name>
+    <param.package.mcr.name>Netflux Installer</param.package.mcr.name>
+    <param.no.mcr.name>MyAppInstaller_app</param.no.mcr.name>
+    <param.user.defined.mcr.options />
+    <param.windows.command.prompt>true</param.windows.command.prompt>
+    <param.user.only.registration>false</param.user.only.registration>
+    <param.mads.no.java>false</param.mads.no.java>
+    <param.mads.exclusive.mcr>false</param.mads.exclusive.mcr>
+    <param.net.framework>option.net.framework.default</param.net.framework>
+    <param.assembly.type>false</param.assembly.type>
+    <param.encryption.key.file />
+    <param.net.enable.remoting>false</param.net.enable.remoting>
+    <param.net.tsa.enable>false</param.net.tsa.enable>
+    <param.net.tsa.assembly />
+    <param.net.tsa.interface />
+    <param.net.tsa.namespace>Netflux</param.net.tsa.namespace>
+    <param.net.tsa.superclass />
+    <param.net.tsa.metadata />
+    <param.net.tsa.metadata.assembly>C:\Users\amp2hj\Documents\MATLAB</param.net.tsa.metadata.assembly>
+    <param.create.log>false</param.create.log>
+    <param.log.file />
+    <unset>
+      <param.authnamewatermark />
+      <param.email />
+      <param.company />
+      <param.icon />
+      <param.icons />
+      <param.summary />
+      <param.description />
+      <param.screenshot />
+      <param.version />
+      <param.namespace />
+      <param.guid />
+      <param.installpath.string />
+      <param.logo />
+      <param.install.notes />
+      <param.intermediate />
+      <param.output />
+      <param.embed.ctf />
+      <param.target.type />
+      <param.classorg />
+      <param.no.mcr />
+      <param.web.mcr.name />
+      <param.no.mcr.name />
+      <param.user.defined.mcr.options />
+      <param.windows.command.prompt />
+      <param.user.only.registration />
+      <param.mads.no.java />
+      <param.mads.exclusive.mcr />
+      <param.net.framework />
+      <param.assembly.type />
+      <param.encryption.key.file />
+      <param.net.enable.remoting />
+      <param.net.tsa.enable />
+      <param.net.tsa.assembly />
+      <param.net.tsa.interface />
+      <param.net.tsa.namespace />
+      <param.net.tsa.superclass />
+      <param.net.tsa.metadata />
+      <param.net.tsa.metadata.assembly />
+      <param.create.log />
+      <param.log.file />
+    </unset>
+    <fileset.main>
+      <file>${PROJECT_ROOT}\NetfluxSC\Netflux.m</file>
+    </fileset.main>
+    <fileset.resources>
+      <file>${PROJECT_ROOT}\NetfluxSC\+gui\+util\autoguiChildWidgets.m</file>
+      <file>${PROJECT_ROOT}\NetfluxSC\+gui\+util\showObjectInfo.m</file>
+      <file>${PROJECT_ROOT}\NetfluxSC\+gui\+util\uicontainer.m</file>
+      <file>${PROJECT_ROOT}\NetfluxSC\+gui\+util\uiflowcontainer.m</file>
+      <file>${PROJECT_ROOT}\NetfluxSC\+gui\+util\uiposition.m</file>
+      <file>${PROJECT_ROOT}\NetfluxSC\+gui\autogui.m</file>
+      <file>${PROJECT_ROOT}\NetfluxSC\+gui\borderedwidget.m</file>
+      <file>${PROJECT_ROOT}\NetfluxSC\+gui\checkbox.m</file>
+      <file>${PROJECT_ROOT}\NetfluxSC\+gui\container.m</file>
+      <file>${PROJECT_ROOT}\NetfluxSC\+gui\contents.m</file>
+      <file>${PROJECT_ROOT}\NetfluxSC\+gui\daqinput.m</file>
+      <file>${PROJECT_ROOT}\NetfluxSC\+gui\editnumber.m</file>
+      <file>${PROJECT_ROOT}\NetfluxSC\+gui\edittext.m</file>
+      <file>${PROJECT_ROOT}\NetfluxSC\+gui\group.m</file>
+      <file>${PROJECT_ROOT}\NetfluxSC\+gui\label.m</file>
+      <file>${PROJECT_ROOT}\NetfluxSC\+gui\labeleduicontrol.m</file>
+      <file>${PROJECT_ROOT}\NetfluxSC\+gui\labeledwidget.m</file>
+      <file>${PROJECT_ROOT}\NetfluxSC\+gui\listbox.m</file>
+      <file>${PROJECT_ROOT}\NetfluxSC\+gui\manualgui.m</file>
+      <file>${PROJECT_ROOT}\NetfluxSC\+gui\monitor.m</file>
+      <file>${PROJECT_ROOT}\NetfluxSC\+gui\numericmenu.m</file>
+      <file>${PROJECT_ROOT}\NetfluxSC\+gui\pushbutton.m</file>
+      <file>${PROJECT_ROOT}\NetfluxSC\+gui\slider.m</file>
+      <file>${PROJECT_ROOT}\NetfluxSC\+gui\space.m</file>
+      <file>${PROJECT_ROOT}\NetfluxSC\+gui\stripchart.m</file>
+      <file>${PROJECT_ROOT}\NetfluxSC\+gui\textbox.m</file>
+      <file>${PROJECT_ROOT}\NetfluxSC\+gui\textmenu.m</file>
+      <file>${PROJECT_ROOT}\NetfluxSC\+gui\togglebutton.m</file>
+      <file>${PROJECT_ROOT}\NetfluxSC\+gui\version.m</file>
+      <file>${PROJECT_ROOT}\NetfluxSC\+gui\widget.m</file>
+      <file>${PROJECT_ROOT}\NetfluxSC\+util\exportODE.m</file>
+      <file>${PROJECT_ROOT}\NetfluxSC\+util\findjobj.m</file>
+      <file>${PROJECT_ROOT}\NetfluxSC\+util\getNetfluxParams.m</file>
+      <file>${PROJECT_ROOT}\NetfluxSC\+util\importsif.m</file>
+      <file>${PROJECT_ROOT}\NetfluxSC\+util\Netflux2ODE.m</file>
+      <file>${PROJECT_ROOT}\NetfluxSC\+util\Netflux2sif.m</file>
+      <file>${PROJECT_ROOT}\NetfluxSC\+util\Netflux2xgmml.m</file>
+      <file>${PROJECT_ROOT}\NetfluxSC\+util\ODE.m</file>
+      <file>${PROJECT_ROOT}\NetfluxSC\+util\repval.m</file>
+      <file>${PROJECT_ROOT}\NetfluxSC\+util\sbml2sif.m</file>
+      <file>${PROJECT_ROOT}\NetfluxSC\+util\textwrite.m</file>
+      <file>${PROJECT_ROOT}\NetfluxSC\+util\writeXLSX.m</file>
+      <file>${PROJECT_ROOT}\NetfluxSC\+util\xls2Netflux.m</file>
+      <file>${PROJECT_ROOT}\NetfluxSC\+util\xml2struct.m</file>
+      <file>${PROJECT_ROOT}\NetfluxSC\utilities\20130227_xlwrite\poi_library\dom4j-1.6.1.jar</file>
+      <file>${PROJECT_ROOT}\NetfluxSC\utilities\20130227_xlwrite\poi_library\LICENSE</file>
+      <file>${PROJECT_ROOT}\NetfluxSC\utilities\20130227_xlwrite\poi_library\poi-3.8-20120326.jar</file>
+      <file>${PROJECT_ROOT}\NetfluxSC\utilities\20130227_xlwrite\poi_library\poi-ooxml-3.8-20120326.jar</file>
+      <file>${PROJECT_ROOT}\NetfluxSC\utilities\20130227_xlwrite\poi_library\poi-ooxml-schemas-3.8-20120326.jar</file>
+      <file>${PROJECT_ROOT}\NetfluxSC\utilities\20130227_xlwrite\poi_library\stax-api-1.0.1.jar</file>
+      <file>${PROJECT_ROOT}\NetfluxSC\utilities\20130227_xlwrite\poi_library\xmlbeans-2.3.0.jar</file>
+      <file>${PROJECT_ROOT}\NetfluxSC\utilities\20130227_xlwrite\xlwrite.m</file>
+      <file>${PROJECT_ROOT}\NetfluxSC\utilities\subgui\SBMLgui.fig</file>
+      <file>${PROJECT_ROOT}\NetfluxSC\utilities\subgui\SBMLgui.m</file>
+      <file>${PROJECT_ROOT}\NetfluxSC\utilities\subgui\SIFgui.fig</file>
+      <file>${PROJECT_ROOT}\NetfluxSC\utilities\subgui\SIFgui.m</file>
+      <file>${PROJECT_ROOT}\NetfluxSC\utilities\subgui\XGMMLgui.fig</file>
+      <file>${PROJECT_ROOT}\NetfluxSC\utilities\subgui\XGMMLgui.m</file>
+    </fileset.resources>
+    <fileset.package />
+    <build-deliverables>
+      <file name="readme.txt" location="${PROJECT_ROOT}\Netflux\for_testing" optional="true">C:\Users\amp2hj\Documents\MATLAB\Netflux\for_testing\readme.txt</file>
+      <file name="Netflux.exe" location="${PROJECT_ROOT}\Netflux\for_testing" optional="false">C:\Users\amp2hj\Documents\MATLAB\Netflux\for_testing\Netflux.exe</file>
+    </build-deliverables>
+    <workflow />
+    <matlab>
+      <root>C:\Program Files\MATLAB\R2013b</root>
+      <toolboxes>
+        <toolbox name="fixedpoint" />
+      </toolboxes>
+    </matlab>
+    <platform>
+      <unix>false</unix>
+      <mac>false</mac>
+      <windows>true</windows>
+      <win2k>false</win2k>
+      <winxp>false</winxp>
+      <vista>false</vista>
+      <linux>false</linux>
+      <solaris>false</solaris>
+      <osver>6.1</osver>
+      <os32>true</os32>
+      <os64>false</os64>
+      <arch>win32</arch>
+      <matlab>true</matlab>
+    </platform>
+  </configuration>
+</deployment-project>
+
