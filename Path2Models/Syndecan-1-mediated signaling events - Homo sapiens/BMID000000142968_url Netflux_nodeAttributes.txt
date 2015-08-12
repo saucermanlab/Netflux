@@ -1,0 +1,15 @@
+Type (class=String)
+CD147 = 
+ERK12active = 
+Syndecan1 = 
+Syndecan1Collagen = 
+Syndecan1Laminin_alpha5 = 
+Syndecan1SynteninPIP2 = 
+Syndecan1_soluble = 
+TLymphocyte = 
+Tumor_Cell_Invasion = 
+homophilic_cell_adhesion = 
+keratinocyte_migration = 
+positive_regulation_of_cell_migration = 
+positive_regulation_of_cellcell_adhesion = 
+regulation_of_cell_adhesion = 

@@ -1,0 +1,8 @@
+Type (class=String)
+AKT1 = 
+B7_familyCD28 = 
+Perforin_1 = 
+TCRCD3MHC_ICD8 = 
+TCRCD3MHC_ICD8LCKZAP70CBLubiquitin = 
+receptor_internalization = 
+regulation_of_survival_gene_product_expression = 

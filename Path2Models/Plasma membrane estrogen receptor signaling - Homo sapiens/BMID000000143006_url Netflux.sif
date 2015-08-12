@@ -1,0 +1,11 @@
+Monocyte	1	cell_adhesion
+Moesin	1	pseudopodium_formation
+E2ER_alpha_dimerStriatin	1	MAPKKK_cascade
+Gs_familyGTP	1	cAMP_biosynthetic_process
+NO	-1	cell_adhesion
+NO	1	vasodilation
+E2ER_alpha_dimerPELP1Srcp130_Cas	1	MAPKKK_cascade
+E2ER_beta_dimer	1	JNK_cascade
+E2ER_alpha_dimerPELP1Srcp52_SHCGRB2SOS1	1	MAPKKK_cascade
+Moesin	-1	regulation_of_stress_fiber_assembly
+Moesin	1	ruffle_organization

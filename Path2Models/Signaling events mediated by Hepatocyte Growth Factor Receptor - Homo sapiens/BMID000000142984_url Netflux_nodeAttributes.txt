@@ -1,0 +1,15 @@
+Type (class=String)
+Arp23_complex = 
+EGR1 = 
+Ecadherinbeta_cateninalpha_catenin = 
+HGFdimerMETdimer = 
+PAK1 = 
+RAF1 = 
+SId_EBP1eIF4E_1 = 
+SNAIL = 
+lamellipodium_assembly = 
+positive_regulation_of_NFkappaB_transcription_factor_activity = 
+positive_regulation_of_tyrosine_phosphorylation_of_STAT_protein = 
+receptor_internalization = 
+ruffle_organization = 
+translational_initiation = 

@@ -1,0 +1,16 @@
+Type (class=String)
+ATG12 = 
+ATG3 = 
+ATG4 = 
+ATG7 = 
+Cephalin = 
+GABARAP = 
+IFNA = 
+IFNG = 
+INS = 
+PIK3C3 = 
+PIK3R4 = 
+PRKAA = 
+Phosphatidylinositol = 
+SId_Methyladenine = 
+Wortmannin = 

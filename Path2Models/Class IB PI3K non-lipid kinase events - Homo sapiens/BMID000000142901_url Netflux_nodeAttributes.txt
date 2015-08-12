@@ -1,0 +1,3 @@
+Type (class=String)
+PI3K_Class_IBPDE3B = 
+cAMP_biosynthetic_process = 

@@ -1,0 +1,4 @@
+Type (class=String)
+HIF1A = 
+oxygen_homeostasis = 
+response_to_hypoxia = 

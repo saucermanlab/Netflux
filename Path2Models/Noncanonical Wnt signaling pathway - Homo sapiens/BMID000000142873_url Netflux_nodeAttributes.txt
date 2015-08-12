@@ -1,0 +1,14 @@
+Type (class=String)
+CK1_alphaNFAT1 = 
+Ca2 = 
+DVL = 
+JNK_cascade = 
+JNK_familyactive = 
+RAC1GTP = 
+ROCK1 = 
+WNT5AFZD2ROR2dimerDVL2 = 
+calcineurinNFAT_signaling_pathway = 
+cell_migration = 
+clathrin_coat_assembly = 
+establishment_of_cell_polarity = 
+protein_polymerization = 

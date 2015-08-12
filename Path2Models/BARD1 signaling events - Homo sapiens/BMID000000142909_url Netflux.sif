@@ -1,0 +1,12 @@
+BRCA1BARD1	1	protein_ubiquitination
+BRCA1BARD1p53	-1	G1S_transition_of_mitotic_cell_cycle
+FANCD2	1	DNA_damage_checkpoint
+DNA_damage	1	BRCA1BARD1
+DNA_damage	1	p53
+BARD1CSTF1	-1	mRNA_polyadenylation
+BRCA1BARD1RAD51PCNA	1	DNA_repair
+FA_complexFANCD2Ubiquitin_1	1	DNA_repair
+DNA_damage	1	BRCA1BARD1CTIP
+DNA_damage	1	MRN_Complex
+DNA_damage	1	BRCA1BACH1BARD1
+DNA_damage	1	TOPBP1

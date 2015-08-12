@@ -1,0 +1,13 @@
+I_kappa_B_beta	1	I_kappa_B_beta
+I_kappa_B_beta	-1	I_kappa_B_beta
+I_kappa_B_alpha	1	ubiquitindependent_protein_catabolic_process
+I_kappa_B_alpha_1	1	I_kappa_B_alpha_1
+I_kappa_B_alpha_1	-1	I_kappa_B_alpha_1
+Bcell_antigenBCR_complexBtkLYNSYKBLNKPLCgamma2CD72	1	cell_survival
+I_kappa_B_beta_1	1	ubiquitindependent_protein_catabolic_process
+NFATc_1	1	cytokine_secretion
+ELK1	1	reentry_into_mitotic_cell_cycle
+cytokine_secretion	-1	cytokine_secretion
+RAC1	1	actin_cytoskeleton_organization
+NFkappaBRelA	1	I_kappa_B_beta
+NFkappaBRelA	1	I_kappa_B_alpha_1

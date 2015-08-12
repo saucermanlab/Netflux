@@ -1,0 +1,10 @@
+Type (class=String)
+BMP9ACTR2EndoglinALK1_dimer = 
+BMP9BMPR2EndoglinALK1_dimer = 
+ID1 = 
+SMAD4SMAD158_dimer = 
+TGFB1TGFBR2EndoglinTGFBR1ALK1 = 
+TLX2 = 
+endothelial_cell_migration = 
+endothelial_cell_proliferation = 
+sprouting_angiogenesis = 

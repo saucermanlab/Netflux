@@ -1,0 +1,6 @@
+Ephrin_A5EPHA5	1	neuron_projection_morphogenesis
+MAPKKK_cascade	1	betaintegrin_mediated_adhesion
+FYN	1	betaintegrin_mediated_adhesion
+Ephrin_A5EPHA5	1	MAPKKK_cascade
+cellcell_signaling	1	EPHA5
+cellcell_signaling	1	Ephrin_A5_1

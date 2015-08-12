@@ -1,0 +1,12 @@
+Type (class=String)
+DAPPER2 = 
+ITCH = 
+JNK_cascade = 
+MAPKKK_cascade = 
+SHCGrb2SOS1 = 
+SMAD2SMURF2 = 
+TAK1TAB_family = 
+TGFBTGFBR2TGFBR1DAXX = 
+TGFBTGFBR2TGFBR1Par6occludinSMURF1 = 
+degradation = 
+proteasomal_ubiquitindependent_protein_catabolic_process = 

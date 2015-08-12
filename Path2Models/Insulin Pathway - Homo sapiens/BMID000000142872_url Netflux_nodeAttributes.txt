@@ -1,0 +1,8 @@
+Type (class=String)
+IRS1 = 
+Insulin_ReceptorInsulin = 
+PTP1B = 
+SHC = 
+negative_regulation_of_MAPKKK_cascade = 
+p62DOKRasGAP_1 = 
+tumor_necrosis_factormediated_signaling_pathway = 

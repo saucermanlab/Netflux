@@ -1,0 +1,15 @@
+tumor_necrosis_factor_receptor_activity	1	MEKK3
+tumor_necrosis_factor_receptor_activity	1	RIP
+interleukin1_receptor_activity	1	MEKK3
+interleukin1_receptor_activity	1	TRAF6
+p38_alphaTAB1	1	apoptosis
+epidermal_growth_factor_receptor_activity	1	p38alphabeta
+p38alphabetaactive	1	positive_regulation_of_innate_immune_response
+response_to_UV	1	PAK_family
+response_to_UV	1	RAC1CDC42GTP
+response_to_insulin_stimulus	1	p38alphabeta
+interleukin1_receptor_activity	1	PAK_family
+interleukin1_receptor_activity	1	RAC1CDC42GTP
+response_to_stress	1	PGKcGMP
+response_to_stress	1	TAB1
+response_to_stress	1	p38_alpha

@@ -1,0 +1,13 @@
+Type (class=String)
+BADBCLXL = 
+BCL2BAX = 
+CABIN1MEF2D = 
+DSCR1 = 
+FKBP38BCL2 = 
+MEF2DNFAT1Cbpp300 = 
+NFAT4_2 = 
+NUR77 = 
+activationinduced_cell_death_of_T_cells = 
+apoptosis = 
+catabolic_process = 
+positive_T_cell_selection = 

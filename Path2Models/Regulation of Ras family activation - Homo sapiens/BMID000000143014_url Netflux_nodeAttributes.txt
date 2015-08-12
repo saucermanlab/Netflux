@@ -1,0 +1,7 @@
+Type (class=String)
+GTP = 
+HRASGDP = 
+KRAS_familyGDP = 
+NRASGDP = 
+RRASGDP = 
+protein_oligomerization = 

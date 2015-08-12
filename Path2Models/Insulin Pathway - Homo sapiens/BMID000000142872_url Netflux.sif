@@ -1,0 +1,6 @@
+PTP1B	1	PTP1B
+tumor_necrosis_factormediated_signaling_pathway	1	Insulin_ReceptorInsulin
+tumor_necrosis_factormediated_signaling_pathway	1	IRS1
+tumor_necrosis_factormediated_signaling_pathway	1	SHC
+Insulin_ReceptorInsulin	1	PTP1B
+p62DOKRasGAP_1	1	negative_regulation_of_MAPKKK_cascade

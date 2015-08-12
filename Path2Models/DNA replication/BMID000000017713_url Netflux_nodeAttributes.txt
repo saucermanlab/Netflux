@@ -1,0 +1,13 @@
+Type (class=String)
+MCM5 = 
+POLE = 
+POLE2 = 
+POLE3 = 
+PRIM1 = 
+PRIM2 = 
+RFC = 
+RNASEH2C = 
+RPA = 
+RPA1 = 
+RPA3 = 
+SSBP1 = 

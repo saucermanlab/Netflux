@@ -1,0 +1,8 @@
+Type (class=String)
+Cyclin_D1 = 
+G2M_transition_checkpoint = 
+MLK7 = 
+Tau = 
+hyperosmotic_response = 
+p38_gamma = 
+response_to_hypoxia = 

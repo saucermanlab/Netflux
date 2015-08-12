@@ -1,0 +1,16 @@
+AlphaSynuclein_Aggregates	1	protein_targeting_to_lysosome
+SId_6S_Proteasome	-1	proteasomal_ubiquitindependent_protein_catabolic_process
+MAOB	1	degradation
+SId_6S_Proteasome	1	degradation
+AlphaSynucleinHSP701CHIP	1	degradation
+SId_6S_Proteasome	1	cell_death
+response_to_stress	1	NEUROSIN
+DA_related_ROS	1	neuron_apoptosis
+AlphaSynuclein_Aggregates	1	negative_regulation_of_transcription
+response_to_stress	1	AlphaSynuclein
+response_to_stress	1	Lipids
+response_to_stress	1	Synphilin1
+response_to_stress	1	AlphaSP22
+response_to_stress	1	AlphaSynucelin_Fibrillar_inclusion_bodies
+BADPKC_deltaAlphaSynuclein	-1	neuron_apoptosis
+AlphaSynuclein_Aggregates	1	positive_regulation_of_genespecific_transcription

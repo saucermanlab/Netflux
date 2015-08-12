@@ -1,0 +1,14 @@
+Type (class=String)
+ACTC1 = 
+Ca2 = 
+FXYD2 = 
+H = 
+MYL2 = 
+Na = 
+SLC8A1 = 
+SLC9A1 = 
+SLC9A6 = 
+TNNC1 = 
+TNNI3 = 
+TNNT2 = 
+TPM = 

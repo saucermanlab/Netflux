@@ -1,0 +1,6 @@
+Type (class=String)
+ATF2cJun = 
+COX2 = 
+NOS2 = 
+cJun = 
+p38alphabetaactive = 

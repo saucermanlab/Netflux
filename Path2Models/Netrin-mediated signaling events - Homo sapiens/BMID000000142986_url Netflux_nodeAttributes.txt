@@ -1,0 +1,13 @@
+Type (class=String)
+Axon = 
+MAP1B = 
+PI3K = 
+apoptosis = 
+axon_guidance = 
+negative_chemotaxis = 
+netrin_1DCC = 
+netrin_1DCCUNC5A = 
+netrin_1DCCUNC5B = 
+netrin_1DCCUNC5CFAKSrcYesFyn = 
+netrin_1UNC5A = 
+netrin_1UNC5C = 

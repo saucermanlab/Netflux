@@ -1,0 +1,12 @@
+NGF_dimerTRKAGIPCGAIP	-1	MAPKKK_cascade
+NGF_dimerTRKANEDD42	1	ubiquitindependent_protein_catabolic_process
+CDC42GTP	1	axon_guidance
+RAC1GTP	1	Schwann_cell_development
+TID1	1	neuron_projection_morphogenesis
+STAT3_dimer	1	neuron_projection_morphogenesis
+STAT3_dimer	1	Cyclin_D1
+SHC_23GRB2	-1	neuron_apoptosis
+NGF_dimerTRKAFAIM	1	MAPKKK_cascade
+CDC42GTP	1	Schwann_cell_development
+JNK_cascade	1	Schwann_cell_development
+SHC_23GRB2	1	MAPKKK_cascade

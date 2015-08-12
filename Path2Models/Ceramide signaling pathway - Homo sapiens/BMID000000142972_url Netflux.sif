@@ -1,0 +1,13 @@
+ERK1PKC_delta	1	cell_proliferation
+PKC_zetaceramide	1	cell_survival
+response_to_hydrogen_peroxide	1	Acid_Sphingomyelinase
+response_to_UV	1	Acid_Sphingomyelinase
+ceramide	1	ganglioside_biosynthetic_process
+response_to_oxidative_stress	1	Neutral_sphingomyelinase_II
+RelANF_kappa_B1	1	regulation_of_nitric_oxide_biosynthetic_process
+response_to_heat	1	Acid_Sphingomyelinase
+PP2A_Heterotrimer	-1	MYC
+response_to_radiation	1	Acid_Sphingomyelinase
+RB1	1	negative_regulation_of_cell_cycle
+negative_transcription_elongation_factor_activity	1	MYC
+tumor_necrosis_factor_receptor_activity	1	PP2A_Heterotrimer

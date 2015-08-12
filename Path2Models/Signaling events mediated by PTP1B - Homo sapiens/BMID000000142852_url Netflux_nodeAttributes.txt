@@ -1,0 +1,15 @@
+Type (class=String)
+Beta_Casein = 
+JAK2 = 
+Jak2Leptin_Receptor = 
+PTP1B = 
+PTP1B_1 = 
+Prolactin_ReceptorProlactin = 
+Ras_protein_signal_transduction = 
+SOCS3 = 
+STAT3_dimer = 
+YB1 = 
+cell_migration = 
+negative_regulation_of_transcription = 
+p210_bcrablGrb2 = 
+p210_bcrablPTP1B = 

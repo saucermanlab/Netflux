@@ -1,0 +1,10 @@
+Type (class=String)
+HDAC41433_E = 
+HDAC4YWHAB = 
+HDAC51433_E = 
+HDAC5YWHAB = 
+Histones_1 = 
+TubulinHDAC6 = 
+cell_motility = 
+nuclear_import = 
+positive_regulation_of_chromatin_silencing = 

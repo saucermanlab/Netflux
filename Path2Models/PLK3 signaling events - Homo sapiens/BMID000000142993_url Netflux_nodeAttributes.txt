@@ -1,0 +1,7 @@
+Type (class=String)
+CDC25C = 
+Cyclin_E1 = 
+DNA_damage = 
+G1_phase_of_mitotic_cell_cycle = 
+PLK3 = 
+prophase = 

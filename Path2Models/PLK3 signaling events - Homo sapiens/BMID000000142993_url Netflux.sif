@@ -1,0 +1,5 @@
+Cyclin_E1	1	Cyclin_E1
+DNA_damage	1	PLK3
+prophase	1	CDC25C
+PLK3	1	Cyclin_E1
+G1_phase_of_mitotic_cell_cycle	1	Cyclin_E1

@@ -1,0 +1,12 @@
+Type (class=String)
+COX2 = 
+ERK12active = 
+S1P1 = 
+S1P1S1P = 
+S1P1S1PGi = 
+SPHK1 = 
+VEGFR2VEGFA_dimer = 
+calciumdependent_phospholipase_C_activity = 
+negative_regulation_of_T_cell_proliferation = 
+negative_regulation_of_cAMP_metabolic_process = 
+receptor_internalization = 

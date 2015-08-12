@@ -1,0 +1,3 @@
+Type (class=String)
+GPC2Midkine = 
+neuron_projection_morphogenesis = 

@@ -1,0 +1,9 @@
+Type (class=String)
+BAD1433 = 
+IGF1R_heterotetramerIGF1GRB2SosShc = 
+RACK1 = 
+RAF1 = 
+RAF11433_E = 
+apoptosis = 
+cell_adhesion = 
+positive_regulation_of_MAPKKK_cascade = 

@@ -1,0 +1,17 @@
+Type (class=String)
+CDC42GTP = 
+Cyclin_D1 = 
+JNK_cascade = 
+MAPKKK_cascade = 
+NGF_dimerTRKAFAIM = 
+NGF_dimerTRKAGIPCGAIP = 
+NGF_dimerTRKANEDD42 = 
+RAC1GTP = 
+SHC_23GRB2 = 
+STAT3_dimer = 
+Schwann_cell_development = 
+TID1 = 
+axon_guidance = 
+neuron_apoptosis = 
+neuron_projection_morphogenesis = 
+ubiquitindependent_protein_catabolic_process = 

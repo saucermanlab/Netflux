@@ -1,0 +1,4 @@
+Type (class=String)
+EGF = 
+EGFR = 
+response_to_oxidative_stress = 

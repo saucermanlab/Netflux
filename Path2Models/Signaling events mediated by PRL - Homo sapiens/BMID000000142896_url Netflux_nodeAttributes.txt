@@ -1,0 +1,6 @@
+Type (class=String)
+EGR1 = 
+PRL1 = 
+ROCK1 = 
+cell_motility = 
+mitosis = 

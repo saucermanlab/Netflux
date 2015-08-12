@@ -1,0 +1,17 @@
+Type (class=String)
+FGFRFGFSyndecan3 = 
+Food_Intake_and_Energy_Homeostasis_Pathway = 
+IL8 = 
+Mesoderm_Cell = 
+Rheumatoid_Arthritis = 
+Schwann_Cell = 
+Syndecan3 = 
+Syndecan3AgRPMC4R = 
+Syndecan3FynCortactin = 
+Syndecan3IL8 = 
+Syndecan3Neurocan = 
+Syndecan3SrcCortactin = 
+limb_bud_formation = 
+longterm_memory = 
+neuron_projection_morphogenesis = 
+positive_regulation_of_leukocyte_migration = 

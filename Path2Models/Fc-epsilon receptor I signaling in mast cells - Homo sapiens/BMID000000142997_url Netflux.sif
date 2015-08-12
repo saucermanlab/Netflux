@@ -1,0 +1,12 @@
+FAK	1	actin_cytoskeleton_reorganization
+NFkappaBRelA_1	1	cytokine_secretion
+Cytokine	1	Cytokine
+Ca	1	Cytokine
+AntigenIgEFc_epsilon_R1LYNSYKWIP	-1	degradation
+NFAT1	1	Cytokine
+Cyclosporin_A	-1	Cytokine
+calciumdependent_protein_kinase_C_activity	1	ITK
+AKT1	1	regulation_of_mast_cell_degranulation
+Paxillin	1	regulation_of_mast_cell_degranulation
+S1P1	1	positive_regulation_of_cell_migration
+KLRG1SHIP	1	negative_regulation_of_mast_cell_degranulation

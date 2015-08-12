@@ -1,0 +1,12 @@
+Type (class=String)
+GADD45_family = 
+MTK1 = 
+OSMMEKK3 = 
+RAC1 = 
+TAO_family = 
+TRAF2 = 
+TRAF6 = 
+hyperosmotic_response = 
+response_to_DNA_damage_stimulus = 
+response_to_oxidative_stress = 
+response_to_stress = 

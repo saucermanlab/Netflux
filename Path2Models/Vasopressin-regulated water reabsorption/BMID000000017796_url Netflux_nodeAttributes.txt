@@ -1,0 +1,15 @@
+Type (class=String)
+ADCY = 
+AQP2 = 
+ARHGDI = 
+AVP = 
+AVPR2 = 
+CREB = 
+GNAS = 
+H2O = 
+NSF = 
+PRK = 
+RAB11 = 
+STX4 = 
+VAMP2 = 
+cAMP = 

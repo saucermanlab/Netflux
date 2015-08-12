@@ -1,0 +1,4 @@
+Type (class=String)
+MSH2 = 
+MSH3 = 
+PMS2 = 

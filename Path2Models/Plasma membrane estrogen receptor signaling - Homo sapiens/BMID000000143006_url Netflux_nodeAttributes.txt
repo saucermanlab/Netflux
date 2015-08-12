@@ -1,0 +1,17 @@
+Type (class=String)
+E2ER_alpha_dimerPELP1Srcp130_Cas = 
+E2ER_alpha_dimerPELP1Srcp52_SHCGRB2SOS1 = 
+E2ER_alpha_dimerStriatin = 
+E2ER_beta_dimer = 
+Gs_familyGTP = 
+JNK_cascade = 
+MAPKKK_cascade = 
+Moesin = 
+Monocyte = 
+NO = 
+cAMP_biosynthetic_process = 
+cell_adhesion = 
+pseudopodium_formation = 
+regulation_of_stress_fiber_assembly = 
+ruffle_organization = 
+vasodilation = 

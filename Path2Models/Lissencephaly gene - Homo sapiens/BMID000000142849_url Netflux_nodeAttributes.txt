@@ -1,0 +1,7 @@
+Type (class=String)
+DCX = 
+LIS1CLIP170Dynein_ComplexDynactin_Complex = 
+NDEL1Katanin_60Dynein_heavy_chain = 
+anaphase = 
+microtubulebased_movement = 
+negative_regulation_of_microtubule_depolymerization = 

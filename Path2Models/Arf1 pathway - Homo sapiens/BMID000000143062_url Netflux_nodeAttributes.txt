@@ -1,0 +1,6 @@
+Type (class=String)
+ARF1GTPARHGAP10 = 
+CD4HIV_NefAP2vacuolar_protontransporting_Vtype_ATPase_complexCoatomer_protein_complexARF1GTP = 
+RAC1GTP = 
+actin_filament_polymerization = 
+degradation = 

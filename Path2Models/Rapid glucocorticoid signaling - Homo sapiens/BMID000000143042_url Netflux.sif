@@ -1,0 +1,9 @@
+Gprotein_coupled_receptor_activity	1	JNK12
+cortisol	-1	vasopressin_secretion
+cortisol	-1	adrenocorticotropin_secretion
+CRH	1	adrenocorticotropin_secretion
+Gprotein_coupled_receptor_activity	1	p38alphabeta
+cortisol	-1	glutamate_secretion
+cortisol	-1	regulation_of_calcium_ion_transport_via_voltagegated_calcium_channel_activity
+Gs_familyGTP	-1	glutamate_secretion
+Gprotein_coupled_receptor_activity	1	regulation_of_calcium_ion_transport_via_voltagegated_calcium_channel_activity

@@ -1,0 +1,12 @@
+Type (class=String)
+AP1 = 
+CtBPCBPTCF1TLE1AES = 
+Cyclin_D1 = 
+MYC = 
+NEDD4 = 
+PPAR_delta = 
+apoptosis = 
+beta_catenin = 
+beta_cateninTCF1CtBPCBPTLE1AESSMAD4 = 
+degradation = 
+protein_ubiquitination = 

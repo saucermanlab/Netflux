@@ -1,0 +1,17 @@
+NRIF_1	1	neuron_apoptosis
+proNGF_dimerp75NTRSortilinNADE1433_E	1	activation_of_caspase_activity
+RhoAGTP	-1	neuron_projection_morphogenesis
+proNGF_dimerp75NTRSortilinNecdin	1	neuron_projection_morphogenesis
+oligodendrocyte_cell_fate_commitment	1	JNK_family
+SC1	1	cell_cycle_arrest
+Caspase_6_tetramer	1	neuron_apoptosis
+NGF_dimerp75NTRPKA	1	neuron_projection_morphogenesis
+proNGF_dimerp75NTRSortilinMAGEH1	1	neuron_projection_morphogenesis
+Caspase_3_tetramer	1	neuron_apoptosis
+NGF_dimerp75NTRBEX1	-1	neuron_projection_morphogenesis
+oligodendrocyte_cell_fate_commitment	1	GTP
+oligodendrocyte_cell_fate_commitment	1	RAC1GDP
+p53	1	neuron_apoptosis
+E2F1	1	neuron_apoptosis
+NGF_dimerp75NTRBEX1	-1	cell_cycle_arrest
+histone_deacetylase_activity	1	cell_cycle_arrest

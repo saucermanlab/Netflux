@@ -1,0 +1,6 @@
+Type (class=String)
+IKK_complexELKS_1 = 
+I_kappa_B_alpha = 
+NF_kappa_B1_p50RelA_1 = 
+proteasomal_ubiquitindependent_protein_catabolic_process = 
+tumor_necrosis_factor_receptor_activity = 

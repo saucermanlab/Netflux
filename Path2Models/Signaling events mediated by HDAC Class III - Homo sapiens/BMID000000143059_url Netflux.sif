@@ -1,0 +1,11 @@
+TubulinSIRT2	1	cell_motility
+p53SIRT1	-1	p21CIP1
+response_to_hypoxia	1	Histone_H1b
+response_to_hypoxia	1	FOXO4
+KU70SIRT1BAX	-1	apoptosis
+response_to_nutrient_levels	1	SIRT1
+response_to_nutrient_levels	1	PGC1A
+Histone_H4	-1	regulation_of_S_phase_of_mitotic_cell_cycle
+induction_of_apoptosis	1	p21CIP1
+SIRT1PCAFMYOD	-1	muscle_cell_differentiation
+response_to_UV	1	FOXO3a

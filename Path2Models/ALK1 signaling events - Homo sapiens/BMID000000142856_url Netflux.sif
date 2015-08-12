@@ -1,0 +1,9 @@
+BMP9ACTR2EndoglinALK1_dimer	-1	endothelial_cell_proliferation
+SMAD4SMAD158_dimer	1	ID1
+SMAD4SMAD158_dimer	1	TLX2
+BMP9BMPR2EndoglinALK1_dimer	-1	endothelial_cell_proliferation
+ID1	1	endothelial_cell_migration
+TGFB1TGFBR2EndoglinTGFBR1ALK1	1	endothelial_cell_proliferation
+BMP9ACTR2EndoglinALK1_dimer	-1	endothelial_cell_migration
+BMP9BMPR2EndoglinALK1_dimer	-1	endothelial_cell_migration
+TGFB1TGFBR2EndoglinTGFBR1ALK1	-1	sprouting_angiogenesis

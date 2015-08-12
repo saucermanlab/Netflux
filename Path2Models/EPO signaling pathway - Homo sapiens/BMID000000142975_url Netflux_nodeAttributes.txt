@@ -1,0 +1,12 @@
+Type (class=String)
+BCL2 = 
+BCLX = 
+EPORTRPC2IP3_Receptors = 
+Jnk1 = 
+RAP1A = 
+STAT1_dimer_1 = 
+STAT5_dimer = 
+betaintegrin_mediated_adhesion = 
+cell_proliferation = 
+elevation_of_cytosolic_calcium_ion_concentration = 
+p38_alpha = 

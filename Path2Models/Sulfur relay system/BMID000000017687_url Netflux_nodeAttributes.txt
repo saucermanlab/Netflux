@@ -1,0 +1,13 @@
+Type (class=String)
+CTU1 = 
+CTU2 = 
+GTP = 
+MOCS1 = 
+MOCS2 = 
+MOCS3 = 
+NFS1 = 
+SAM = 
+TRMU = 
+TST = 
+URM1 = 
+cPMP = 

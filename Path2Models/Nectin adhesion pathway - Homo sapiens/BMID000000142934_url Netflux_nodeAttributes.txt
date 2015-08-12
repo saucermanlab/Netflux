@@ -1,0 +1,7 @@
+Type (class=String)
+CDC42GTP = 
+PTPRM = 
+RAC1GTP = 
+adherens_junction_assembly = 
+positive_regulation_of_JNK_cascade = 
+positive_regulation_of_lamellipodium_assembly = 

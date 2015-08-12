@@ -1,0 +1,15 @@
+Type (class=String)
+Bcell_antigenBCR_complexBtkLYNSYKBLNKPLCgamma2CD72 = 
+ELK1 = 
+I_kappa_B_alpha = 
+I_kappa_B_alpha_1 = 
+I_kappa_B_beta = 
+I_kappa_B_beta_1 = 
+NFATc_1 = 
+NFkappaBRelA = 
+RAC1 = 
+actin_cytoskeleton_organization = 
+cell_survival = 
+cytokine_secretion = 
+reentry_into_mitotic_cell_cycle = 
+ubiquitindependent_protein_catabolic_process = 

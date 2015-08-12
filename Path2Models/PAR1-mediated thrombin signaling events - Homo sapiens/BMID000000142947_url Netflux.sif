@@ -1,0 +1,16 @@
+ROCK1ROCK2	1	positive_regulation_of_stress_fiber_assembly
+Classical_PKCs	1	MAPKKK_cascade
+G_betagammaPI3K	1	MAPKKK_cascade
+PKN	1	focal_adhesion_assembly
+myosin_II_complex	1	Regulation_of_Cell_Shape
+myosin_II_complex	1	platelet_aggregation
+Classical_PKCs	1	platelet_aggregation
+VASP	1	positive_regulation_of_stress_fiber_assembly
+ROCK1ROCK2	1	regulation_of_vascular_permeability
+Gq_familyGTP	-1	cAMP_biosynthetic_process
+Dendritic_Cell	1	chemotaxis
+myosin_II_complex	1	chemotaxis
+Endothelial_Cell	1	PAR1active_2
+PKN	1	regulation_of_vascular_permeability
+zyxin	1	regulation_of_vascular_permeability
+G_betagammaPI3K	1	platelet_aggregation

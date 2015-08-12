@@ -1,0 +1,15 @@
+Type (class=String)
+CD28 = 
+CD40 = 
+CD40LG = 
+CD86 = 
+CD86_1 = 
+FAS = 
+FASLG = 
+IFNA = 
+IL10 = 
+IL2 = 
+IL4 = 
+IL5 = 
+TG = 
+TPO = 

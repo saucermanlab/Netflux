@@ -1,0 +1,11 @@
+Type (class=String)
+EcadCTF2p120_cateninKaiso = 
+EcadherinCa2beta_cateninalpha_cateninp120_catenin = 
+Kaiso = 
+MMP7 = 
+axonogenesis = 
+beta_catenin_1 = 
+beta_catenin_2 = 
+beta_cateninalpha_catenin = 
+beta_cateninalpha_catenin_1 = 
+protein_tyrosine_phosphatase_activity = 

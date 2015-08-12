@@ -1,0 +1,13 @@
+Type (class=String)
+AKT1 = 
+NRIP1 = 
+RAR_alpha = 
+RAR_alpha9cRACyclin_H_1 = 
+RAR_gamma29cRA = 
+RARsAIB1Cbpp300PCAF9cRA_1 = 
+RXR_alpha = 
+RXRsRARs = 
+negative_regulation_of_phosphoinositide_3kinase_cascade = 
+positive_regulation_of_DNA_binding = 
+proteasomal_ubiquitindependent_protein_catabolic_process = 
+response_to_UV = 

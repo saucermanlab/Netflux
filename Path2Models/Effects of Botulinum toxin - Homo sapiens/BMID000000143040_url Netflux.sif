@@ -1,0 +1,17 @@
+BoNT_A_Heavy_Chain	1	degradation
+acidic_pH	1	BoNT_G_LightHeavy
+BoNT_D_Heavy_Chain	1	degradation
+acidic_pH	1	BoNT_F_LightHeavy
+BoNT_G_Heavy_Chain	1	degradation
+BoNT_F_Heavy_Chain	1	degradation
+acidic_pH	1	BoNT_D_LightHeavy
+acidic_pH	1	BoNT_C1_Light_Heavy
+BoNT_E_Heavy_Chain	1	degradation
+acidic_pH	1	BoNT_B_LightHeavy
+SId_4_diaminopyridine	1	negative_regulation_of_muscle_contraction
+acidic_pH	1	BoNT_A_LightHeavy
+AChCHRNA1	1	muscle_contraction
+BoNT_C1_Heavy_Chain	1	degradation
+BoNT_B_Heavy_Chain	1	degradation
+regulation_of_action_potential	1	voltagegated_calcium_channel_complex
+acidic_pH	1	BoNT_E_LightHeavy

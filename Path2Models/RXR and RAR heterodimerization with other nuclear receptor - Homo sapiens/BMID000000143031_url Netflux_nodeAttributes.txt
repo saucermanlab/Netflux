@@ -1,0 +1,8 @@
+Type (class=String)
+ABC1 = 
+RXRsLXRsDNAOxysterols_1 = 
+SREBP1c = 
+TGFB1 = 
+TNFalpha = 
+cholesterol_transport = 
+p70S6K = 

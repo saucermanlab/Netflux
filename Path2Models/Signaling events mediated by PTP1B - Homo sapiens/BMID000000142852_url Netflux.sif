@@ -1,0 +1,10 @@
+p210_bcrablPTP1B	-1	Ras_protein_signal_transduction
+JAK2	1	negative_regulation_of_transcription
+p210_bcrablGrb2	1	Ras_protein_signal_transduction
+PTP1B_1	1	PTP1B_1
+YB1	1	PTP1B_1
+STAT3_dimer	1	SOCS3
+PTP1B	-1	Beta_Casein
+Jak2Leptin_Receptor	-1	SOCS3
+PTP1B	-1	cell_migration
+Prolactin_ReceptorProlactin	1	Beta_Casein

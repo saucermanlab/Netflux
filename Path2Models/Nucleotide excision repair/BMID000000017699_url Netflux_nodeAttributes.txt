@@ -1,0 +1,11 @@
+Type (class=String)
+CDK7 = 
+CUL4 = 
+DDB1 = 
+ERCC3 = 
+ERCC5 = 
+ERCC8 = 
+GTF2H2 = 
+GTF2H5 = 
+POLD = 
+RAD23 = 

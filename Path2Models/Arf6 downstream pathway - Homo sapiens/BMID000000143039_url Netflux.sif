@@ -1,0 +1,14 @@
+epithelial_cell	1	RAC1GDP_2
+ARF6GTP	1	regulation_of_epithelial_cell_migration
+ARF6GTP_1	1	substrate_adhesiondependent_cell_spreading
+ARF6GTP	1	liver_development
+uPAR	1	uPAR
+ERK12active	1	uPAR
+RAC1GTP_3	1	cortical_actin_cytoskeleton_organization
+PIP5K1A	1	ruffle_organization
+ARF6GDP	-1	myoblast_fusion
+RhoAGDP	-1	actin_filament_bundle_formation
+ERK12active	1	Tumor_Cell_Invasion
+ARF6GTP	1	cortical_actin_cytoskeleton_organization
+fibronectin_binding	1	GM1
+PIP5K1A	-1	regulation_of_axonogenesis

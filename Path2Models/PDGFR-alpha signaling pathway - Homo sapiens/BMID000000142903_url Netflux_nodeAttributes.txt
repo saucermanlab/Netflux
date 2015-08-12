@@ -1,0 +1,14 @@
+Type (class=String)
+AP1 = 
+FOS = 
+JAK1 = 
+JAKSTAT_cascade = 
+PDGFPDGFRASHB = 
+PDGFPDGFRAShf = 
+PDGFPDGFRAalphav_Integrin = 
+Ras_protein_signal_transduction = 
+SHCGrb2SOS1_1 = 
+actin_cytoskeleton_reorganization = 
+cell_proliferation = 
+oligodendrocyte_development = 
+positive_regulation_of_JUN_kinase_activity = 

@@ -1,0 +1,16 @@
+FGFR1FGF_complexSef	-1	MAPKKK_cascade
+CAMKIIA	1	cytoskeleton_organization
+FGFRFGF2_complex	1	Osteocalcin
+FGFR2bFGF1PAK4GRB2	1	negative_regulation_of_apoptosis
+RUNX2	1	Osteocalcin
+FGFR1FGF_complexSrcCortactin	1	cell_migration
+FGFRFGFSyndecan2	1	Osteopontin
+PI3K_1	-1	uPA
+senescence	1	Cortactin
+senescence	1	FGFR1FGF_complex
+senescence	1	SRC
+FGFRFGF2_complex	1	uPA
+FGFRFGFSyndecan2FRS2CblGRB2SOS1SHC	1	degradation
+FGFRFGF2_complexNcadherin	1	negative_regulation_of_receptor_internalization
+FGFRFGF2_complexNcadherin	1	MMP9
+Grb2SOS1SHCFRS2FGFRFGF	1	MAPKKK_cascade

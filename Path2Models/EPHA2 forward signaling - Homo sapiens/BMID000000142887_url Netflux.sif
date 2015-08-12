@@ -1,0 +1,13 @@
+PAK1	-1	substrate_adhesiondependent_cell_spreading
+Ephrin_A1EPHA2p52_SHCGRB2	1	MAPKKK_cascade
+FAK	-1	cell_adhesion_mediated_by_integrin
+p130_Cas_1	1	substrate_adhesiondependent_cell_spreading
+RAC1GTP	1	endocytosis
+protein_tyrosine_phosphatase_activity	1	FAK_2
+FAK_1	1	substrate_adhesiondependent_cell_spreading
+Ephrin_A1EPHA2VAV2VAV3	1	angiogenesis
+Ephrin_A1EPHA2Src	-1	cellcell_adhesion
+cellcell_signaling	1	EPHA2
+cellcell_signaling	1	Ephrin_A1_1
+RhoAGTP	1	substrate_adhesiondependent_cell_spreading
+RAC1GTP	1	endothelial_cell_migration

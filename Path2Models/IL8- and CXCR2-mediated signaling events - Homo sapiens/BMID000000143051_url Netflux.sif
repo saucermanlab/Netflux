@@ -1,0 +1,11 @@
+actin_filament_polymerization	1	IL8CXCR2
+IL8CXCR2VASP	1	chemotaxis
+receptor_recycling	1	IL8CXCR2
+IL8CXCR2_3	1	degradation
+RAC2GTP	1	chemotaxis
+actin_filament_polymerization	1	VASP
+actin_filament_polymerization	1	IL8CXCR2_1
+PLD2	1	regulation_of_cell_migration
+receptor_internalization	1	IL8CXCR2beta_Arrestin12AP2
+phosphatidylinositol45bisphosphate_3kinase_activity	-1	HckFgrLyn
+phosphatidylinositol45bisphosphate_3kinase_activity	-1	GNAI2GTP

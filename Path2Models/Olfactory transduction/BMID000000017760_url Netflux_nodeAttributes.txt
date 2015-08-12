@@ -1,0 +1,16 @@
+Type (class=String)
+ADCY3 = 
+ADRBK2 = 
+ARRB2 = 
+CALM = 
+CAMK2 = 
+CLCA = 
+CNG = 
+GNAL = 
+GUCA1 = 
+GUCY2D = 
+OR5C1 = 
+PDC = 
+PDE1C = 
+PRK = 
+PRKG = 

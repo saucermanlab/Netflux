@@ -1,0 +1,7 @@
+Type (class=String)
+ARF6GDP = 
+FOXO3a = 
+RAC1GTP = 
+RhoAGDP = 
+actin_cytoskeleton_reorganization = 
+cell_survival = 

@@ -1,0 +1,3 @@
+Type (class=String)
+Gsk3beta = 
+proteasomal_ubiquitindependent_protein_catabolic_process = 

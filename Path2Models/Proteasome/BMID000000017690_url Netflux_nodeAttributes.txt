@@ -1,0 +1,17 @@
+Type (class=String)
+PSMA = 
+PSMA5 = 
+PSMA6 = 
+PSMB10 = 
+PSMB2 = 
+PSMB5 = 
+PSMB8 = 
+PSMB9 = 
+PSMC1 = 
+PSMC2 = 
+PSMD13 = 
+PSMD4 = 
+PSMD7 = 
+PSME1 = 
+PSME4 = 
+SHFM1 = 

@@ -1,0 +1,10 @@
+Type (class=String)
+CD28 = 
+CD86 = 
+FAS = 
+FASLG = 
+GAD = 
+IL1 = 
+INS = 
+PTPRN = 
+TNF = 

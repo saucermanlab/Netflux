@@ -1,0 +1,9 @@
+Type (class=String)
+EGFR = 
+ETS = 
+ETV = 
+GRB2 = 
+KRAS = 
+MAP2K1 = 
+MAPK = 
+SOS = 

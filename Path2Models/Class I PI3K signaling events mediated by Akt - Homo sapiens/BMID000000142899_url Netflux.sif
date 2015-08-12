@@ -1,0 +1,13 @@
+response_to_stress	1	ASK1
+response_to_stress	1	AKT1
+AKT2p21CIP1	1	negative_regulation_of_cell_cycle
+GSK3inactive	1	G1S_transition_of_mitotic_cell_cycle
+GLUT4	1	glucose_import
+Caspase_9	1	cell_survival
+AKT1ASK1	-1	JNK_cascade
+FOXO13a41433_family	1	cell_survival
+AKT1RAF1	-1	MAPKKK_cascade
+p21CIP1_1	-1	negative_regulation_of_cell_cycle
+FOXO13a41433_family	-1	negative_regulation_of_cell_cycle
+BCLXL	1	cell_survival
+p27Kip11433_family	-1	negative_regulation_of_cell_cycle

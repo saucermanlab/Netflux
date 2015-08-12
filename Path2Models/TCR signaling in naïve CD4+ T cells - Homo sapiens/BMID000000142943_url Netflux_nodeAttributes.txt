@@ -1,0 +1,10 @@
+Type (class=String)
+CDC42GTPWASP = 
+LATGRAP2SLP76ADAP = 
+RAP1AGTPRAPL = 
+TCRCD3MHC_IICD4LCKCBLUbiquitin = 
+TCRCD3MHC_IICD4LCKZAP70CBLSLAP2Ubiquitin = 
+VAV1CBLUbiquitin = 
+actin_polymerization_or_depolymerization = 
+integrinmediated_signaling_pathway = 
+proteasomal_ubiquitindependent_protein_catabolic_process = 

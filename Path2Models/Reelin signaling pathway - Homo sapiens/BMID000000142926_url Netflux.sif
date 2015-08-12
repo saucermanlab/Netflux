@@ -1,0 +1,13 @@
+GRIN2BRELNLRP8DAB1Fyn	1	longterm_memory
+DAB1alpha3beta1_Integrin	1	neuron_adhesion
+CBL	1	protein_ubiquitination
+GRIN2ARELNLRP8DAB1Fyn	1	longterm_memory
+CDK5R1CDK5	1	neuron_migration
+DAB1NCK2	1	neuron_migration
+RAP1A	1	neuron_adhesion
+RELNLRP8DAB1Fyn	1	neuron_migration
+RELNVLDLRDAB1PI3K	1	neuron_migration
+DAB1LIS1	1	neuron_migration
+RELNLRP8DAB1FynMAPK8IP1MKK7MAP3K11JNK1	1	neuron_differentiation
+RELNVLDLRDAB1Fyn	1	neuron_migration
+DAB1alpha3beta1_Integrin	-1	neuron_migration

@@ -1,0 +1,5 @@
+Type (class=String)
+RhoAGTP = 
+S1PS1P5Gi = 
+negative_regulation_of_cAMP_metabolic_process = 
+telencephalon_oligodendrocyte_cell_migration = 

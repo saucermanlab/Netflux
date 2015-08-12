@@ -1,0 +1,11 @@
+Type (class=String)
+HDAC1Smad7_1 = 
+HDAC8hEST1B = 
+I_kappa_B_alpha_1 = 
+NuRDMBD2PRMT5_Complex = 
+SIN3HDAC_complexMadMax = 
+histone_deacetylation = 
+negative_regulation_of_cell_growth = 
+nuclear_export = 
+proteasomal_ubiquitindependent_protein_catabolic_process = 
+ubiquitindependent_protein_catabolic_process = 

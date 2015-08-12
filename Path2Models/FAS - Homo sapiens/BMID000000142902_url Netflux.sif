@@ -1,0 +1,14 @@
+BLymphocyte	1	BTK
+BLymphocyte	1	FADD
+BLymphocyte	1	FASLGFAS_trimer
+AKT1	1	cell_migration
+endocytosis	1	FASLGFAS_trimerFADDFADDCASP8CASP8
+receptor_clustering	1	FASLGFAS_trimerFADDFADDCASP8CASP8
+FASLGFAS_trimerFADDFADDRIP	1	necroptosis
+actin_filament_polymerization	1	FASLGFAS_trimerFADDFADDCASP8CASP8
+RFC1_cleaved	-1	cell_cycle
+MAPKKK_cascade	1	neuron_projection_development
+Lymphocyte	1	FASLGFAS_trimerFADDFADDCASP8CASP8
+p15_BID_1	1	release_of_cytochrome_c_from_mitochondria
+FASLGFAS_trimer	1	neuron_projection_development
+Hepatocyte	1	FASLGFAS_trimerFADDFADDCASP8CASP8

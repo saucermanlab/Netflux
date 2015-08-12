@@ -1,0 +1,8 @@
+Type (class=String)
+MRE11A = 
+RAD50 = 
+RAD51 = 
+RAD51D = 
+RPA = 
+XRCC2 = 
+XRCC3 = 

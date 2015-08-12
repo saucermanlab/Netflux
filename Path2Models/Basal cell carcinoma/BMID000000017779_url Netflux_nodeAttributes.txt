@@ -1,0 +1,15 @@
+Type (class=String)
+BMP = 
+CTNNB1 = 
+DVL = 
+FZD = 
+GLI = 
+GSK3B = 
+HHIP = 
+PTCH = 
+PTCH1 = 
+SHH = 
+SUFU = 
+TCF7 = 
+TP53 = 
+WNT = 

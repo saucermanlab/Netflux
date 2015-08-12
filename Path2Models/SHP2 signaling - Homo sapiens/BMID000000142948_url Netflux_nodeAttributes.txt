@@ -1,0 +1,7 @@
+Type (class=String)
+EGFREGFREGFEGF = 
+EGFREGFREGFEGFGNAI1GNAI3GAB1_1 = 
+EGFREGFREGFEGFGRB2GAB1 = 
+PAG1 = 
+p190RhoGAP = 
+protein_tyrosine_phosphatase_activity = 

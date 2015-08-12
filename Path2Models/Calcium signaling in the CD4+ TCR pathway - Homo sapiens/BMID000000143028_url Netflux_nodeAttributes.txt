@@ -1,0 +1,12 @@
+Type (class=String)
+CD40LG = 
+COX2 = 
+FASLG = 
+GMCSF = 
+IL2 = 
+IL3 = 
+IL4 = 
+JUNFOSNFAT1c4 = 
+JUNNFAT1c4p21SNFT = 
+NFAT1c4ICER1 = 
+Oct1 = 

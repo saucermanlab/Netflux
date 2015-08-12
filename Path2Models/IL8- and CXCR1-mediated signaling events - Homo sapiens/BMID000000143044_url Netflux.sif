@@ -1,0 +1,10 @@
+actin_filament_polymerization	1	IL8CXCR1
+receptor_recycling	1	IL8CXCR1
+G_betagammaPI3Kgammap84	1	respiratory_burst
+PKC_epsilon_1	1	basophil_degranulation
+GNAI2GTP	-1	cAMP_biosynthetic_process
+G_betagammaPI3Kgammap84	1	chemotaxis
+G_betagammaPI3Kgammap84CBL	-1	chemotaxis
+PLD1	1	chemotaxis
+IL8CXCR1beta_Arrestin12HckFgrLyn	1	neutrophil_degranulation
+receptor_internalization	1	IL8CXCR1beta_Arrestin12

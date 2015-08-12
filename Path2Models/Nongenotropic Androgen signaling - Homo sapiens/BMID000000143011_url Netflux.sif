@@ -1,0 +1,9 @@
+RAC1CDC42GTP	1	actin_cytoskeleton_reorganization
+CREB1	1	FOS
+CREB1	-1	apoptosis
+SHBGTDHT	1	cAMP_biosynthetic_process
+Gprotein_coupled_receptor_activity	1	SHBG
+Gprotein_coupled_receptor_activity	1	TDHT
+TDHTARPELP1SrcPI3K	1	regulation_of_S_phase_of_mitotic_cell_cycle
+voltagegated_calcium_channel_activity	1	Ca2
+potassium_channel_inhibitor_activity	1	Ca2

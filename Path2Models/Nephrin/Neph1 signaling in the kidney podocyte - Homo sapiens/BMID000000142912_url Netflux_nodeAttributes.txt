@@ -1,0 +1,12 @@
+Type (class=String)
+NephrinNEPH1 = 
+NephrinNEPH1Par3Par6Atypical_PKCs = 
+NephrinNEPH1beta_Arrestin2 = 
+NephrinNEPH1podocinGRB2 = 
+NephrinNEPH1podocinNCK12NWASP = 
+cytoskeleton_organization = 
+establishment_of_cell_polarity = 
+heterophilic_cellcell_adhesion = 
+homophilic_cell_adhesion = 
+positive_regulation_of_NFkappaB_transcription_factor_activity = 
+regulation_of_endocytosis = 

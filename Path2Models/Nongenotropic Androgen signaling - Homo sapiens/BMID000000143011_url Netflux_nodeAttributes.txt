@@ -1,0 +1,16 @@
+Type (class=String)
+CREB1 = 
+Ca2 = 
+FOS = 
+Gprotein_coupled_receptor_activity = 
+RAC1CDC42GTP = 
+SHBG = 
+SHBGTDHT = 
+TDHT = 
+TDHTARPELP1SrcPI3K = 
+actin_cytoskeleton_reorganization = 
+apoptosis = 
+cAMP_biosynthetic_process = 
+potassium_channel_inhibitor_activity = 
+regulation_of_S_phase_of_mitotic_cell_cycle = 
+voltagegated_calcium_channel_activity = 

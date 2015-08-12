@@ -1,0 +1,7 @@
+Type (class=String)
+Aurora_B = 
+Aurora_C = 
+Aurora_CAurora_BINCENP_2 = 
+INCENP = 
+anaphase = 
+metaphase = 

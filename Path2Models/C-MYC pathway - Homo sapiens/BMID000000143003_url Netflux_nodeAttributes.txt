@@ -1,0 +1,3 @@
+Type (class=String)
+MYCMax = 
+response_to_stress = 

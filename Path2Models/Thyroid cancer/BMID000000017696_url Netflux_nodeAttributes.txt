@@ -1,0 +1,14 @@
+Type (class=String)
+BRAF = 
+CCDC6 = 
+CCND1 = 
+CDH1 = 
+CTNNB1 = 
+MAP2K = 
+MAPK = 
+MYC = 
+NRAS = 
+NTRK1 = 
+PAX8 = 
+RXR = 
+TCF7 = 

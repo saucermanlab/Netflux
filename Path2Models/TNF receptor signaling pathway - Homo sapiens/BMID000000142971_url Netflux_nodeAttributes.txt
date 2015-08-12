@@ -1,0 +1,7 @@
+Type (class=String)
+JNK_cascade = 
+MAPKKK_cascade = 
+MKK7 = 
+TRXASK1 = 
+response_to_oxidative_stress = 
+sTNFalphaTNFR1AMADD = 

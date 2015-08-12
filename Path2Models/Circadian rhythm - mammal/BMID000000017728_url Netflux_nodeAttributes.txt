@@ -1,0 +1,16 @@
+Type (class=String)
+ARNTL = 
+BHLHE = 
+CRY = 
+CSNK1 = 
+Ca2 = 
+FBXL3 = 
+Group = 
+Group_1 = 
+Group_2 = 
+Group_3 = 
+NPAS2 = 
+NR1D1 = 
+PER = 
+ROR = 
+cAMP = 

@@ -1,0 +1,3 @@
+Type (class=String)
+alpha4beta7_IntegrinMAdCAM1 = 
+cell_adhesion = 

@@ -1,0 +1,7 @@
+PKC_alpha	1	endothelial_cell_proliferation
+AKT1	1	endothelial_cell_proliferation
+PKC_beta2	1	endothelial_cell_proliferation
+hypoxia	1	VEGFR1
+ERK12active	1	platelet_activating_factor_biosynthetic_process
+VEGFR1_homodimerVEGFA_homodimerCBLCD2AP	1	ubiquitindependent_protein_catabolic_process
+HIF1A	1	VEGFR1

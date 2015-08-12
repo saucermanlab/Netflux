@@ -1,0 +1,10 @@
+Type (class=String)
+NEIL1 = 
+NEIL2 = 
+NTHL1 = 
+PCNA = 
+POLB = 
+POLL = 
+SMUG1 = 
+UNG = 
+XRCC1 = 

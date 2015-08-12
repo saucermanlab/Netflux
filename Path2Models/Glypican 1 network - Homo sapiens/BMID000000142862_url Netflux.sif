@@ -1,0 +1,6 @@
+GPC1FGF2_dimerFGFR1_dimer	1	fibroblast_growth_factor_receptor_signaling_pathway
+Src_Family_Kinasesactive	1	positive_regulation_of_MAPKKK_cascade
+APPGPC1	1	cell_death
+GPC1NRG	1	neuron_differentiation
+GPC1FGF2_dimerFGFR1_dimer	1	cell_growth
+GPC1	-1	BMP_signaling_pathway

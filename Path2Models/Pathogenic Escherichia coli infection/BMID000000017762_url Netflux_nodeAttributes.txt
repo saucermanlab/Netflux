@@ -1,0 +1,15 @@
+Type (class=String)
+ACT = 
+ARHGEF2 = 
+ARPC = 
+CD14 = 
+CLDN1 = 
+FYN = 
+ITGB1 = 
+PRKCA = 
+RHOA = 
+ROCK = 
+TLR4 = 
+TUBA = 
+TUBB = 
+WAS = 

@@ -1,0 +1,9 @@
+Type (class=String)
+CD28 = 
+CD40 = 
+CD40LG = 
+CD86 = 
+FAS = 
+FASLG = 
+NO = 
+TNF = 

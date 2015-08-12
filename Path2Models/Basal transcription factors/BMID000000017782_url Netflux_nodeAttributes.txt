@@ -1,0 +1,11 @@
+Type (class=String)
+GTF2A1 = 
+GTF2A2 = 
+GTF2H2 = 
+GTF2H3 = 
+TAF12 = 
+TAF13 = 
+TAF4 = 
+TAF5 = 
+TAF8 = 
+TAF9 = 

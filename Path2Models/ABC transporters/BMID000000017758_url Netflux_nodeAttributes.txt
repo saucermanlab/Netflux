@@ -1,0 +1,15 @@
+Type (class=String)
+ABCA4 = 
+ABCA7 = 
+ABCB10 = 
+ABCB6 = 
+ABCB7 = 
+ABCB9 = 
+Bacitracin = 
+C06235 = 
+Cellobiose = 
+DMethionine = 
+Maltose = 
+Phosphate = 
+Sulfate = 
+Zn2_1 = 

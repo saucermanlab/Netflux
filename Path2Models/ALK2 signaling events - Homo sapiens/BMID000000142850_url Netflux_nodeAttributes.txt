@@ -1,0 +1,3 @@
+Type (class=String)
+SMAD4SMAD158_dimer_1 = 
+TLX2 = 

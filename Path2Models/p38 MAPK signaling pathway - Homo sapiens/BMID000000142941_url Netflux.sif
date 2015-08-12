@@ -1,0 +1,8 @@
+hyperosmotic_response	1	OSMMEKK3
+hyperosmotic_response	1	RAC1
+response_to_oxidative_stress	1	TRAF6
+response_to_oxidative_stress	1	TRAF2
+response_to_DNA_damage_stimulus	1	TAO_family
+response_to_stress	1	TRAF6
+response_to_stress	1	GADD45_family
+response_to_stress	1	MTK1

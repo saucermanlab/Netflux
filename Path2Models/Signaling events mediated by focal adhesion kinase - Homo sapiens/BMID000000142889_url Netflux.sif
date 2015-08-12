@@ -1,0 +1,17 @@
+MLCK	1	negative_regulation_of_cell_adhesion_involved_in_substratebound_cell_migration
+ROCK2	1	cell_migration
+JUN	1	regulation_of_cell_cycle
+RAC1GTPbetaPIX	1	substrate_adhesiondependent_cell_spreading
+KLF8	1	Cyclin_D1
+NWASP_1	1	cell_migration
+FAKSrcYesFynERK2mcalpain	1	negative_regulation_of_cell_adhesion_involved_in_substratebound_cell_migration
+RhoAGDP_1	1	establishment_of_cell_polarity
+FAKSrcYesFynGRB7	1	cell_migration
+RhoAGTP_1	1	cell_migration
+FAKSrcYesFynPaxillinPAK1betaPIXPKLNCK12	1	establishment_of_cell_polarity
+alpha5beta1_Integrin	1	positive_regulation_of_cell_adhesion
+JNK12active	-1	apoptosis
+ETS1	1	Cyclin_D1
+FAKSrcYesFynJIP3	1	substrate_adhesiondependent_cell_spreading
+FAKSrcYesFynEndophilinA2	-1	endocytosis
+BMX	1	cell_migration

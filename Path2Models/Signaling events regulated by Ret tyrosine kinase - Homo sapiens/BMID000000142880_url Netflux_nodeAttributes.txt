@@ -1,0 +1,13 @@
+Type (class=String)
+ERK12active = 
+JNK_cascade = 
+JUN = 
+MAPKKK_cascade = 
+RET51GFRalpha1GDNFDok6 = 
+RET51GFRalpha1GDNFFRS2SHP2Grb2 = 
+RET9GFRalpha1GDNFFRS2SHP2Grb2 = 
+RET9GFRalpha1GDNFShank3 = 
+RET9GFRalpha1GDNFShank3Grb2 = 
+activation_of_MAPKK_activity = 
+neurite_development = 
+tube_development = 

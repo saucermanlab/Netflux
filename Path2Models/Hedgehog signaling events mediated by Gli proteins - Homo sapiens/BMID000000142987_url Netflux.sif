@@ -1,0 +1,16 @@
+GLI1	1	embryonic_limb_morphogenesis
+GLI1	1	GLI1
+GLI3ACbp	1	GLI1
+GLI1	1	PTCH1
+GLI2A	1	forebrain_development
+GLI2A	1	PTCH1
+GLI3R	1	embryonic_limb_morphogenesis
+GLI3SPOP	1	catabolic_process
+GLI1	1	forebrain_development
+GLI2A	1	GLI1
+MIMGLI1	1	FOXA2
+MIMGLI2A	1	FOXA2
+Polaris	1	embryonic_digit_morphogenesis
+GLI2A	1	embryonic_limb_morphogenesis
+GLI2SPOP	1	catabolic_process
+GLI_familyactive	1	neural_tube_patterning

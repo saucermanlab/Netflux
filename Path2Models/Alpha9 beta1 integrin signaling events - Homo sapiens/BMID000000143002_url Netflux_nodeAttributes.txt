@@ -1,0 +1,7 @@
+Type (class=String)
+KIR42 = 
+NO = 
+SRC = 
+alpha9beta1_IntegrinTenascin_CPaxillin = 
+cell_migration = 
+substrate_adhesiondependent_cell_spreading = 

@@ -1,0 +1,4 @@
+Type (class=String)
+C3 = 
+E2ERB_dimer = 
+E2ERB_dimerDP97 = 

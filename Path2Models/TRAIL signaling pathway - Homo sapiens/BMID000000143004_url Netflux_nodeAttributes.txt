@@ -1,0 +1,10 @@
+Type (class=String)
+ASM = 
+IKK_complex = 
+JNK_cascade = 
+TRAILTRAILR4 = 
+cell_death = 
+ceramide = 
+negative_regulation_of_caspase_activity = 
+positive_regulation_of_NFkappaB_transcription_factor_activity = 
+response_to_oxidative_stress = 

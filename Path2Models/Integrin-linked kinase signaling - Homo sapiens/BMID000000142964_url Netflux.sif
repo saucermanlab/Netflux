@@ -1,0 +1,16 @@
+ZEB1	1	ZEB1
+AKT1	-1	apoptosis
+ILKPINCH1beta_parvinalphaactinin	1	substrate_adhesiondependent_cell_spreading
+PARP1	1	ZEB1
+AKT1	-1	anoikis
+Aurora_AchTOGTACC3_1	1	centrosome_localization
+Dia	1	microtubule_cytoskeleton_organization
+ILKELMO2RhoGGTP	1	establishment_of_cell_polarity
+CREB1	1	Cyclin_D1
+Gsk3beta	1	establishment_of_cell_polarity
+CDC42GTP	1	substrate_adhesiondependent_cell_spreading
+RAC1GTP	1	substrate_adhesiondependent_cell_spreading
+ILK	1	DNA_biosynthetic_process
+SNAIL	1	SNAIL
+PARP1	1	SNAIL
+Wnt_receptor_signaling_pathway	1	CREB1

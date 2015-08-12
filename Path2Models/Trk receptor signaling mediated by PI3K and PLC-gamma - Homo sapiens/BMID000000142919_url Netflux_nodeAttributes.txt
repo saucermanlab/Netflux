@@ -1,0 +1,9 @@
+Type (class=String)
+AKT1 = 
+Cyclin_D1 = 
+EGR1 = 
+PI3KPIKEGTP = 
+PLCgamma1 = 
+axonogenesis = 
+neuron_apoptosis = 
+regulation_of_longterm_neuronal_synaptic_plasticity = 

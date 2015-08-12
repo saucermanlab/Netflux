@@ -1,0 +1,3 @@
+Type (class=String)
+ERK12ELK1 = 
+FOS = 

@@ -1,0 +1,17 @@
+Type (class=String)
+cell_adhesion = 
+cell_migration = 
+cell_proliferation = 
+chemotaxis = 
+prouPAuPARVitronectin = 
+prouPAuPARalphavbeta3_IntegrinVitronectin = 
+uPARDIIDIIIfMLP_receptors = 
+uPARalphaMbeta2_IntegrinFibrinogen = 
+uPAalphavbeta3_Integrin = 
+uPAuPARVitronectin = 
+uPAuPAR_dimerVitronectin = 
+uPAuPARalpha3beta1_IntegrinVitronectin = 
+uPAuPARalpha5beta1_IntegrinFibronectin = 
+uPAuPARalphaMbeta2_IntegrinFibrinogen = 
+uPAuPARalphavbeta3_IntegrinVitronectinCK2Nucleolin = 
+uPAuPARalphavbeta5_IntegrinVitronectin = 

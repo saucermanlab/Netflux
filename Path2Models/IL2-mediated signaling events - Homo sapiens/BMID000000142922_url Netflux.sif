@@ -1,0 +1,14 @@
+PKC_epsilon	1	T_cell_proliferation
+IL2R_betaJAK1LCKSOCS3SOCS2	1	proteasomal_ubiquitindependent_protein_catabolic_process
+ERK12active	1	JUN
+CDK2	1	G1S_transition_of_mitotic_cell_cycle
+RhoAGTP	1	FOS
+p38alphabetaactive	1	T_cell_proliferation
+IL2IL2R_alphabetagammaJAK1LCKJAK3	1	positive_regulation_of_cellcell_adhesion
+ERK12active	1	IFNgamma
+IL2IL2R_alphabetagammaJAK1LCKJAK3PYK2	1	cell_proliferation
+ERK12active	1	natural_killer_cell_mediated_cytotoxicity
+Aiolos_2	1	BCL2
+IL2IL2R_alphabetagammaJAK1LCKJAK3	1	SOCS3
+PKC_beta	1	T_cell_proliferation
+IL2IL2R_alphabetagammaJAK1LCKJAK3STAM12	1	MYC

@@ -1,0 +1,15 @@
+Ephrin_B2EPHB4	1	endothelial_cell_migration
+cellcell_signaling	1	EPHB12_1
+cellcell_signaling	1	Ephrin_B1_1
+Ephrin_B2EPHB4	1	endothelial_cell_proliferation
+Ephrin_B1EPHB12	1	angiogenesis
+platelet_activation	1	cell_adhesion
+cellcell_signaling	1	Ephrin_B2_1
+cellcell_signaling	1	EPHB4
+alphaIIbbeta3_Integrin	1	cell_adhesion
+Ephrin_B1EPHB12NCK2	-1	regulation_of_stress_fiber_assembly
+Ephrin_B1EPHB12RGS3	-1	chemotaxis
+Ephrin_B1EPHB12NCK2	-1	regulation_of_focal_adhesion_formation
+Ephrin_B1EPHB12	1	endothelial_cell_migration
+RAC1GTP	1	neuron_projection_morphogenesis
+PI3K	1	cell_adhesion

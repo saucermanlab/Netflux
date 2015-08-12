@@ -1,0 +1,13 @@
+ARF6GDP	-1	lamellipodium_assembly
+JAML_dimer	1	cell_adhesion
+alpha4beta1_IntegrinVCAM1ABI1	1	actin_cytoskeleton_organization
+alpha4beta1_IntegrinMidkine	1	cell_migration
+alpha4beta1_IntegrinVCAM1PaxillinTalin	1	cell_adhesion
+alpha4beta1_IntegrinOsteopontin	1	cell_migration
+alpha4beta1_IntegrinADAM28	1	cell_adhesion
+alpha4beta1_IntegrinThrombospondin	1	cell_adhesion
+alpha4beta1_IntegrinJAMB	1	cell_adhesion
+alpha4beta1_IntegrinFibronectinMYHC2A	1	myosin_II_filament_assembly
+alpha4beta1_IntegrinThrombospondin2	1	cell_adhesion
+alpha4beta1_IntegrinvWF	1	cell_adhesion
+alpha4beta1_IntegrinOsteopontin	1	cell_adhesion

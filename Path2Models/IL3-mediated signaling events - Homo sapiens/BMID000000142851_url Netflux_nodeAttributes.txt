@@ -1,0 +1,14 @@
+Type (class=String)
+BCLX = 
+CEBPB_dimer = 
+CISH = 
+ID1 = 
+KSR = 
+OSM = 
+PI3K_1 = 
+PIM1 = 
+SRP9 = 
+STAT5_dimeractive = 
+STAT5_dimeractiveHDAC1 = 
+YWHAG = 
+negative_regulation_of_apoptosis = 

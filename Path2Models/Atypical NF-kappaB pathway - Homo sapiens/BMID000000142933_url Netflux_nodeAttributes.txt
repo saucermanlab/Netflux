@@ -1,0 +1,12 @@
+Type (class=String)
+I_kappa_B_alpha_1 = 
+NF_kappa_B1_p105p50 = 
+NF_kappa_B1_p50RelAI_kappa_B_alpha = 
+NF_kappa_B1_p50RelAI_kappa_B_alphabeta_Arrestin2_1 = 
+NF_kappa_B1_p50RelA_2 = 
+beta_Arrestin2 = 
+cell_death = 
+degradation = 
+positive_regulation_of_antiapoptosis = 
+response_to_UV = 
+response_to_oxidative_stress = 

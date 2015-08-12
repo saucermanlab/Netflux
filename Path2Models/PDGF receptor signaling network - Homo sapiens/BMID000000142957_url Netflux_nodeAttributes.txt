@@ -1,0 +1,5 @@
+Type (class=String)
+PDGFABPDGFRAPDGFRB = 
+PDGFCCPDGFRAPDGFRB = 
+PDGFDDPDGFRAPDGFRB = 
+plateletderived_growth_factor_receptor_signaling_pathway = 

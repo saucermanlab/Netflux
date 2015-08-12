@@ -1,0 +1,17 @@
+Type (class=String)
+GNAI2GTP = 
+G_betagammaPI3Kgammap84 = 
+G_betagammaPI3Kgammap84CBL = 
+IL8CXCR1 = 
+IL8CXCR1beta_Arrestin12 = 
+IL8CXCR1beta_Arrestin12HckFgrLyn = 
+PKC_epsilon_1 = 
+PLD1 = 
+actin_filament_polymerization = 
+basophil_degranulation = 
+cAMP_biosynthetic_process = 
+chemotaxis = 
+neutrophil_degranulation = 
+receptor_internalization = 
+receptor_recycling = 
+respiratory_burst = 

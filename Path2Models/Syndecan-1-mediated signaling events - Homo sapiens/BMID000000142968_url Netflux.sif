@@ -1,0 +1,8 @@
+Syndecan1Laminin_alpha5	1	keratinocyte_migration
+Syndecan1Collagen	1	homophilic_cell_adhesion
+Syndecan1_soluble	1	positive_regulation_of_cell_migration
+Syndecan1SynteninPIP2	1	positive_regulation_of_cellcell_adhesion
+ERK12active	1	regulation_of_cell_adhesion
+TLymphocyte	1	Syndecan1
+TLymphocyte	1	CD147
+Syndecan1_soluble	1	Tumor_Cell_Invasion

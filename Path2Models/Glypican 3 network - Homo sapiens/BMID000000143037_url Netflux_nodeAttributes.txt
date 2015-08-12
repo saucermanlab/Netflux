@@ -1,0 +1,9 @@
+Type (class=String)
+BMP4 = 
+FGF7 = 
+GPC3 = 
+JNK12active = 
+apoptosis = 
+embryonic_digit_morphogenesis = 
+kidney_development = 
+skeletal_system_development = 

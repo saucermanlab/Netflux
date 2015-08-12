@@ -1,0 +1,12 @@
+Type (class=String)
+ERK12active = 
+alphavbeta3_IntegrinANGPTL3 = 
+alphavbeta3_IntegrinCaspase_8 = 
+alphavbeta3_IntegrinLactadherin = 
+alphavbeta3_IntegrinTGFBR2 = 
+alphavbeta3_IntegrinppsTEM5 = 
+angiogenesis = 
+apoptosis = 
+cell_adhesion = 
+cell_proliferation = 
+regulation_of_cellmatrix_adhesion = 

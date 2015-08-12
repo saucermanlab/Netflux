@@ -1,0 +1,4 @@
+Type (class=String)
+WNT3ALRP6FZD5DVL = 
+protein_polymerization = 
+receptor_clustering = 

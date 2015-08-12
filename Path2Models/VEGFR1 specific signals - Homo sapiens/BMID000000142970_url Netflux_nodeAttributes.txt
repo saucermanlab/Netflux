@@ -1,0 +1,12 @@
+Type (class=String)
+AKT1 = 
+ERK12active = 
+HIF1A = 
+PKC_alpha = 
+PKC_beta2 = 
+VEGFR1 = 
+VEGFR1_homodimerVEGFA_homodimerCBLCD2AP = 
+endothelial_cell_proliferation = 
+hypoxia = 
+platelet_activating_factor_biosynthetic_process = 
+ubiquitindependent_protein_catabolic_process = 

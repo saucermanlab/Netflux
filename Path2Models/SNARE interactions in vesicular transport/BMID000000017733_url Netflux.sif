@@ -1,0 +1,12 @@
+VAMP	1	Group
+VAMP4	1	Group_1
+VAMP4	1	Group_2
+YKT6	1	Group_3
+BET1	1	Group_4
+SEC22B	1	Group_5
+YKT6	1	GOSR1
+GOSR2	1	STX5
+STX_1	1	YKT6
+SNAP_1	1	STX_2
+STX	1	VTI1
+Group_2	1	Group_3

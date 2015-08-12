@@ -1,0 +1,4 @@
+Type (class=String)
+PLK2 = 
+PLK4 = 
+regulation_of_centriole_replication = 

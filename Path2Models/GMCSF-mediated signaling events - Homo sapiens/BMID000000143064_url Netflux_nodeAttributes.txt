@@ -1,0 +1,10 @@
+Type (class=String)
+CCL2 = 
+CISH = 
+FOS = 
+GMCSFGMR_alphaCSF2RB_dimerLYNSYK = 
+IRF8 = 
+Monocyte = 
+PIM1 = 
+STAT5_dimeractive = 
+apoptosis = 

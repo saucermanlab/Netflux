@@ -1,0 +1,9 @@
+Type (class=String)
+CDC25B1433_family = 
+G2M_transition_checkpoint = 
+Hsp27 = 
+LSP1 = 
+actin_cytoskeleton_reorganization = 
+chemotaxis = 
+p38alphabetaMAPKAPK2 = 
+regulation_of_mRNA_stability = 

@@ -1,0 +1,11 @@
+Type (class=String)
+CD40 = 
+CD40LG = 
+EPX = 
+HLAD = 
+IL10 = 
+IL3 = 
+IL4 = 
+IL5 = 
+LTC4 = 
+PGD2 = 

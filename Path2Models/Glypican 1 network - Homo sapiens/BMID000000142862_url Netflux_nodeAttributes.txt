@@ -1,0 +1,12 @@
+Type (class=String)
+APPGPC1 = 
+BMP_signaling_pathway = 
+GPC1 = 
+GPC1FGF2_dimerFGFR1_dimer = 
+GPC1NRG = 
+Src_Family_Kinasesactive = 
+cell_death = 
+cell_growth = 
+fibroblast_growth_factor_receptor_signaling_pathway = 
+neuron_differentiation = 
+positive_regulation_of_MAPKKK_cascade = 

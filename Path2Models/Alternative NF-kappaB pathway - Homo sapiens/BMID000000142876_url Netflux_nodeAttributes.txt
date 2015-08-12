@@ -1,0 +1,5 @@
+Type (class=String)
+NF_kappa_B2_p100RelB = 
+NF_kappa_B2_p52RelB_1 = 
+proteasomal_ubiquitindependent_protein_catabolic_process = 
+regulation_of_B_cell_activation = 

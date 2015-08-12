@@ -1,0 +1,13 @@
+Type (class=String)
+AKT12active = 
+Ajuba = 
+Ca2_1 = 
+Ecadherinbeta_cateningamma_cateninalpha_cateninp120_catenin_1 = 
+VASP = 
+actin_cable_formation = 
+adherens_junction_organization = 
+apoptosis = 
+establishment_of_polarity_of_embryonic_epithelium = 
+formin_1_1 = 
+homophilic_cell_adhesion = 
+keratinocyte_differentiation = 

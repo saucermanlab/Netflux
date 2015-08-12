@@ -1,0 +1,15 @@
+Type (class=String)
+AP1 = 
+CD44Rho_Family_GTPaseROCK2 = 
+ERK12active = 
+GelsolinPI345P3 = 
+GelsolinPI345P3PI3K = 
+ILK = 
+MMP2 = 
+MMP9 = 
+PYK2p130Cas_1 = 
+alphaVbeta3_IntegrinOsteopontin = 
+bone_resorption = 
+endothelial_cell_migration = 
+ruffle_organization = 
+uPA = 

@@ -1,0 +1,11 @@
+Type (class=String)
+POLR1A = 
+POLR1C = 
+POLR2I = 
+POLR2L = 
+POLR3A = 
+POLR3B = 
+POLR3E = 
+POLR3G = 
+POLR3H = 
+ZNRD1 = 

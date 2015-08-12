@@ -1,0 +1,11 @@
+Type (class=String)
+CRH = 
+Gprotein_coupled_receptor_activity = 
+Gs_familyGTP = 
+JNK12 = 
+adrenocorticotropin_secretion = 
+cortisol = 
+glutamate_secretion = 
+p38alphabeta = 
+regulation_of_calcium_ion_transport_via_voltagegated_calcium_channel_activity = 
+vasopressin_secretion = 

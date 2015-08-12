@@ -1,0 +1,9 @@
+MAP1B	1	axon_guidance
+Axon	1	negative_chemotaxis
+netrin_1DCCUNC5A	1	negative_chemotaxis
+netrin_1UNC5C	-1	apoptosis
+PI3K	-1	apoptosis
+netrin_1DCC	-1	apoptosis
+netrin_1DCCUNC5B	1	negative_chemotaxis
+netrin_1UNC5A	-1	apoptosis
+netrin_1DCCUNC5CFAKSrcYesFyn	1	negative_chemotaxis

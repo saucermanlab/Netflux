@@ -1,0 +1,8 @@
+COX2	1	COX2
+S1P1	1	S1P1
+calciumdependent_phospholipase_C_activity	1	SPHK1
+S1P1S1P	1	receptor_internalization
+VEGFR2VEGFA_dimer	1	S1P1
+S1P1S1PGi	1	negative_regulation_of_T_cell_proliferation
+ERK12active	1	COX2
+S1P1S1PGi	1	negative_regulation_of_cAMP_metabolic_process

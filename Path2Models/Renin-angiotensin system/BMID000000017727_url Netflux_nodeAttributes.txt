@@ -1,0 +1,9 @@
+Type (class=String)
+Angiotensin_15 = 
+Angiotensin_19 = 
+Angiotensin_IV = 
+Angiotonin = 
+CMA1 = 
+LNPEP = 
+NLN = 
+THOP1 = 

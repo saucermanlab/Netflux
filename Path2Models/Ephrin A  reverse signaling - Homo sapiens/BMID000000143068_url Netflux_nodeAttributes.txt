@@ -1,0 +1,9 @@
+Type (class=String)
+EPHA5 = 
+Ephrin_A5EPHA5 = 
+Ephrin_A5_1 = 
+FYN = 
+MAPKKK_cascade = 
+betaintegrin_mediated_adhesion = 
+cellcell_signaling = 
+neuron_projection_morphogenesis = 

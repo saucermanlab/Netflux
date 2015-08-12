@@ -1,0 +1,16 @@
+ErbB2ErbB3neuregulin_1_beta	1	mammary_gland_morphogenesis
+NFATC4	1	myelination
+BAD	-1	apoptosis
+JNK_familyactive	1	cell_migration
+CHRNA1	1	CHRNA1
+ERK12active_1	1	CHRNA1
+NF2	1	cell_proliferation
+CHRNE	1	CHRNE
+JUN	1	CHRNE
+ERK12active_1	1	JUN
+AKT1	-1	activation_of_caspase_activity
+ErbB2ErbB3neuregulin_2	-1	apoptosis
+ERK12active_1	1	FOS
+ErbB2ErbB3neuregulin_1_beta	1	heart_morphogenesis
+ErbB2ErbB3neuregulin_1_beta	1	nervous_system_development
+MTOR	1	myelination

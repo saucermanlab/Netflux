@@ -1,0 +1,11 @@
+beta_catenin	1	degradation
+PPAR_delta	1	PPAR_delta
+beta_cateninTCF1CtBPCBPTLE1AESSMAD4	1	PPAR_delta
+MYC	1	MYC
+beta_cateninTCF1CtBPCBPTLE1AESSMAD4	1	MYC
+CtBPCBPTCF1TLE1AES	-1	MYC
+NEDD4	1	protein_ubiquitination
+CtBPCBPTCF1TLE1AES	-1	Cyclin_D1
+beta_cateninTCF1CtBPCBPTLE1AESSMAD4	1	Cyclin_D1
+CtBPCBPTCF1TLE1AES	-1	PPAR_delta
+AP1	1	apoptosis
