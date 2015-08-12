@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.ezdeploy" plugin-version="1.0">
-  <configuration build-checksum="1674310139" file="Z:\Alex\NetfluxSC_09d\Netflux.prj" location="Z:\Alex\NetfluxSC_09d" name="Netflux" preferred-package-location="Z:\Alex\NetfluxSC_09d\Netflux\for_redistribution" preferred-package-type="package.type.exe" target="target.ezdeploy.standalone" target-name="MATLAB Compiler for Standalone Applications">
+  <configuration build-checksum="3763496414" file="C:\Users\amp2hj\Netflux\NetfluxSC\Netflux.prj" location="C:\Users\amp2hj\Netflux\NetfluxSC" name="Netflux" preferred-package-location="C:\Users\amp2hj\Netflux\NetfluxSC\Netflux\for_redistribution" preferred-package-type="package.type.exe" target="target.ezdeploy.standalone" target-name="MATLAB Compiler for Standalone Applications">
     <param.appname>Netflux</param.appname>
     <param.icon />
     <param.icons />
@@ -32,7 +32,7 @@
     <param.web.mcr>true</param.web.mcr>
     <param.package.mcr>false</param.package.mcr>
     <param.no.mcr>false</param.no.mcr>
-    <param.web.mcr.name>MyAppInstaller_web</param.web.mcr.name>
+    <param.web.mcr.name>Netflux Installer</param.web.mcr.name>
     <param.package.mcr.name>MyAppInstaller_mcr</param.package.mcr.name>
     <param.no.mcr.name>MyAppInstaller_app</param.no.mcr.name>
     <param.windows.command.prompt>true</param.windows.command.prompt>
@@ -66,7 +66,6 @@
       <param.web.mcr />
       <param.package.mcr />
       <param.no.mcr />
-      <param.web.mcr.name />
       <param.package.mcr.name />
       <param.no.mcr.name />
       <param.windows.command.prompt />
@@ -138,9 +137,9 @@
     </fileset.resources>
     <fileset.package />
     <build-deliverables>
-      <file location="${PROJECT_ROOT}\Netflux\for_testing" name="readme.txt" optional="true">Z:\Alex\NetfluxSC_09d\Netflux\for_testing\readme.txt</file>
-      <file location="${PROJECT_ROOT}\Netflux\for_testing" name="splash.png" optional="false">Z:\Alex\NetfluxSC_09d\Netflux\for_testing\splash.png</file>
-      <file location="${PROJECT_ROOT}\Netflux\for_testing" name="Netflux.exe" optional="false">Z:\Alex\NetfluxSC_09d\Netflux\for_testing\Netflux.exe</file>
+      <file location="${PROJECT_ROOT}\Netflux\for_testing" name="Netflux.exe" optional="false">C:\Users\amp2hj\Netflux\NetfluxSC\Netflux\for_testing\Netflux.exe</file>
+      <file location="${PROJECT_ROOT}\Netflux\for_testing" name="readme.txt" optional="true">C:\Users\amp2hj\Netflux\NetfluxSC\Netflux\for_testing\readme.txt</file>
+      <file location="${PROJECT_ROOT}\Netflux\for_testing" name="splash.png" optional="false">C:\Users\amp2hj\Netflux\NetfluxSC\Netflux\for_testing\splash.png</file>
     </build-deliverables>
     <workflow />
     <matlab>
