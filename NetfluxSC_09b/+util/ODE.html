@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of ODE</title>
+  <meta name="keywords" content="ODE">
+  <meta name="description" content="Passed to the differential equation solver to solve the ODEs">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../../index.html">Home</a> &gt;  <a href="../index.html">NetfluxSC_09b</a> &gt; <a href="index.html">+util</a> &gt; ODE.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../../index.html"><img alt="<" border="0" src="../../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for NetfluxSC_09b\+util&nbsp;<img alt=">" border="0" src="../../right.png"></a></td></tr></table>-->
+
+<h1>ODE
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="box"><strong>Passed to the differential equation solver to solve the ODEs</strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="box"><strong>function dydt = ODE(t,y,params,ODElist) </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="fragment"><pre class="comment"> Passed to the differential equation solver to solve the ODEs
+
+ This file is passed to the differential solver, where the parameters are
+ given by the input &quot;params&quot; and the differential equations are located in
+ &quot;ODElist&quot;
+ Input: params = matrix of parameters
+        ODElist = a cell array containing the differential equations
+ Written by Stephen Dang on 2-5-10</pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../../matlabicon.gif)">
+</ul>
+This function is called by:
+<ul style="list-style-image:url(../../matlabicon.gif)">
+</ul>
+<!-- crossreference -->
+
+<h2><a name="_subfunctions"></a>SUBFUNCTIONS <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<ul style="list-style-image:url(../../matlabicon.gif)">
+<li><a href="#_sub1" class="code">function fact = act(x,rpar)</a></li><li><a href="#_sub2" class="code">function finhib = inhib(x,rpar)</a></li><li><a href="#_sub3" class="code">function z = OR(x,y)</a></li><li><a href="#_sub4" class="code">function z = AND(rpar,varargin)</a></li></ul>
+
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="fragment"><pre>0001 <a name="_sub0" href="#_subfunctions" class="code">function dydt = ODE(t,y,params,ODElist)</a>
+0002 <span class="comment">% Passed to the differential equation solver to solve the ODEs</span>
+0003 <span class="comment">%</span>
+0004 <span class="comment">% This file is passed to the differential solver, where the parameters are</span>
+0005 <span class="comment">% given by the input &quot;params&quot; and the differential equations are located in</span>
+0006 <span class="comment">% &quot;ODElist&quot;</span>
+0007 <span class="comment">% Input: params = matrix of parameters</span>
+0008 <span class="comment">%        ODElist = a cell array containing the differential equations</span>
+0009 <span class="comment">% Written by Stephen Dang on 2-5-10</span>
+0010 
+0011 <span class="comment">% Assign names for parameters</span>
+0012 [rpar,tau,ymax,speciesNames]=params{:};
+0013 
+0014 <span class="comment">%Differential Equations</span>
+0015 <span class="keyword">for</span> i = 1:length(ODElist) 
+0016     eval(ODElist{i});
+0017 <span class="keyword">end</span>
+0018 
+0019 <span class="comment">%% utility functions</span>
+0020 <a name="_sub1" href="#_subfunctions" class="code">function fact = act(x,rpar)</a>
+0021 <span class="comment">% hill activation function with parameters w (weight), n (Hill coeff), K';</span>
+0022     w = rpar(1);
+0023     n = rpar(2);
+0024     EC50 = rpar(3);
+0025     beta = (EC50.^n - 1)./(2*EC50.^n - 1);
+0026     K = (beta - 1).^(1./n);
+0027     fact = w.*(beta.*x.^n)./(K.^n + x.^n);
+0028     <span class="keyword">if</span> fact&gt;w,                 <span class="comment">% cap fact(x)&lt;= 1';</span>
+0029         fact = w;
+0030     <span class="keyword">end</span>
+0031 
+0032 <a name="_sub2" href="#_subfunctions" class="code">function finhib = inhib(x,rpar)</a>
+0033 <span class="comment">% inverse hill function with parameters w (weight), n (Hill coeff), K (K0.5)';</span>
+0034     finhib = rpar(1) - <a href="#_sub1" class="code" title="subfunction fact = act(x,rpar)">act</a>(x,rpar);
+0035 
+0036 <a name="_sub3" href="#_subfunctions" class="code">function z = OR(x,y)</a>
+0037 <span class="comment">% OR logic gate</span>
+0038     z = x + y - x*y;
+0039     
+0040 <a name="_sub4" href="#_subfunctions" class="code">function z = AND(rpar,varargin)</a>
+0041 <span class="comment">% AND logic gate, multiplying all of the reactants together</span>
+0042     w = rpar(1);
+0043     <span class="keyword">if</span> w == 0,
+0044         z = 0;
+0045     <span class="keyword">else</span>
+0046         v = cell2mat(varargin);
+0047         z = prod(v)/w^(nargin-2); <span class="comment">% need to divide by w^(#reactants-1) to eliminate the extra w's</span>
+0048     <span class="keyword">end</span></pre></div>
+<hr><address>Generated on Thu 07-Aug-2014 13:40:59 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

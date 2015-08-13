@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of space</title>
+  <meta name="keywords" content="space">
+  <meta name="description" content="gui.space">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../../index.html">Home</a> &gt;  <a href="../index.html">NetfluxSC_09b</a> &gt; <a href="index.html">+gui</a> &gt; space.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../../index.html"><img alt="<" border="0" src="../../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for NetfluxSC_09b\+gui&nbsp;<img alt=">" border="0" src="../../right.png"></a></td></tr></table>-->
+
+<h1>space
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="box"><strong>gui.space</strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="box"><strong>This is a script file. </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="fragment"><pre class="comment"> gui.space
+    A widget to introduce vertical and horizontal blank space
+
+    W = gui.space creates a widget for introducing blank space,
+    and adds it to the current autogui (if there is no
+    current autogui, one is created). The Position property can 
+    be used adjust the size of the space.
+
+    W = gui.space(G) creates the widget and adds it to gui container G. 
+
+  Sample usage:
+     g = gui.autogui;
+    w1 = gui.slider('My slider');
+    w2 = gui.space;
+    w3 = gui.edittext('Enter a string');
+    w2.Position.height = 100; % insert vertical space
+    w2.Position.width = 250; % stretch horizontal space</pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../../matlabicon.gif)">
+<li><a href="space.html" class="code" title="">space</a>	gui.space</li></ul>
+This function is called by:
+<ul style="list-style-image:url(../../matlabicon.gif)">
+<li><a href="space.html" class="code" title="">space</a>	gui.space</li></ul>
+<!-- crossreference -->
+
+<h2><a name="_subfunctions"></a>SUBFUNCTIONS <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<ul style="list-style-image:url(../../matlabicon.gif)">
+<li><a href="#_sub1" class="code">function obj = space(varargin)</a></li><li><a href="#_sub2" class="code">function out = get.Value(obj)</a></li><li><a href="#_sub3" class="code">function set.Value(obj, val)</a></li><li><a href="#_sub4" class="code">function initNotify(obj)</a></li></ul>
+
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="fragment"><pre>0001 <span class="comment">% gui.space</span>
+0002 <span class="comment">%    A widget to introduce vertical and horizontal blank space</span>
+0003 <span class="comment">%</span>
+0004 <span class="comment">%    W = gui.space creates a widget for introducing blank space,</span>
+0005 <span class="comment">%    and adds it to the current autogui (if there is no</span>
+0006 <span class="comment">%    current autogui, one is created). The Position property can</span>
+0007 <span class="comment">%    be used adjust the size of the space.</span>
+0008 <span class="comment">%</span>
+0009 <span class="comment">%    W = gui.space(G) creates the widget and adds it to gui container G.</span>
+0010 <span class="comment">%</span>
+0011 <span class="comment">%  Sample usage:</span>
+0012 <span class="comment">%     g = gui.autogui;</span>
+0013 <span class="comment">%    w1 = gui.slider('My slider');</span>
+0014 <span class="comment">%    w2 = gui.space;</span>
+0015 <span class="comment">%    w3 = gui.edittext('Enter a string');</span>
+0016 <span class="comment">%    w2.Position.height = 100; % insert vertical space</span>
+0017 <span class="comment">%    w2.Position.width = 250; % stretch horizontal space</span>
+0018 
+0019 <span class="comment">%   Copyright 2009 The MathWorks, Inc.</span>
+0020 
+0021 classdef (Sealed) <a href="space.html" class="code" title="">space</a> &lt; gui.widget
+0022 
+0023     properties (Dependent)
+0024         <span class="comment">% Value</span>
+0025         <span class="comment">%   The space widget does not have a value. Use the Position</span>
+0026         <span class="comment">%   property to set the horizontal and vertical space.</span>
+0027         <span class="comment">%</span>
+0028         <span class="comment">%  Sample usage:</span>
+0029         <span class="comment">%     g = gui.autogui;</span>
+0030         <span class="comment">%    w1 = gui.slider('My slider');</span>
+0031         <span class="comment">%    w2 = gui.space;</span>
+0032         <span class="comment">%    w3 = gui.edittext('Enter a string');</span>
+0033         <span class="comment">%    w2.Position.height = 100; % insert vertical space</span>
+0034         <span class="comment">%    w2.Position.width = 250; % stretch horizontal space</span>
+0035         Value 
+0036     <span class="keyword">end</span>
+0037                
+0038     methods
+0039         <a name="_sub0" href="#_subfunctions" class="code">function obj = space(varargin)</a>
+0040             
+0041             obj = obj@gui.widget(varargin{:});
+0042             assert(~obj.Initialized &amp;&amp; ~obj.Visible);
+0043             
+0044             color = obj.getParentUiColor();
+0045             
+0046             obj.UiHandle = gui.util.uicontainer(<span class="string">'Parent'</span>,obj.ParentUiHandle, <span class="keyword">...</span>
+0047                 <span class="string">'units'</span>, <span class="string">'pixels'</span>, <span class="keyword">...</span>
+0048                 <span class="string">'BackgroundColor'</span>,color, <span class="keyword">...</span>
+0049                 <span class="string">'DeleteFcn'</span>, @(h,e) delete(obj)); 
+0050             
+0051             obj.Visible = false; 
+0052                         
+0053             <span class="comment">% obj is the most derived class (since it is sealed)</span>
+0054             obj.Initialized = true;
+0055             obj.Visible = true;
+0056         <span class="keyword">end</span>
+0057                             
+0058         <a name="_sub1" href="#_subfunctions" class="code">function out = get.Value(obj) </a><span class="comment">%#ok&lt;INUSD&gt;</span>
+0059             out = [];
+0060         <span class="keyword">end</span>
+0061         
+0062         <a name="_sub2" href="#_subfunctions" class="code">function set.Value(obj, val) </a><span class="comment">%#ok&lt;INUSD&gt;</span>
+0063         <span class="keyword">end</span>
+0064         
+0065         
+0066     <span class="keyword">end</span>
+0067    
+0068 
+0069     methods(Access=protected)
+0070         <a name="_sub3" href="#_subfunctions" class="code">function initNotify(obj)</a>
+0071             obj.Position = struct(<span class="string">'width'</span>, 20, <span class="string">'height'</span>, 20);
+0072         <span class="keyword">end</span>        
+0073     <span class="keyword">end</span>
+0074     
+0075 <span class="keyword">end</span></pre></div>
+<hr><address>Generated on Thu 07-Aug-2014 13:40:59 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

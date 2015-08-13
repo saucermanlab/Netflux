@@ -1,0 +1,521 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of Netflux</title>
+  <meta name="keywords" content="Netflux">
+  <meta name="description" content="Launches Netflux GUI">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../index.html">Home</a> &gt;  <a href="index.html">NetfluxSC_09b</a> &gt; Netflux.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../index.html"><img alt="<" border="0" src="../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for NetfluxSC_09b&nbsp;<img alt=">" border="0" src="../right.png"></a></td></tr></table>-->
+
+<h1>Netflux
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong>Launches Netflux GUI</strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong>function Netflux </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre class="comment">Launches Netflux GUI
+ Dependencies: xls2Netflux, EasyGUI
+ to do:
+   make compiled version
+ last revised 06/27/2014 by AMP
+ Version: 0.09b</pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../matlabicon.gif)">
+</ul>
+This function is called by:
+<ul style="list-style-image:url(../matlabicon.gif)">
+</ul>
+<!-- crossreference -->
+
+<h2><a name="_subfunctions"></a>SUBFUNCTIONS <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<ul style="list-style-image:url(../matlabicon.gif)">
+<li><a href="#_sub1" class="code">function updateTend(hWidget)</a></li><li><a href="#_sub2" class="code">function updateTstep(hWidget)</a></li><li><a href="#_sub3" class="code">function updateDisplayedSpeciesParams(hWidget)</a></li><li><a href="#_sub4" class="code">function updateDisplayedReactionParams(hWidget)</a></li><li><a href="#_sub5" class="code">function updateY0Weight(hWidget)</a></li><li><a href="#_sub6" class="code">function updateYWeight(hWidget)</a></li><li><a href="#_sub7" class="code">function updateTauWeight(hWidget)</a></li><li><a href="#_sub8" class="code">function updateWWeight(hWidget)</a></li><li><a href="#_sub9" class="code">function updateNWeight(hWidget)</a></li><li><a href="#_sub10" class="code">function updateKWeight(hWidget)</a></li><li><a href="#_sub11" class="code">function resetParameters(hWidget)</a></li><li><a href="#_sub12" class="code">function start(hWidget)</a></li><li><a href="#_sub13" class="code">function runSimulation(hWidget)</a></li><li><a href="#_sub14" class="code">function plotData(hWidget)</a></li><li><a href="#_sub15" class="code">function resetSimulation(hWidget)</a></li><li><a href="#_sub16" class="code">function copyPlot(obj,e)</a></li><li><a href="#_sub17" class="code">function openModel(obj,e)</a></li><li><a href="#_sub18" class="code">function convertSBML(obj,e)</a></li><li><a href="#_sub19" class="code">function convertSIF(obj,e)</a></li><li><a href="#_sub20" class="code">function dataSheet(obj,e)</a></li><li><a href="#_sub21" class="code">function cytoscapeSIF(obj,e)</a></li><li><a href="#_sub22" class="code">function cytoscapeXGMML(obj,e)</a></li><li><a href="#_sub23" class="code">function exportODE(~,e)</a></li><li><a href="#_sub24" class="code">function about(obj,e)</a></li></ul>
+
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre>0001 <a name="_sub0" href="#_subfunctions" class="code">function Netflux</a>
+0002 <span class="comment">%Launches Netflux GUI</span>
+0003 <span class="comment">% Dependencies: xls2Netflux, EasyGUI</span>
+0004 <span class="comment">% to do:</span>
+0005 <span class="comment">%   make compiled version</span>
+0006 <span class="comment">% last revised 06/27/2014 by AMP</span>
+0007 <span class="comment">% Version: 0.09b</span>
+0008 
+0009 <span class="keyword">global</span> w n K tau ymax y0 specID reactionIDs reactionRules paramList ODElist CNAmodel tstep
+0010 
+0011 <span class="comment">% if (isdeployed) %if using MCR *** IS THIS NEEDED??</span>
+0012 
+0013 <span class="comment">%% setup the gui</span>
+0014 myGui = gui.autogui;
+0015 myGui.Name = <span class="string">'Netflux'</span>;
+0016 myGui.BackgroundColor = [.8 .9 .9];
+0017 plotAxis = gca;
+0018 p = fileparts(which(<span class="string">'Netflux.m'</span>));
+0019 addpath(genpath(fullfile(p,<span class="string">'subgui'</span>)));
+0020 
+0021 <span class="comment">%Create Menus</span>
+0022 file_menu = uimenu(<span class="string">'Label'</span>,<span class="string">'&amp;File'</span>);
+0023             uimenu(file_menu,<span class="string">'Label'</span>, <span class="string">'Open Model'</span>,<span class="string">'Callback'</span>,@<a href="#_sub17" class="code" title="subfunction openModel(obj,e)">openModel</a>, <span class="string">'Accelerator'</span>,<span class="string">'N'</span>);    
+0024             uimenu(file_menu,<span class="string">'Label'</span>,<span class="string">'Export Data'</span>,<span class="string">'Callback'</span>,@<a href="#_sub20" class="code" title="subfunction dataSheet(obj,e)">dataSheet</a>,<span class="string">'Separator'</span>,<span class="string">'on'</span>,<span class="string">'Accelerator'</span>,<span class="string">'D'</span>);
+0025             cy = uimenu(file_menu,<span class="string">'Label'</span>,<span class="string">'Export Cytoscape'</span>);
+0026             uimenu(cy,<span class="string">'Label'</span>,<span class="string">'As SIF'</span>,<span class="string">'Callback'</span>,@<a href="#_sub21" class="code" title="subfunction cytoscapeSIF(obj,e)">cytoscapeSIF</a>,<span class="string">'Accelerator'</span>,<span class="string">'Y'</span>);
+0027             uimenu(cy,<span class="string">'Label'</span>,<span class="string">'As XGMML'</span>,<span class="string">'Callback'</span>,@<a href="#_sub22" class="code" title="subfunction cytoscapeXGMML(obj,e)">cytoscapeXGMML</a>,<span class="string">'Accelerator'</span>,<span class="string">'X'</span>);
+0028             uimenu(file_menu,<span class="string">'Label'</span>,<span class="string">'Export MATLAB ODE'</span>,<span class="string">'Callback'</span>,@<a href="#_sub23" class="code" title="subfunction exportODE(~,e)">exportODE</a>,<span class="string">'Accelerator'</span>,<span class="string">'O'</span>);
+0029             uimenu(file_menu,<span class="string">'Label'</span>, <span class="string">'Exit'</span>,<span class="string">'Callback'</span>,<span class="string">'close(gcf)'</span>, <span class="string">'Accelerator'</span>,<span class="string">'Z'</span>,<span class="string">'Separator'</span>,<span class="string">'on'</span>);    
+0030 tools_menu = uimenu(<span class="string">'Label'</span>, <span class="string">'&amp;Tools'</span>);
+0031             uimenu(tools_menu,<span class="string">'Label'</span>,<span class="string">'Convert SBML-QUAL'</span>,<span class="string">'Callback'</span>,@<a href="#_sub18" class="code" title="subfunction convertSBML(obj,e)">convertSBML</a>, <span class="string">'Accelerator'</span>, <span class="string">'B'</span>);
+0032             uimenu(tools_menu,<span class="string">'Label'</span>,<span class="string">'Convert SIF'</span>,<span class="string">'Callback'</span>,@<a href="#_sub19" class="code" title="subfunction convertSIF(obj,e)">convertSIF</a>, <span class="string">'Accelerator'</span>, <span class="string">'F'</span>);
+0033             uimenu(tools_menu,<span class="string">'Label'</span>,<span class="string">'Copy Plot'</span>,<span class="string">'Callback'</span>,@<a href="#_sub16" class="code" title="subfunction copyPlot(obj,e)">copyPlot</a>, <span class="string">'Accelerator'</span>,<span class="string">'P'</span>, <span class="string">'Separator'</span>,<span class="string">'on'</span>);
+0034 help_menu = uimenu(<span class="string">'Label'</span>,<span class="string">'&amp;Help'</span>);
+0035             uimenu(help_menu,<span class="string">'Label'</span>,<span class="string">'About Netflux'</span>, <span class="string">'Callback'</span>,@<a href="#_sub24" class="code" title="subfunction about(obj,e)">about</a>);
+0036 
+0037 <span class="comment">% Simulation parameters/buttons</span>
+0038 simulationLabel = gui.label(<span class="string">'Simulation'</span>);
+0039 simulationLabel.Font.size = 12;
+0040 simulationLabel.Font.weight = <span class="string">'bold'</span>;
+0041 simulationLabel.TopMargin = 2;
+0042 simulationLabel.BottomMargin = 2; 
+0043 tEnd = gui.editnumber(<span class="string">'Simulation time (sec):'</span>);
+0044 tEnd.Value = 10;
+0045 tEnd.ValueChangedFcn = @<a href="#_sub1" class="code" title="subfunction updateTend(hWidget)">updateTend</a>;
+0046 spacer1 = gui.space; spacer1.Position.height = 15;
+0047 tstepLabel = gui.editnumber(<span class="string">'Time step (sec):'</span>);
+0048 tstepLabel.Value = 0.01;
+0049 tstepLabel.ValueChangedFcn = @<a href="#_sub2" class="code" title="subfunction updateTstep(hWidget)">updateTstep</a>;
+0050 
+0051 speciesListbox = gui.listbox({<span class="string">'Species to plot:'</span> <span class="string">'(Ctrl-click for several)'</span>},{<span class="string">' '</span>}); 
+0052 speciesListbox.Position.height = 250;
+0053 goButton = gui.pushbutton(<span class="string">'Simulate!'</span>);
+0054 goButton.ValueChangedFcn = @<a href="#_sub12" class="code" title="subfunction start(hWidget)">start</a>;
+0055 plotButton = gui.pushbutton(<span class="string">'Plot'</span>);
+0056 plotButton.ValueChangedFcn = @<a href="#_sub14" class="code" title="subfunction plotData(hWidget)">plotData</a>;
+0057 resetPButton = gui.pushbutton(<span class="string">'Reset Parameters'</span>);
+0058 resetPButton.ValueChangedFcn = @<a href="#_sub11" class="code" title="subfunction resetParameters(hWidget)">resetParameters</a>;
+0059 resetButton = gui.pushbutton(<span class="string">'Reset Simulation'</span>);
+0060 resetButton.ValueChangedFcn = @<a href="#_sub15" class="code" title="subfunction resetSimulation(hWidget)">resetSimulation</a>;
+0061 dummyLabel1 = gui.label(<span class="string">''</span>); <span class="comment">%creates spaces</span>
+0062 dummyLabel5 = gui.label(<span class="string">'Status:'</span>);
+0063 statusLabel = gui.listbox(<span class="string">''</span>);
+0064 statusLabel.MenuItems = <span class="string">'Netflux started! Please open a model'</span>;
+0065 statusLabel.Value = [];
+0066 statusLabel.Position = struct(<span class="string">'width'</span>, 340, <span class="string">'height'</span>, 90);
+0067 myGui.addPanel;                 <span class="comment">%Add new panel</span>
+0068 defaultPanelWidth = 250;
+0069 myGui.PanelWidth = defaultPanelWidth;  
+0070 
+0071 <span class="comment">% species list/parameters</span>
+0072 speciesLabel = gui.label(<span class="string">'Species Parameters'</span>);
+0073 speciesLabel.TopMargin = 1;
+0074 speciesLabel.Font.size = 12;
+0075 speciesLabel.Font.weight = <span class="string">'bold'</span>;
+0076 speciesLabel.Alignment = <span class="string">'center'</span>; 
+0077 speciesList = <span class="string">' '</span>; 
+0078 speciesMenu = gui.textmenu(<span class="string">'Species List:'</span>,speciesList);
+0079 speciesMenu.ValueChangedFcn = @<a href="#_sub3" class="code" title="subfunction updateDisplayedSpeciesParams(hWidget)">updateDisplayedSpeciesParams</a>;
+0080 tauLabel = gui.slider(<span class="string">'tau:'</span>,[1e-9 100]);           <span class="comment">%tau</span>
+0081 tauLabel.ValueChangedFcn = @<a href="#_sub7" class="code" title="subfunction updateTauWeight(hWidget)">updateTauWeight</a>;
+0082 y0Label = gui.slider(<span class="string">'yinit:'</span>,[0 10]);           <span class="comment">%y0</span>
+0083 y0Label.ValueChangedFcn = @<a href="#_sub5" class="code" title="subfunction updateY0Weight(hWidget)">updateY0Weight</a>;
+0084 yLabel = gui.slider(<span class="string">'ymax:'</span>,[0 10]); 
+0085 yLabel.ValueChangedFcn = @<a href="#_sub6" class="code" title="subfunction updateYWeight(hWidget)">updateYWeight</a>;
+0086 
+0087 <span class="comment">% reaction list/parameters</span>
+0088 reactionLabel = gui.label(<span class="string">'Reaction Parameters'</span>);
+0089 reactionLabel.Font.size = 12;
+0090 reactionLabel.Font.weight = <span class="string">'bold'</span>;
+0091 reactionLabel.TopMargin = 1;
+0092 reactionLabel.BottomMargin = 1;
+0093 reactionList = <span class="string">' '</span>;
+0094 reactionMenu = gui.textmenu(<span class="string">'Reaction list:'</span>,reactionList);
+0095 reactionMenu.ValueChangedFcn = @<a href="#_sub4" class="code" title="subfunction updateDisplayedReactionParams(hWidget)">updateDisplayedReactionParams</a>;
+0096 wLabel = gui.slider(<span class="string">'weight:'</span>,[0 1]);          <span class="comment">%weight</span>
+0097 wLabel.ValueChangedFcn = @<a href="#_sub8" class="code" title="subfunction updateWWeight(hWidget)">updateWWeight</a>;
+0098 nLabel = gui.slider(<span class="string">'n:'</span>,[.5 5]);             <span class="comment">%n</span>
+0099 nLabel.ValueChangedFcn = @<a href="#_sub9" class="code" title="subfunction updateNWeight(hWidget)">updateNWeight</a>;
+0100 kLabel = gui.slider(<span class="string">'EC50:'</span>,[0 5]);             <span class="comment">%EC50</span>
+0101 kLabel.ValueChangedFcn = @<a href="#_sub10" class="code" title="subfunction updateKWeight(hWidget) ">updateKWeight</a>;
+0102 tNow = 0;
+0103 tCum = []; yCum = [];
+0104 tspan = [tNow,tEnd.Value];
+0105 options = [];
+0106 count = 0; 
+0107 
+0108 <span class="comment">%% GUI subfunctions</span>
+0109     <a name="_sub1" href="#_subfunctions" class="code">function updateTend(hWidget)</a>
+0110         tspan = [tNow tNow+tEnd.Value];
+0111     <span class="keyword">end</span>
+0112     <a name="_sub2" href="#_subfunctions" class="code">function updateTstep(hWidget)</a>
+0113         tstep = tstepLabel.Value;
+0114     <span class="keyword">end</span>
+0115     <a name="_sub3" href="#_subfunctions" class="code">function updateDisplayedSpeciesParams(hWidget)  </a>
+0116         selectedSpe = ismember(speciesList,speciesMenu.Value); 
+0117         tauLabel.Value = tau(selectedSpe);
+0118         yLabel.Value = ymax(selectedSpe);      
+0119         y0Label.Value = y0(selectedSpe);
+0120     <span class="keyword">end</span>
+0121     <a name="_sub4" href="#_subfunctions" class="code">function updateDisplayedReactionParams(hWidget)  </a>
+0122         selectedRcn = ismember(reactionList,reactionMenu.Value); 
+0123         kLabel.Value = K(selectedRcn);
+0124         nLabel.Value = n(selectedRcn);
+0125         wLabel.Value = w(selectedRcn);               
+0126     <span class="keyword">end</span>
+0127     <a name="_sub5" href="#_subfunctions" class="code">function updateY0Weight(hWidget)</a>
+0128         selectedSpe = ismember(speciesList,speciesMenu.Value);
+0129         y0(selectedSpe) = y0Label.Value;
+0130     <span class="keyword">end</span>
+0131     <a name="_sub6" href="#_subfunctions" class="code">function updateYWeight(hWidget)</a>
+0132         selectedSpe = ismember(speciesList,speciesMenu.Value);
+0133         ymax(selectedSpe) = yLabel.Value;          
+0134     <span class="keyword">end</span>
+0135     <a name="_sub7" href="#_subfunctions" class="code">function updateTauWeight(hWidget)</a>
+0136         selectedSpe = ismember(speciesList,speciesMenu.Value);
+0137         tau(selectedSpe) = tauLabel.Value;                 
+0138     <span class="keyword">end</span>
+0139     <a name="_sub8" href="#_subfunctions" class="code">function updateWWeight(hWidget)</a>
+0140         selectedRcn = ismember(reactionList,reactionMenu.Value);        
+0141         w(selectedRcn) = wLabel.Value;               
+0142     <span class="keyword">end</span>
+0143     <a name="_sub9" href="#_subfunctions" class="code">function updateNWeight(hWidget)</a>
+0144         selectedRcn = ismember(reactionList,reactionMenu.Value);                 
+0145         n(selectedRcn) = nLabel.Value;      
+0146     <span class="keyword">end</span>
+0147     <a name="_sub10" href="#_subfunctions" class="code">function updateKWeight(hWidget) </a><span class="comment">%EC50</span>
+0148         selectedRcn = ismember(reactionList,reactionMenu.Value);         
+0149         K(selectedRcn) = kLabel.Value;   
+0150     <span class="keyword">end</span>
+0151     <a name="_sub11" href="#_subfunctions" class="code">function resetParameters(hWidget)</a>
+0152        [w,n,K,tau,ymax,y0] = paramList{:};       
+0153        <a href="#_sub4" class="code" title="subfunction updateDisplayedReactionParams(hWidget)">updateDisplayedReactionParams</a>;
+0154        <a href="#_sub3" class="code" title="subfunction updateDisplayedSpeciesParams(hWidget)">updateDisplayedSpeciesParams</a>;
+0155        statusLabel.MenuItems = <span class="string">'Parameters have been reset!'</span>;
+0156        statusLabel.Value = [];
+0157     <span class="keyword">end</span>  
+0158     <a name="_sub12" href="#_subfunctions" class="code">function start(hWidget)</a>
+0159         <span class="keyword">if</span> (K.^n &lt; .5)
+0160             statusLabel.MenuItems = <span class="string">'Warning: EC50 and n combinations are negative'</span>;
+0161         <span class="keyword">end</span>
+0162         <a href="#_sub13" class="code" title="subfunction runSimulation(hWidget)">runSimulation</a>;
+0163     <span class="keyword">end</span>
+0164     <a name="_sub13" href="#_subfunctions" class="code">function runSimulation(hWidget)</a>
+0165         signal = 1;
+0166         <span class="keyword">if</span> isequal(signal,1) <span class="comment">%shows start of simulation</span>
+0167             statusLabel.MenuItems = <span class="string">'Simulation running...'</span>;
+0168             statusLabel.Value = [];
+0169         <span class="keyword">end</span>
+0170         drawnow
+0171         rpar = [w;n;K];         <span class="comment">%Reaction Parameters</span>
+0172         params = {rpar,tau,ymax,specID};
+0173         [t,y]=ode23(@util.ODE,tspan,y0,options,params,ODElist);
+0174         
+0175         statusLabel.MenuItems = <span class="string">'Interpolating...'</span>;
+0176         statusLabel.Value = [];
+0177         drawnow
+0178         <span class="comment">% interpolate to equally spaced time points</span>
+0179         x = (tNow:tstep:tspan(end))';
+0180         yi = interp1(t,y,x,<span class="string">'pchip'</span>);
+0181         t = x;
+0182         y = yi;
+0183 
+0184         tNow = t(end);
+0185         <a href="#_sub1" class="code" title="subfunction updateTend(hWidget)">updateTend</a>;
+0186         y0 = y(<span class="keyword">end</span>,:);         
+0187         <span class="keyword">if</span> count &lt; 1
+0188              tCum = [tCum;t];
+0189              yCum = [yCum;y];
+0190         <span class="keyword">else</span>
+0191             tCum = [tCum; t(2:length(t))];   <span class="comment">% I want to remove the 1st entry</span>
+0192             sizeY = size(y);
+0193             sizeY = sizeY(1);
+0194             yCum = [yCum; y(2:sizeY,:)]; <span class="comment">% then concat to the end of the cumulative</span>
+0195         <span class="keyword">end</span>
+0196         count = count + 1; 
+0197         <span class="comment">% plot results</span>
+0198         selectedVars = ismember(specID,speciesListbox.Value);
+0199         set(gcf,<span class="string">'DefaultLineLineWidth'</span>,1.7); <span class="comment">% set the width of the lines in the plot</span>
+0200         plot(tCum,yCum(:,selectedVars)); 
+0201         xlabel(<span class="string">'Time (sec)'</span>); ylabel(<span class="string">'Fractional Species Activation'</span>);
+0202         legend(speciesListbox.Value);
+0203         signal = 2;
+0204         <span class="keyword">if</span> ~isequal(signal,1) 
+0205             statusLabel.MenuItems = <span class="string">'Simulation Successful!'</span>; 
+0206             statusLabel.Value = [];
+0207         <span class="keyword">end</span>
+0208         <a href="#_sub3" class="code" title="subfunction updateDisplayedSpeciesParams(hWidget)">updateDisplayedSpeciesParams</a>
+0209     <span class="keyword">end</span>
+0210     <a name="_sub14" href="#_subfunctions" class="code">function plotData(hWidget)</a>
+0211         selectedVars = ismember(specID,speciesListbox.Value);
+0212         <span class="keyword">if</span>(isempty(yCum))
+0213             statusLabel.MenuItems = <span class="string">'No Plot: please ''Simulate'' first'</span>; 
+0214             statusLabel.Value = [];
+0215         <span class="keyword">else</span>
+0216             plot(tCum,yCum(:,selectedVars));        
+0217             xlabel(<span class="string">'Time (sec)'</span>); ylabel(<span class="string">'Species Activation'</span>);
+0218             legend(speciesListbox.Value);
+0219             statusLabel.MenuItems = <span class="string">'Plot Successful!'</span>; 
+0220             statusLabel.Value = [];
+0221         <span class="keyword">end</span>
+0222     <span class="keyword">end</span>
+0223     <a name="_sub15" href="#_subfunctions" class="code">function resetSimulation(hWidget)</a>
+0224         tNow = 0;
+0225         <a href="#_sub1" class="code" title="subfunction updateTend(hWidget)">updateTend</a>;   
+0226         tCum = [];
+0227         yCum = [];
+0228         count = 0; 
+0229         y0 = paramList{6};
+0230         plot(0,0); axis([0 1 0 1]); 
+0231         <a href="#_sub3" class="code" title="subfunction updateDisplayedSpeciesParams(hWidget)">updateDisplayedSpeciesParams</a>;
+0232         <a href="#_sub4" class="code" title="subfunction updateDisplayedReactionParams(hWidget)">updateDisplayedReactionParams</a>;
+0233         statusLabel.MenuItems = <span class="string">'Simulation has been reset'</span>;
+0234         statusLabel.Value = [];
+0235     <span class="keyword">end</span>
+0236 
+0237 <span class="comment">%% menu functions</span>
+0238     <a name="_sub16" href="#_subfunctions" class="code">function copyPlot(obj,e) </a>
+0239         figure(<span class="string">'menubar'</span>,<span class="string">'none'</span>,<span class="string">'Toolbar'</span>,<span class="string">'figure'</span>);
+0240         copyobj(allchild(plotAxis),gca);legend(<span class="string">'toggle'</span>);
+0241         statusLabel.MenuItems = <span class="string">'Plot Copied!'</span>;
+0242         statusLabel.Value = [];
+0243     <span class="keyword">end</span>
+0244     <a name="_sub17" href="#_subfunctions" class="code">function openModel(obj,e)</a>
+0245         [fname,pathname,filterindex]=uigetfile({<span class="string">'*.xls;*.xlsx'</span>, <span class="string">'Excel Files'</span>},<span class="string">'Open XLS network reconstruction'</span>);
+0246         <span class="keyword">if</span> ~isequal(fname,0)
+0247             
+0248             xlsfilename = [pathname fname];
+0249             
+0250             statusLabel.MenuItems = <span class="string">'Loading model...'</span>; drawnow;
+0251             [specID,reactionIDs,reactionRules,paramList,ODElist,CNAmodel, error] = util.xls2Netflux(strrep(fname,<span class="string">'.xls'</span>,<span class="string">''</span>),xlsfilename);
+0252             [w,n,K,tau,ymax,y0] = paramList{:};
+0253             
+0254             errsignal = false;
+0255             <span class="keyword">if</span> ~isempty(error{1}) || ~isempty(error{2}) <span class="comment">%check to see if error passed from xls2Netflux exists</span>
+0256                 statusLabel.MenuItems = error; <span class="comment">% display the errors in the status window</span>
+0257                 statusLabel.Value = [];
+0258                 errsignal = true;
+0259                 <a href="#_sub3" class="code" title="subfunction updateDisplayedSpeciesParams(hWidget)">updateDisplayedSpeciesParams</a>;
+0260                 <a href="#_sub4" class="code" title="subfunction updateDisplayedReactionParams(hWidget)">updateDisplayedReactionParams</a>;
+0261             <span class="keyword">end</span>
+0262             
+0263             speciesListbox.MenuItems = specID;
+0264             speciesList = specID;
+0265             speciesMenu.MenuItems = speciesList;
+0266             reactionList = cellfun(@(x,y) [x,<span class="string">': '</span>,y],reactionIDs,reactionRules,<span class="string">'UniformOutput'</span>,false);
+0267             reactionMenu.MenuItems = reactionList;
+0268             tauLabel.ValueRange = [1e-9 1e9];
+0269             yLabel.ValueRange = [0 10];
+0270             y0Label.ValueRange = [0 10];
+0271             nLabel.ValueRange = [.5 5];
+0272             kLabel.ValueRange = [0 5];
+0273             
+0274             <span class="keyword">if</span> ~errsignal
+0275                 <a href="#_sub11" class="code" title="subfunction resetParameters(hWidget)">resetParameters</a>;
+0276                 <a href="#_sub15" class="code" title="subfunction resetSimulation(hWidget)">resetSimulation</a>;
+0277                 <a href="#_sub2" class="code" title="subfunction updateTstep(hWidget)">updateTstep</a>;
+0278                 a = <span class="string">'New model, '</span>;
+0279                 b = <span class="string">', loaded!'</span>;
+0280                 z = horzcat(a,fname,b);
+0281                 statusLabel.MenuItems = z;
+0282                 statusLabel.Value = [];
+0283             <span class="keyword">end</span>
+0284             errsignal = false;
+0285         <span class="keyword">else</span>
+0286             statusLabel.MenuItems = <span class="string">'Excel import canceled'</span>;
+0287         <span class="keyword">end</span>
+0288     <span class="keyword">end</span>
+0289     <a name="_sub18" href="#_subfunctions" class="code">function convertSBML(obj,e)</a>
+0290         fnames = SBMLgui;
+0291         <span class="keyword">if</span> fnames.userCanceled &amp;&amp; ~fnames.error
+0292             statusLabel.MenuItems = <span class="string">'Conversion canceled'</span>; drawnow;
+0293             statusLabel.Value = [];
+0294         <span class="keyword">else</span>
+0295             xmlname = fnames.xml;
+0296             outputfolder = fnames.outputfolder;
+0297             statusLabel.MenuItems = <span class="string">'Converting SBML...'</span>;
+0298            <span class="keyword">try</span>
+0299                 drawnow;
+0300                 outputfname = util.sbml2sif(xmlname, outputfolder);
+0301                 statusLabel.MenuItems = {<span class="string">'Conversion Complete'</span>, <span class="string">'Saved to:'</span>,outputfname};
+0302            <span class="keyword">catch</span> e
+0303                 statusLabel.MenuItems = {<span class="string">'Export Failed'</span>, e.message};
+0304                 drawnow;
+0305            <span class="keyword">end</span>
+0306         <span class="keyword">end</span>
+0307     <span class="keyword">end</span>
+0308     <a name="_sub19" href="#_subfunctions" class="code">function convertSIF(obj,e)</a>
+0309         <span class="comment">%prompt for filename and reference name</span>
+0310         fnames = SIFgui;
+0311         <span class="keyword">if</span> fnames.userCanceled
+0312             statusLabel.MenuItems = <span class="string">'Conversion canceled'</span>; drawnow;
+0313             statusLabel.Value = [];
+0314         <span class="keyword">else</span>
+0315             sifname = fnames.sif;
+0316             outputname = fnames.outputname;
+0317             statusLabel.MenuItems = <span class="string">'Converting SIF...'</span>; drawnow;
+0318             <span class="keyword">try</span>
+0319                 util.importsif(fnames.sif, fnames.outputname);
+0320                 statusLabel.MenuItems = {<span class="string">'Model saved as:'</span>, fnames.outputname}; drawnow;
+0321             <span class="keyword">catch</span> e
+0322                 statusLabel.MenuItems = {<span class="string">'Export Failed'</span>, e.identifier}; drawnow;
+0323                 throw(e)
+0324             <span class="keyword">end</span>
+0325         <span class="keyword">end</span>
+0326     <span class="keyword">end</span>
+0327     <a name="_sub20" href="#_subfunctions" class="code">function dataSheet(obj,e)</a>
+0328         <span class="comment">%check to see if simulation has run</span>
+0329         <span class="keyword">if</span> (isempty(tCum))
+0330             statusLabel.MenuItems = <span class="string">'Need to simulate the model first'</span>;  
+0331             statusLabel.Value = [];
+0332         <span class="keyword">else</span>        
+0333             <span class="comment">%prompt for filename</span>
+0334             default = <span class="string">'Data Sheet'</span>;  
+0335             [nfname,pathname,filterindex]=uiputfile(<span class="string">'*.txt'</span>,<span class="string">'Save Data as... (no extension)'</span>,[default]);
+0336             
+0337             <span class="keyword">if</span> isequal(pathname,0) <span class="comment">%check to see if saving was canceled</span>
+0338                 statusLabel.MenuItems = <span class="string">'Data export canceled'</span>;
+0339                 statusLabel.Value = [];
+0340             <span class="keyword">else</span>
+0341                 nfname = fullfile(pathname,nfname);
+0342                 nfilename = nfname; 
+0343                 
+0344                 <span class="comment">% create labeled time values</span>
+0345                 timeLabeli = tCum;                   
+0346                 timeLabeli = cellfun(@num2str,num2cell(timeLabeli),<span class="string">'UniformOutput'</span>,false);
+0347                 tHeader = {<span class="string">'T'</span>};
+0348                 timeLabel = strcat(tHeader,timeLabeli);
+0349                 header1 = {<span class="string">'Species_Name'</span>};
+0350                 write = cat(2,header1,timeLabel');  <span class="comment">%concatenates &quot;species name&quot; and time points</span>
+0351                 tDCum = tCum;  <span class="comment">%D stands for Data</span>
+0352                 yDCum = yCum;         
+0353                 <span class="keyword">for</span> j = 1:length(specID)                               
+0354                     yi = yCum;           
+0355                     <span class="comment">%yi = round(yi*10^4)./10^4; %rounds the output to 4 decimal places</span>
+0356                     yi = num2cell(yi);
+0357                     label = specID(j);
+0358                     label = horzcat(label,yi(:,j)'); <span class="comment">% concats species header to the y values from t0 to tend</span>
+0359                     write = cat(1,write,label);
+0360                 <span class="keyword">end</span>
+0361                 util.textwrite(nfilename,write);
+0362                 a = <span class="string">'Data wrote to '</span>;
+0363                 z = horzcat(a,strrep(nfilename,pathname,<span class="string">''</span>));
+0364                 statusLabel.MenuItems = z;
+0365                 statusLabel.Value = [];
+0366             <span class="keyword">end</span>
+0367         <span class="keyword">end</span>
+0368     <span class="keyword">end</span>
+0369     <a name="_sub21" href="#_subfunctions" class="code">function cytoscapeSIF(obj,e)</a>
+0370         <span class="keyword">if</span> ~isempty(specID)
+0371             <span class="comment">%prompt for filename</span>
+0372             default = <span class="string">'Cytoscape'</span>;
+0373             [nfname,pathname,filterindex]=uiputfile(<span class="string">'*.*'</span>,<span class="string">'Save Cytoscape as... (no extension)'</span>,[default]);
+0374             <span class="keyword">if</span> isequal(pathname,0)
+0375                 statusLabel.MenuItems = <span class="string">'Cytoscape export canceled'</span>;
+0376                 statusLabel.Value = [];
+0377             <span class="keyword">else</span>
+0378                 CNAmodel.net_var_name = nfname;
+0379                 util.Netflux2sif(CNAmodel,pathname);
+0380                 a = <span class="string">'Cytoscape exported to '</span>;
+0381                 b = <span class="string">'.sif'</span>;
+0382                 z = horzcat(a,CNAmodel.net_var_name,b);
+0383                 statusLabel.MenuItems = z;
+0384                 statusLabel.Value = [];
+0385             <span class="keyword">end</span>
+0386         <span class="keyword">else</span>
+0387             statusLabel.MenuItems = <span class="string">'Need to open model first'</span>;
+0388         <span class="keyword">end</span>
+0389     <span class="keyword">end</span>
+0390     <a name="_sub22" href="#_subfunctions" class="code">function cytoscapeXGMML(obj,e)</a>
+0391         <span class="keyword">if</span> ~isempty(specID)
+0392             <span class="comment">%prompt for filename and reference name</span>
+0393             default = <span class="string">'Cytoscape'</span>;
+0394             fnames = XGMMLgui; <span class="comment">% put in gui folder later?</span>
+0395             
+0396             <span class="keyword">if</span> fnames.userCanceled
+0397                 statusLabel.MenuItems = <span class="string">'Cytoscape export canceled'</span>; drawnow;
+0398                 statusLabel.Value = [];
+0399             <span class="keyword">else</span>
+0400                 outputfname = fnames.output;
+0401                 referencefname = fnames.reference;
+0402                 statusLabel.MenuItems = <span class="string">'Exporting to XGMML...'</span>; drawnow;
+0403                 
+0404                 <span class="keyword">try</span>
+0405                     <span class="keyword">if</span> strcmp(referencefname, <span class="string">''</span>); <span class="comment">% if reference not specified</span>
+0406                         util.Netflux2xgmml(CNAmodel, outputfname);
+0407                     <span class="keyword">else</span>
+0408                         util.Netflux2xgmml(CNAmodel, outputfname, referencefname); <span class="comment">% if reference specified</span>
+0409                     <span class="keyword">end</span>
+0410                     statusLabel.MenuItems = {<span class="string">'Model exported to:'</span>, outputfname}; drawnow;
+0411                 <span class="keyword">catch</span> e
+0412                     statusLabel.MenuItems = {<span class="string">'Export Failed'</span>, e.identifier}; drawnow;
+0413                     throw(e)
+0414                 <span class="keyword">end</span>
+0415             <span class="keyword">end</span>
+0416         <span class="keyword">else</span>
+0417             statusLabel.MenuItems = <span class="string">'Need to open model first'</span>;
+0418         <span class="keyword">end</span>
+0419     <span class="keyword">end</span>
+0420     <a name="_sub23" href="#_subfunctions" class="code">function exportODE(~,e)</a>
+0421         <span class="comment">%prompt for filename</span>
+0422         default = <span class="string">'NetfluxODE'</span>;
+0423         [nfname,pathname,filterindex]=uiputfile(<span class="string">'*.m'</span>,<span class="string">'Save Data as...'</span>,[default]);
+0424         nfilename = fullfile(pathname,nfname);
+0425 
+0426         commandLine = util.exportODE(specID,paramList,ODElist);
+0427         util.textwrite(nfilename,commandLine);
+0428         statusLabel.MenuItems = <span class="string">'Matlab ODEfile exported!'</span>; 
+0429         statusLabel.Value = [];
+0430     <span class="keyword">end</span>
+0431     <a name="_sub24" href="#_subfunctions" class="code">function about(obj,e)</a>
+0432         mFigure = figure();
+0433         set(mFigure,<span class="string">'menubar'</span>,<span class="string">'none'</span>,<span class="string">'numbertitle'</span>,<span class="string">'off'</span>,<span class="string">'name'</span>,<span class="string">'About Netflux'</span>,<span class="string">'windowstyle'</span>,<span class="string">'normal'</span>,<span class="string">'resize'</span>,<span class="string">'off'</span>);
+0434         set(mFigure, <span class="string">'Position'</span>,[380 378 300 300]);
+0435         set(mFigure,<span class="string">'Color'</span>,<span class="string">'w'</span>);
+0436         colorOfFigureWindow = get(mFigure,<span class="string">'Color'</span>);
+0437         
+0438         titleTextBox = uicontrol (<span class="string">'style'</span>,<span class="string">'text'</span>,<span class="string">'BackgroundColor'</span>,colorOfFigureWindow);
+0439         set(titleTextBox,<span class="string">'Position'</span>, [5 200 300 75]);
+0440         set(titleTextBox,<span class="string">'horizontalalignment'</span>,<span class="string">'left'</span>,<span class="string">'fontweight'</span>,<span class="string">'bold'</span>,<span class="string">'fontsize'</span>,18,<span class="string">'String'</span>,<span class="string">'Netflux'</span>);
+0441         
+0442         versionTextBox = uicontrol(<span class="string">'style'</span>,<span class="string">'text'</span>,<span class="string">'BackgroundColor'</span>,colorOfFigureWindow);
+0443         set(versionTextBox,<span class="string">'Position'</span>, [5 175 300 75]);
+0444         set(versionTextBox,<span class="string">'horizontalalignment'</span>,<span class="string">'left'</span>,<span class="string">'fontangle'</span>,<span class="string">'italic'</span>,<span class="string">'fontsize'</span>,12,<span class="string">'String'</span>,<span class="string">'Current Version: 0.07a'</span>);
+0445         
+0446         developerTextBox = uicontrol(<span class="string">'style'</span>,<span class="string">'text'</span>,<span class="string">'BackgroundColor'</span>,colorOfFigureWindow);
+0447         set(developerTextBox,<span class="string">'Position'</span>, [5 75 300 75]);
+0448         set(developerTextBox,<span class="string">'horizontalalignment'</span>,<span class="string">'center'</span>,<span class="string">'fontsize'</span>,12,<span class="string">'String'</span>,<span class="string">'Developed by Stephen Dang and Jeff Saucerman at University of Virginia'</span>);
+0449         
+0450         labelStr = <span class="string">'&lt;html&gt;&lt;center&gt;&lt;a href=&quot;&quot;&gt;Website: http://code.google.com/p/netflux/'</span>;
+0451         cbStr = <span class="string">'web(''http://code.google.com/p/netflux/'');'</span>;
+0452         hButton = uicontrol(<span class="string">'string'</span>,labelStr,<span class="string">'pos'</span>,[50,65,200,35],<span class="string">'callback'</span>,cbStr);
+0453         set(hButton,<span class="string">'BackgroundColor'</span>,colorOfFigureWindow);
+0454         jButton = util.findjobj(hButton); <span class="comment">% get FindJObj from the File Exchange</span>
+0455         jButton.setCursor(java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));        
+0456         jButton.setBorder([]);
+0457         
+0458         labelStr2 = <span class="string">'&lt;html&gt;&lt;center&gt;&lt;a href=&quot;&quot;&gt;Documentation can be found at: &lt;br&gt; http://code.google.com/p/netflux/downloads/list'</span>;
+0459         cbStr2 = <span class="string">'web(''http://code.google.com/p/netflux/downloads/list'');'</span>;
+0460         hButton2 = uicontrol(<span class="string">'string'</span>,labelStr2,<span class="string">'pos'</span>,[25,20,250,35],<span class="string">'callback'</span>,cbStr2);
+0461         set(hButton2,<span class="string">'BackgroundColor'</span>,colorOfFigureWindow);
+0462         jButton2 = util.findjobj(hButton2); <span class="comment">% get FindJObj from the File Exchange</span>
+0463         jButton2.setCursor(java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));       
+0464         jButton2.setBorder([]);
+0465         
+0466     <span class="keyword">end</span>
+0467 <span class="keyword">end</span></pre></div>
+<hr><address>Generated on Thu 07-Aug-2014 13:40:59 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

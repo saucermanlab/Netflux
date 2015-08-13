@@ -1,0 +1,235 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of uiposition</title>
+  <meta name="keywords" content="uiposition">
+  <meta name="description" content="uiposition">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../../../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../../../index.html">Home</a> &gt;  <a href="../../index.html">NetfluxSC_09b</a> &gt; <a href="../index.html">+gui</a> &gt; <a href="index.html">+util</a> &gt; uiposition.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../../../index.html"><img alt="<" border="0" src="../../../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for NetfluxSC_09b\+gui\+util&nbsp;<img alt=">" border="0" src="../../../right.png"></a></td></tr></table>-->
+
+<h1>uiposition
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="box"><strong>uiposition</strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="box"><strong>This is a script file. </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="fragment"><pre class="comment"> uiposition
+  A helper class for gui.autogui and gui.widget</pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../../../matlabicon.gif)">
+<li><a href="uiposition.html" class="code" title="">uiposition</a>	uiposition</li></ul>
+This function is called by:
+<ul style="list-style-image:url(../../../matlabicon.gif)">
+<li><a href="uiposition.html" class="code" title="">uiposition</a>	uiposition</li></ul>
+<!-- crossreference -->
+
+<h2><a name="_subfunctions"></a>SUBFUNCTIONS <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<ul style="list-style-image:url(../../../matlabicon.gif)">
+<li><a href="#_sub1" class="code">function obj = uiposition(uihandle)</a></li><li><a href="#_sub2" class="code">function out = get.X(obj)</a></li><li><a href="#_sub3" class="code">function out = get.Y(obj)</a></li><li><a href="#_sub4" class="code">function obj = set.Width(obj, newWidth)</a></li><li><a href="#_sub5" class="code">function out = get.Width(obj)</a></li><li><a href="#_sub6" class="code">function obj = set.Height(obj, newHeight)</a></li><li><a href="#_sub7" class="code">function out = get.Height(obj)</a></li><li><a href="#_sub8" class="code">function out = getVector(obj)</a></li><li><a href="#_sub9" class="code">function obj = setStruct(obj, s)</a></li><li><a href="#_sub10" class="code">function obj = setVector(obj,pos)</a></li><li><a href="#_sub11" class="code">function obj = updateCachedPosition(obj)</a></li><li><a href="#_sub12" class="code">function setSizeInFlow(uihandle, sz)</a></li><li><a href="#_sub13" class="code">function out = getHeightInFlow(uihandle)</a></li><li><a href="#_sub14" class="code">function pos = structToVec(s)</a></li><li><a href="#_sub15" class="code">function out = isScalarNumber(val)</a></li></ul>
+
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="fragment"><pre>0001 <span class="comment">% uiposition</span>
+0002 <span class="comment">%  A helper class for gui.autogui and gui.widget</span>
+0003 
+0004 <span class="comment">%   Copyright 2009 The MathWorks, Inc.</span>
+0005 
+0006 classdef <a href="uiposition.html" class="code" title="">uiposition</a>
+0007     
+0008     properties(Dependent)
+0009         X
+0010         Y
+0011         Width
+0012         Height
+0013     <span class="keyword">end</span>
+0014         
+0015     properties(Access=private)
+0016         UiHandle        
+0017         InFlowContainer        
+0018         CachedPositionVec
+0019     <span class="keyword">end</span>
+0020     
+0021     methods
+0022         <a name="_sub0" href="#_subfunctions" class="code">function obj = uiposition(uihandle)</a>
+0023             <span class="keyword">if</span> ~ishandle(uihandle)
+0024                 throw(MException(<span class="string">'positionx:error'</span>, <span class="string">'Bad uihandle'</span>));
+0025             <span class="keyword">end</span>
+0026             obj.UiHandle = uihandle;
+0027             obj.InFlowContainer = strcmp(get(get(uihandle, <span class="string">'parent'</span>),<span class="string">'type'</span>), <span class="string">'uiflowcontainer'</span>);
+0028             obj = <a href="#_sub11" class="code" title="subfunction obj = updateCachedPosition(obj)">updateCachedPosition</a>(obj);
+0029         <span class="keyword">end</span>
+0030         
+0031         <a name="_sub1" href="#_subfunctions" class="code">function out = get.X(obj)</a>
+0032            out = obj.CachedPositionVec(1); 
+0033         <span class="keyword">end</span>
+0034 
+0035         <a name="_sub2" href="#_subfunctions" class="code">function out = get.Y(obj)</a>
+0036            out = obj.CachedPositionVec(2); 
+0037         <span class="keyword">end</span>
+0038                 
+0039         <a name="_sub3" href="#_subfunctions" class="code">function obj = set.Width(obj, newWidth)</a>
+0040             pos = obj.CachedPositionVec;
+0041             pos(3) = newWidth;
+0042             <span class="keyword">if</span> obj.InFlowContainer
+0043                 set(obj.UiHandle,<span class="string">'widthlimits'</span>, pos([3 3]));
+0044             <span class="keyword">else</span>
+0045                 set(obj.UiHandle,<span class="string">'position'</span>,pos);
+0046             <span class="keyword">end</span>
+0047             obj.CachedPositionVec = pos;
+0048         <span class="keyword">end</span>
+0049         
+0050         <a name="_sub4" href="#_subfunctions" class="code">function out = get.Width(obj)</a>
+0051             out = obj.CachedPositionVec(3);
+0052         <span class="keyword">end</span>
+0053 
+0054         <a name="_sub5" href="#_subfunctions" class="code">function obj = set.Height(obj, newHeight)</a>
+0055             pos = obj.CachedPositionVec;
+0056             pos(4) = newHeight;
+0057             <span class="keyword">if</span> obj.InFlowContainer
+0058                 set(obj.UiHandle,<span class="string">'heightlimits'</span>, pos([4 4]));
+0059             <span class="keyword">else</span>
+0060                 set(obj.UiHandle,<span class="string">'position'</span>,pos);
+0061             <span class="keyword">end</span>
+0062             obj.CachedPositionVec = pos;
+0063         <span class="keyword">end</span>
+0064         
+0065         <a name="_sub6" href="#_subfunctions" class="code">function out = get.Height(obj)</a>
+0066             out = obj.CachedPositionVec(4);
+0067         <span class="keyword">end</span>
+0068         
+0069         <a name="_sub7" href="#_subfunctions" class="code">function out = getVector(obj)</a>
+0070             out = obj.CachedPositionVec;
+0071         <span class="keyword">end</span>
+0072                     
+0073         
+0074         <span class="comment">% assume s is already validated</span>
+0075         <a name="_sub8" href="#_subfunctions" class="code">function obj = setStruct(obj, s)</a>
+0076             <span class="keyword">if</span> obj.InFlowContainer
+0077                 <span class="comment">% x and y coordinates don't matter</span>
+0078                 <span class="keyword">if</span> ~isnan(s.width)
+0079                     set(obj.UiHandle, <span class="string">'WidthLimits'</span>, s.width([1 1]));
+0080                     obj.CachedPositionVec(3) = s.width;
+0081                 <span class="keyword">end</span>
+0082                 <span class="keyword">if</span> ~isnan(s.height)
+0083                     set(obj.UiHandle, <span class="string">'HeightLimits'</span>, s.height([1 1]));
+0084                     obj.CachedPositionVec(4) = s.height;
+0085                 <span class="keyword">end</span>
+0086             <span class="keyword">else</span>
+0087                 pos = [s.x s.y s.width s.height];
+0088                 indices = isnan(pos);
+0089                 pos(indices) = obj.CachedPositionVec(indices);
+0090                 set(obj.UiHandle, <span class="string">'position'</span>, pos);
+0091                 obj.CachedPositionVec = pos;
+0092             <span class="keyword">end</span>            
+0093         <span class="keyword">end</span>
+0094         
+0095         <a name="_sub9" href="#_subfunctions" class="code">function obj = setVector(obj,pos)</a>
+0096             <span class="keyword">if</span> obj.InFlowContainer
+0097                 <span class="comment">% x and y coordinates don't matter</span>
+0098                 <span class="keyword">if</span> ~isnan(pos(3))
+0099                     set(obj.UiHandle, <span class="string">'WidthLimits'</span>, pos([3 3]));
+0100                     obj.CachedPositionVec(3) = pos(3);
+0101                 <span class="keyword">end</span>
+0102                 <span class="keyword">if</span> ~isnan(pos(4))
+0103                     set(obj.UiHandle, <span class="string">'HeightLimits'</span>, pos([4 4]));
+0104                     obj.CachedPositionVec(4) = pos(4);
+0105                 <span class="keyword">end</span>
+0106             <span class="keyword">else</span>
+0107                 indices = isnan(pos);
+0108                 pos(indices) = obj.CachedPositionVec(indices);
+0109                 set(obj.UiHandle, <span class="string">'position'</span>, pos);
+0110                 obj.CachedPositionVec = pos;
+0111             <span class="keyword">end</span>                
+0112         <span class="keyword">end</span>
+0113 
+0114         <a name="_sub10" href="#_subfunctions" class="code">function obj = updateCachedPosition(obj)</a>
+0115             <span class="keyword">if</span> obj.InFlowContainer
+0116                 pos = [1 1 <span class="keyword">...</span>
+0117                     max(get(obj.UiHandle, <span class="string">'WidthLimits'</span>)) <span class="keyword">...</span>
+0118                     max(get(obj.UiHandle, <span class="string">'HeightLimits'</span>))];
+0119             <span class="keyword">else</span>
+0120                 pos = get(obj.UiHandle, <span class="string">'position'</span>);
+0121             <span class="keyword">end</span>
+0122             obj.CachedPositionVec = pos;
+0123         <span class="keyword">end</span>
+0124         
+0125     <span class="keyword">end</span>
+0126     
+0127     methods(Static)
+0128         
+0129         <a name="_sub11" href="#_subfunctions" class="code">function setSizeInFlow(uihandle, sz)</a>
+0130             <span class="keyword">if</span> ~isnan(sz(1))
+0131                 set(uihandle,<span class="string">'widthlimits'</span>,  sz([1 1]));
+0132             <span class="keyword">end</span>
+0133             <span class="keyword">if</span> ~isnan(sz(2))
+0134                 set(uihandle,<span class="string">'heightlimits'</span>, sz([2 2]));
+0135             <span class="keyword">end</span>
+0136         <span class="keyword">end</span>       
+0137 
+0138         <a name="_sub12" href="#_subfunctions" class="code">function out = getHeightInFlow(uihandle)            </a>
+0139             hlim = get(uihandle,<span class="string">'heightlimits'</span>);
+0140             out = hlim(1);
+0141         <span class="keyword">end</span>
+0142                 
+0143         <a name="_sub13" href="#_subfunctions" class="code">function pos = structToVec(s)</a>
+0144             pos = [nan nan nan nan];
+0145             <span class="keyword">if</span> ~isstruct(s)
+0146                 throw(MException(<span class="string">'position:set'</span>, <span class="keyword">...</span>
+0147                     <span class="string">'Position should be a struct with fields ''x'', ''y'', ''width'', or ''height'''</span>));
+0148             <span class="keyword">end</span>
+0149             <span class="comment">% if there are no fields in the struct, pos will return with all</span>
+0150             <span class="comment">% nan fields</span>
+0151             isValid = true(1,4);
+0152             fldnames = fieldnames(s);
+0153             <span class="keyword">for</span> i=1:numel(fldnames)
+0154                 <span class="keyword">switch</span> fldnames{i}
+0155                     <span class="keyword">case</span> <span class="string">'x'</span>, 
+0156                         isValid(1) = <a href="#_sub15" class="code" title="subfunction out = isScalarNumber(val)">isScalarNumber</a>(s.x);
+0157                         <span class="keyword">if</span> isValid(1), pos(1) = s.x; <span class="keyword">end</span>
+0158                     <span class="keyword">case</span> <span class="string">'y'</span>,                         
+0159                         isValid(2) = <a href="#_sub15" class="code" title="subfunction out = isScalarNumber(val)">isScalarNumber</a>(s.y);
+0160                         <span class="keyword">if</span> isValid(2), pos(2) = s.y; <span class="keyword">end</span>
+0161                     <span class="keyword">case</span> <span class="string">'width'</span>
+0162                         isValid(3) = <a href="#_sub15" class="code" title="subfunction out = isScalarNumber(val)">isScalarNumber</a>(s.width);
+0163                         <span class="keyword">if</span> isValid(3), pos(3) = s.width; <span class="keyword">end</span>
+0164                     <span class="keyword">case</span> <span class="string">'height'</span>
+0165                         isValid(4) = <a href="#_sub15" class="code" title="subfunction out = isScalarNumber(val)">isScalarNumber</a>(s.height);
+0166                         <span class="keyword">if</span> isValid(4), pos(4) = s.height; <span class="keyword">end</span>
+0167                     <span class="keyword">otherwise</span>
+0168                         throw(MException(<span class="string">'position:set'</span>, <span class="keyword">...</span>
+0169                             <span class="string">'Valid fields are ''x'', ''y'', ''width'', and ''height'''</span>));                        
+0170                 <span class="keyword">end</span>                
+0171             <span class="keyword">end</span>
+0172             
+0173             <span class="keyword">if</span> ~all(isValid)
+0174                 throw(MException(<span class="string">'position:set'</span>, <span class="keyword">...</span>
+0175                     <span class="string">'x, y, width and height should be integers'</span>));
+0176             <span class="keyword">end</span>                
+0177         <span class="keyword">end</span>        
+0178         
+0179     <span class="keyword">end</span>
+0180 <span class="keyword">end</span>
+0181 
+0182 
+0183 <a name="_sub14" href="#_subfunctions" class="code">function out = isScalarNumber(val)</a>
+0184 out = isnumeric(val) &amp;&amp; isscalar(val) &amp;&amp; isreal(val);
+0185 <span class="keyword">end</span></pre></div>
+<hr><address>Generated on Thu 07-Aug-2014 13:40:59 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

@@ -1,0 +1,314 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of label</title>
+  <meta name="keywords" content="label">
+  <meta name="description" content="gui.label">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../../index.html">Home</a> &gt;  <a href="../index.html">NetfluxSC_09b</a> &gt; <a href="index.html">+gui</a> &gt; label.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../../index.html"><img alt="<" border="0" src="../../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for NetfluxSC_09b\+gui&nbsp;<img alt=">" border="0" src="../../right.png"></a></td></tr></table>-->
+
+<h1>label
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="box"><strong>gui.label</strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="box"><strong>This is a script file. </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="fragment"><pre class="comment"> gui.label
+    A widget to display formatted text
+
+    W = gui.label creates a widget for displaying formatted
+    text and adds it to the current autogui (if there is no
+    current autogui, one is created).
+
+    W = gui.label(M) creates the widget with initial label
+    string M.
+
+    W = gui.label(M, G) creates the widget with the
+    label string M, and adds it to the gui container G.
+
+  Sample usage:
+     g = gui.autogui;
+    w1 = gui.label;
+    w2 = gui.label('Filter parameters');
+    w3 = gui.label('Filter parameters', g);
+    w3.Font.angle = 'normal';
+    w3.Font.size = 10;
+
+    Also see: 
+    &lt;a href=&quot;matlab:help gui.label.Value&quot;&gt;gui.label.Value&lt;/a&gt;
+    &lt;a href=&quot;matlab:help gui.edittext&quot;&gt;gui.edittext&lt;/a&gt;</pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../../matlabicon.gif)">
+<li><a href="label.html" class="code" title="">label</a>	gui.label</li></ul>
+This function is called by:
+<ul style="list-style-image:url(../../matlabicon.gif)">
+<li><a href="label.html" class="code" title="">label</a>	gui.label</li></ul>
+<!-- crossreference -->
+
+<h2><a name="_subfunctions"></a>SUBFUNCTIONS <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<ul style="list-style-image:url(../../matlabicon.gif)">
+<li><a href="#_sub1" class="code">function obj = label(labelStr,varargin)</a></li><li><a href="#_sub2" class="code">function out = get.TopMargin(obj)</a></li><li><a href="#_sub3" class="code">function set.TopMargin(obj, m)</a></li><li><a href="#_sub4" class="code">function out = get.BottomMargin(obj)</a></li><li><a href="#_sub5" class="code">function set.BottomMargin(obj, m)</a></li><li><a href="#_sub6" class="code">function out = get.Value(obj)</a></li><li><a href="#_sub7" class="code">function set.Value(obj, val)</a></li><li><a href="#_sub8" class="code">function set.Alignment(obj,alignment)</a></li><li><a href="#_sub9" class="code">function out = get.Alignment(obj)</a></li><li><a href="#_sub10" class="code">function set.Font(obj,f)</a></li><li><a href="#_sub11" class="code">function f = get.Font(obj)</a></li><li><a href="#_sub12" class="code">function initNotify(obj)</a></li><li><a href="#_sub13" class="code">function updateSize(obj)</a></li></ul>
+
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="fragment"><pre>0001 <span class="comment">% gui.label</span>
+0002 <span class="comment">%    A widget to display formatted text</span>
+0003 <span class="comment">%</span>
+0004 <span class="comment">%    W = gui.label creates a widget for displaying formatted</span>
+0005 <span class="comment">%    text and adds it to the current autogui (if there is no</span>
+0006 <span class="comment">%    current autogui, one is created).</span>
+0007 <span class="comment">%</span>
+0008 <span class="comment">%    W = gui.label(M) creates the widget with initial label</span>
+0009 <span class="comment">%    string M.</span>
+0010 <span class="comment">%</span>
+0011 <span class="comment">%    W = gui.label(M, G) creates the widget with the</span>
+0012 <span class="comment">%    label string M, and adds it to the gui container G.</span>
+0013 <span class="comment">%</span>
+0014 <span class="comment">%  Sample usage:</span>
+0015 <span class="comment">%     g = gui.autogui;</span>
+0016 <span class="comment">%    w1 = gui.label;</span>
+0017 <span class="comment">%    w2 = gui.label('Filter parameters');</span>
+0018 <span class="comment">%    w3 = gui.label('Filter parameters', g);</span>
+0019 <span class="comment">%    w3.Font.angle = 'normal';</span>
+0020 <span class="comment">%    w3.Font.size = 10;</span>
+0021 <span class="comment">%</span>
+0022 <span class="comment">%    Also see:</span>
+0023 <span class="comment">%    &lt;a href=&quot;matlab:help gui.label.Value&quot;&gt;gui.label.Value&lt;/a&gt;</span>
+0024 <span class="comment">%    &lt;a href=&quot;matlab:help gui.edittext&quot;&gt;gui.edittext&lt;/a&gt;</span>
+0025 
+0026 <span class="comment">%   Copyright 2009 The MathWorks, Inc.</span>
+0027 
+0028 classdef (Sealed) <a href="label.html" class="code" title="">label</a> &lt; gui.widget
+0029 
+0030     properties (Dependent)
+0031         <span class="comment">% Value</span>
+0032         <span class="comment">%   A text string that is the label being displayed. This property</span>
+0033         <span class="comment">%   can also be set programmatically.</span>
+0034         <span class="comment">%</span>
+0035         <span class="comment">%   Sample usage:</span>
+0036         <span class="comment">%    s = gui.label('Filter parameters');</span>
+0037         <span class="comment">%    s.Value % get the value</span>
+0038         <span class="comment">%    s.Value = 'Center frequency: 100 Hz';</span>
+0039         Value 
+0040     <span class="keyword">end</span>
+0041     
+0042     properties(Dependent,SetObservable)
+0043         <span class="comment">%</span>
+0044         <span class="comment">% Alignment - The horizontal alignment of the label text</span>
+0045         <span class="comment">%</span>
+0046         <span class="comment">%   Alignment should one of the following strings:</span>
+0047         <span class="comment">%     'left'   - the label text is left-aligned in the label box</span>
+0048         <span class="comment">%     'right   - the label text is right-aligned in the label box</span>
+0049         <span class="comment">%     'center' - the label text is centered in the label box</span>
+0050         Alignment
+0051 
+0052         <span class="comment">%</span>
+0053         <span class="comment">% TopMargin - The amount of blank space above the label</span>
+0054         <span class="comment">%    TopMargin is the number of pixels of blank space to be</span>
+0055         <span class="comment">%    maintained above the label.</span>
+0056         <span class="comment">%   Sample usage:</span>
+0057         <span class="comment">%    w = gui.label('Frequency parameters');</span>
+0058         <span class="comment">%    w.TopMargin = 20;</span>
+0059         TopMargin
+0060         
+0061         <span class="comment">% BottomMargin - The amount of blank space below the label</span>
+0062         <span class="comment">%    TopMargin is the number of pixels of blank space to be</span>
+0063         <span class="comment">%    maintained below the label.</span>
+0064         <span class="comment">%   Sample usage:</span>
+0065         <span class="comment">%    w = gui.label('Frequency parameters');</span>
+0066         <span class="comment">%    w.BottomMargin = 20;</span>
+0067         BottomMargin
+0068                     
+0069         <span class="comment">% Font - The font size and style for the label</span>
+0070         <span class="comment">%   Font is a struct with the following fields</span>
+0071         <span class="comment">%     size  : The font size in points</span>
+0072         <span class="comment">%     angle : The angle of the text. Possible values are:</span>
+0073         <span class="comment">%             'normal', 'italic' or 'oblique'</span>
+0074         <span class="comment">%     weight: The darkness of the text. Possible values are:</span>
+0075         <span class="comment">%             'normal', 'light', 'demi', 'bold'</span>
+0076         <span class="comment">%</span>
+0077         <span class="comment">%   Sample usage:</span>
+0078         <span class="comment">%     w = gui.label('Frequency parameters');</span>
+0079         <span class="comment">%</span>
+0080         <span class="comment">%     w.Font</span>
+0081         <span class="comment">%     w.Font.size</span>
+0082         <span class="comment">%</span>
+0083         <span class="comment">%     w.Font.size = 11;</span>
+0084         <span class="comment">%     w.Font.angle = 'italic';</span>
+0085         <span class="comment">%     w.Font = struct('size', 12, 'weight', 'bold');</span>
+0086         <span class="comment">%</span>
+0087         <span class="comment">%     w2 = gui.label('Frequency parameters');</span>
+0088         <span class="comment">%     w2.Font = w.Font;</span>
+0089         <span class="comment">%</span>
+0090         Font
+0091                 
+0092     <span class="keyword">end</span>
+0093        
+0094     properties(Access=private)
+0095         UiLabel
+0096         UiSpaceTop 
+0097         UiSpaceBottom
+0098     <span class="keyword">end</span>
+0099     
+0100     methods
+0101         <a name="_sub0" href="#_subfunctions" class="code">function obj = label(labelStr,varargin)</a>
+0102             
+0103             <span class="keyword">if</span> ~exist(<span class="string">'labelStr'</span>,<span class="string">'var'</span>)
+0104                 labelStr = <span class="string">'Sample text'</span>;
+0105             <span class="keyword">end</span>
+0106 
+0107             obj = obj@gui.widget(varargin{:});
+0108             assert(~obj.Initialized &amp;&amp; ~obj.Visible);
+0109             
+0110             color = obj.getParentUiColor();
+0111             
+0112             obj.UiHandle = gui.util.uiflowcontainer(<span class="string">'Parent'</span>,obj.ParentUiHandle, <span class="keyword">...</span>
+0113                 <span class="string">'units'</span>, <span class="string">'pixels'</span>, <span class="keyword">...</span>
+0114                 <span class="string">'BackgroundColor'</span>,color, <span class="keyword">...</span>
+0115                 <span class="string">'flowdirection'</span>, <span class="string">'topdown'</span>, <span class="keyword">...</span>
+0116                 <span class="string">'DeleteFcn'</span>, @(h,e) delete(obj)); 
+0117             
+0118             obj.Visible = false; 
+0119             
+0120             obj.UiSpaceTop = uicontrol(<span class="string">'Style'</span>,<span class="string">'text'</span>, <span class="string">'Parent'</span>,obj.UiHandle,<span class="keyword">...</span>
+0121                 <span class="string">'units'</span>, <span class="string">'pixels'</span>, <span class="keyword">...</span>
+0122                 <span class="string">'Visible'</span>, <span class="string">'off'</span>, <span class="keyword">...</span>
+0123                 <span class="string">'BackgroundColor'</span>,color);
+0124                 
+0125             obj.UiLabel = uicontrol( <span class="string">'Style'</span>,<span class="string">'Text'</span>,<span class="string">'Parent'</span>,obj.UiHandle,<span class="keyword">...</span>
+0126                 <span class="string">'BackgroundColor'</span>, color,<span class="keyword">...</span>
+0127                 <span class="string">'units'</span>, <span class="string">'pixels'</span>, <span class="keyword">...</span><span class="comment">                </span>
+0128                 <span class="string">'position'</span>, [0 0 60 20],<span class="keyword">...</span>
+0129                 <span class="string">'string'</span>, labelStr, <span class="keyword">...</span>
+0130                 <span class="string">'HorizontalAlignment'</span>, <span class="string">'Left'</span>, <span class="keyword">...</span>
+0131                 <span class="string">'Fontweight'</span>, <span class="string">'bold'</span>, <span class="keyword">...</span>
+0132                 <span class="string">'Fontangle'</span>, <span class="string">'italic'</span>, <span class="keyword">...</span>
+0133                 <span class="string">'HandleVisibility'</span>, <span class="string">'off'</span>);
+0134 
+0135             obj.UiSpaceBottom = uicontrol(<span class="string">'Style'</span>,<span class="string">'text'</span>, <span class="string">'Parent'</span>,obj.UiHandle,<span class="keyword">...</span>
+0136                 <span class="string">'units'</span>, <span class="string">'pixels'</span>, <span class="keyword">...</span>
+0137                 <span class="string">'Visible'</span>, <span class="string">'off'</span>, <span class="keyword">...</span><span class="comment">                </span>
+0138                 <span class="string">'BackgroundColor'</span>,color);
+0139             
+0140             <span class="comment">% default fontsize is 2 points greater than default</span>
+0141             set(obj.UiLabel, <span class="string">'Fontsize'</span>, get(obj.UiLabel, <span class="string">'Fontsize'</span>) + 1);
+0142 
+0143             <span class="comment">% obj is the most derived class (since it is sealed)</span>
+0144             obj.Initialized = true;
+0145             obj.Visible = true;
+0146         <span class="keyword">end</span>
+0147                 
+0148         <a name="_sub1" href="#_subfunctions" class="code">function out = get.TopMargin(obj)</a>
+0149             lim = get(obj.UiSpaceTop, <span class="string">'heightlimits'</span>);
+0150             out = lim(1);
+0151         <span class="keyword">end</span>
+0152         
+0153         <a name="_sub2" href="#_subfunctions" class="code">function set.TopMargin(obj, m)</a>
+0154             <span class="keyword">if</span> ~(isnumeric(m) &amp;&amp; isscalar(m) &amp;&amp; isreal(m) &amp;&amp; (m &gt; 0))
+0155                 throwAsCaller(MException(<span class="string">'label:TopMargin'</span>, <span class="string">'TopMargin should be a number &gt;= 0'</span>));
+0156             <span class="keyword">end</span>
+0157             set(obj.UiSpaceTop, <span class="string">'heightlimits'</span>, [m m]);            
+0158             obj.updateSize();
+0159         <span class="keyword">end</span>
+0160 
+0161         <a name="_sub3" href="#_subfunctions" class="code">function out = get.BottomMargin(obj)</a>
+0162             lim = get(obj.UiSpaceBottom, <span class="string">'heightlimits'</span>);
+0163             out = lim(1);
+0164         <span class="keyword">end</span>
+0165         
+0166         <a name="_sub4" href="#_subfunctions" class="code">function set.BottomMargin(obj, m)</a>
+0167             <span class="keyword">if</span> ~(isnumeric(m) &amp;&amp; isscalar(m) &amp;&amp; isreal(m) &amp;&amp; (m &gt; 0))
+0168                 throwAsCaller(MException(<span class="string">'label:BottomMargin'</span>, <span class="string">'BottomMargin should be a number &gt;= 0'</span>));
+0169             <span class="keyword">end</span>            
+0170             set(obj.UiSpaceBottom, <span class="string">'heightlimits'</span>, [m m]);            
+0171             obj.updateSize();            
+0172         <span class="keyword">end</span>
+0173             
+0174         <a name="_sub5" href="#_subfunctions" class="code">function out = get.Value(obj)</a>
+0175             out = get(obj.UiLabel, <span class="string">'string'</span>);
+0176         <span class="keyword">end</span>
+0177         
+0178         <a name="_sub6" href="#_subfunctions" class="code">function set.Value(obj, val)</a>
+0179             <span class="keyword">if</span> ~(ischar(val) || iscellstr(val))
+0180                 throwAsCaller(MException(<span class="string">'label:Value'</span>, <span class="string">'Value should be a string or a cell array of strings'</span>));
+0181             <span class="keyword">end</span>                        
+0182             set(obj.UiLabel, <span class="string">'string'</span>, val);
+0183             obj.updateSize();
+0184         <span class="keyword">end</span>
+0185         
+0186         <a name="_sub7" href="#_subfunctions" class="code">function set.Alignment(obj,alignment)</a>
+0187             <span class="keyword">try</span>
+0188                 set(obj.UiLabel,<span class="string">'HorizontalAlignment'</span>, alignment);
+0189             <span class="keyword">catch</span> <span class="comment">%#ok&lt;CTCH&gt;</span>
+0190                 throwAsCaller(MException(<span class="string">'label:Alignment'</span>, <span class="string">'Alignment should be ''left'', ''center'' or ''right'''</span>));   
+0191             <span class="keyword">end</span>
+0192         <span class="keyword">end</span>
+0193 
+0194         <a name="_sub8" href="#_subfunctions" class="code">function out = get.Alignment(obj)</a>
+0195             out = get(obj.UiLabel,<span class="string">'HorizontalAlignment'</span>);
+0196         <span class="keyword">end</span>        
+0197         
+0198         <a name="_sub9" href="#_subfunctions" class="code">function set.Font(obj,f)</a>
+0199             fn = fieldnames(f);
+0200             <span class="keyword">for</span> i=1:length(fn)
+0201                 <span class="keyword">switch</span> fn{i}
+0202                     <span class="keyword">case</span> {<span class="string">'size'</span>,<span class="string">'angle'</span>,<span class="string">'weight'</span>}
+0203                         <span class="keyword">try</span>
+0204                             set(obj.UiLabel, [<span class="string">'font'</span> fn{i}], f.(fn{i}));
+0205                         <span class="keyword">catch</span> <span class="comment">%#ok&lt;CTCH&gt;</span>
+0206                             throwAsCaller(MException(<span class="string">'label:font'</span>, <span class="string">'Invalid value for Font.%s'</span>, fn{i}));
+0207                         <span class="keyword">end</span>
+0208                     <span class="keyword">otherwise</span>
+0209                         throwAsCaller(MException(<span class="string">'label:font'</span>, <span class="string">'Invalid field (valid fields are size, angle, and weight)'</span>));
+0210                 <span class="keyword">end</span>                    
+0211             <span class="keyword">end</span>
+0212             obj.updateSize();
+0213         <span class="keyword">end</span>
+0214         
+0215         <a name="_sub10" href="#_subfunctions" class="code">function f = get.Font(obj)            </a>
+0216             f.size = get(obj.UiLabel,<span class="string">'FontSize'</span>);
+0217             f.angle = get(obj.UiLabel,<span class="string">'FontAngle'</span>);
+0218             f.weight = get(obj.UiLabel,<span class="string">'Fontweight'</span>);
+0219         <span class="keyword">end</span>
+0220         
+0221     <span class="keyword">end</span>
+0222    
+0223 
+0224     methods(Access=protected)
+0225         <a name="_sub11" href="#_subfunctions" class="code">function initNotify(obj)</a>
+0226             set(obj.UiSpaceTop, <span class="string">'heightlimits'</span>, [10 10]); <span class="comment">% default top margin</span>
+0227             set(obj.UiSpaceBottom, <span class="string">'heightlimits'</span>, [1 1]); <span class="comment">% default bottom margin</span>
+0228             obj.updateSize();
+0229         <span class="keyword">end</span>        
+0230     <span class="keyword">end</span>
+0231     
+0232     methods(Access=private)
+0233         
+0234         <a name="_sub12" href="#_subfunctions" class="code">function updateSize(obj)</a>
+0235             neededSize = get(obj.UiLabel, <span class="string">'Extent'</span>); <span class="comment">% [0 0 width height]</span>
+0236             newWidth = neededSize(3) + 3; <span class="comment">% allow some slop</span>
+0237             newHeight = obj.TopMargin + (neededSize(4)+3) + obj.BottomMargin;
+0238             obj.Position = struct(<span class="string">'width'</span>, newWidth, <span class="string">'height'</span>, newHeight);
+0239         <span class="keyword">end</span>
+0240  
+0241     <span class="keyword">end</span>
+0242 <span class="keyword">end</span></pre></div>
+<hr><address>Generated on Thu 07-Aug-2014 13:40:59 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

@@ -1,0 +1,624 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of daqinput</title>
+  <meta name="keywords" content="daqinput">
+  <meta name="description" content="gui.daqinput">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../../index.html">Home</a> &gt;  <a href="../index.html">NetfluxSC_09b</a> &gt; <a href="index.html">+gui</a> &gt; daqinput.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../../index.html"><img alt="<" border="0" src="../../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for NetfluxSC_09b\+gui&nbsp;<img alt=">" border="0" src="../../right.png"></a></td></tr></table>-->
+
+<h1>daqinput
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="box"><strong>gui.daqinput</strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="box"><strong>This is a script file. </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="fragment"><pre class="comment"> gui.daqinput
+    A widget for analog data acquisition 
+
+    W = gui.daqinput() creates a widget for configuring and retrieving
+    analog data. The acquisition can be configured either programmatically
+    (by setting relevant properties) or via the GUI. The acquired data 
+    can be retrieved using the Value property.
+     
+    W = gui.daqinput(G) creates the widget and adds it to the gui
+    container G.
+
+  Note:
+    1) This widget requires the Data Acquisition Toolbox.
+    2) The data acquisition is triggered if the user clicks on the &quot;Start&quot;
+       button, or if the START method is called.
+    3) This widget does NOT plot the acquired data. 
+    4) If the figure window is closed (or the gui.daqinput widget is
+       explicitly deleted), any ongoing data acquisition is stopped and
+       the acquisition hardware is reset.
+
+  Sample usage:
+    g = gui.autogui;
+    daq = gui.daqinput;
+    daq.AdaptorName = 'winsound';
+    % ...
+    while g.waitForInput()
+       info = daq.Value;
+       plot(info.time, info.data);
+    end
+    delete(daq); % stops acquisition and deletes the daq.daqinput object 
+
+   Also see: 
+    &lt;a href=&quot;matlab:help gui.daqinput.Value&quot;&gt;gui.daqinput.Value&lt;/a&gt;
+    &lt;a href=&quot;matlab:help gui.daqinput.start&quot;&gt;gui.daqinput.start&lt;/a&gt;
+    &lt;a href=&quot;matlab:help gui.stripchart&quot;&gt;gui.stripchart&lt;/a&gt;</pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../../matlabicon.gif)">
+<li><a href="daqinput.html" class="code" title="">daqinput</a>	gui.daqinput</li></ul>
+This function is called by:
+<ul style="list-style-image:url(../../matlabicon.gif)">
+<li><a href="daqinput.html" class="code" title="">daqinput</a>	gui.daqinput</li></ul>
+<!-- crossreference -->
+
+<h2><a name="_subfunctions"></a>SUBFUNCTIONS <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<ul style="list-style-image:url(../../matlabicon.gif)">
+<li><a href="#_sub1" class="code">function obj = daqinput(varargin)</a></li><li><a href="#_sub2" class="code">function delete(obj)</a></li><li><a href="#_sub3" class="code">function set.BufferSize(obj, sz)</a></li><li><a href="#_sub4" class="code">function set.AdaptorName(obj,name)</a></li><li><a href="#_sub5" class="code">function set.DeviceId(obj,id)</a></li><li><a href="#_sub6" class="code">function set.Channels(obj,c)</a></li><li><a href="#_sub7" class="code">function set.SampleRate(obj,rate)</a></li><li><a href="#_sub8" class="code">function set.Value(obj, val)</a></li><li><a href="#_sub9" class="code">function out = get.Value(obj)</a></li><li><a href="#_sub10" class="code">function out = get.Running(obj)</a></li><li><a href="#_sub11" class="code">function start(obj)</a></li><li><a href="#_sub12" class="code">function stop(obj)</a></li><li><a href="#_sub13" class="code">function initializeAnalogInput(obj)</a></li><li><a href="#_sub14" class="code">function updateAiStatus(obj, acqStarting)</a></li><li><a href="#_sub15" class="code">function localDaqErrorFcn(obj, event)</a></li><li><a href="#_sub16" class="code">function localDaqGetData(obj)</a></li><li><a href="#_sub17" class="code">function startstopButtonCallback(obj)</a></li><li><a href="#_sub18" class="code">function configButtonCallback(obj)</a></li><li><a href="#_sub19" class="code">function initNotify(obj)</a></li><li><a href="#_sub20" class="code">function postPositionChange(obj, pos)</a></li><li><a href="#_sub21" class="code">function clearAnalogInputObject(obj)</a></li><li><a href="#_sub22" class="code">function updateConfigString(obj)</a></li><li><a href="#_sub23" class="code">function [width,totalHeight] = updateSize(obj, newwidth)</a></li><li><a href="#_sub24" class="code">function out = trimString(s, maxlen)</a></li></ul>
+
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="fragment"><pre>0001 <span class="comment">% gui.daqinput</span>
+0002 <span class="comment">%    A widget for analog data acquisition</span>
+0003 <span class="comment">%</span>
+0004 <span class="comment">%    W = gui.daqinput() creates a widget for configuring and retrieving</span>
+0005 <span class="comment">%    analog data. The acquisition can be configured either programmatically</span>
+0006 <span class="comment">%    (by setting relevant properties) or via the GUI. The acquired data</span>
+0007 <span class="comment">%    can be retrieved using the Value property.</span>
+0008 <span class="comment">%</span>
+0009 <span class="comment">%    W = gui.daqinput(G) creates the widget and adds it to the gui</span>
+0010 <span class="comment">%    container G.</span>
+0011 <span class="comment">%</span>
+0012 <span class="comment">%  Note:</span>
+0013 <span class="comment">%    1) This widget requires the Data Acquisition Toolbox.</span>
+0014 <span class="comment">%    2) The data acquisition is triggered if the user clicks on the &quot;Start&quot;</span>
+0015 <span class="comment">%       button, or if the START method is called.</span>
+0016 <span class="comment">%    3) This widget does NOT plot the acquired data.</span>
+0017 <span class="comment">%    4) If the figure window is closed (or the gui.daqinput widget is</span>
+0018 <span class="comment">%       explicitly deleted), any ongoing data acquisition is stopped and</span>
+0019 <span class="comment">%       the acquisition hardware is reset.</span>
+0020 <span class="comment">%</span>
+0021 <span class="comment">%  Sample usage:</span>
+0022 <span class="comment">%    g = gui.autogui;</span>
+0023 <span class="comment">%    daq = gui.daqinput;</span>
+0024 <span class="comment">%    daq.AdaptorName = 'winsound';</span>
+0025 <span class="comment">%    % ...</span>
+0026 <span class="comment">%    while g.waitForInput()</span>
+0027 <span class="comment">%       info = daq.Value;</span>
+0028 <span class="comment">%       plot(info.time, info.data);</span>
+0029 <span class="comment">%    end</span>
+0030 <span class="comment">%    delete(daq); % stops acquisition and deletes the daq.daqinput object</span>
+0031 <span class="comment">%</span>
+0032 <span class="comment">%   Also see:</span>
+0033 <span class="comment">%    &lt;a href=&quot;matlab:help gui.daqinput.Value&quot;&gt;gui.daqinput.Value&lt;/a&gt;</span>
+0034 <span class="comment">%    &lt;a href=&quot;matlab:help gui.daqinput.start&quot;&gt;gui.daqinput.start&lt;/a&gt;</span>
+0035 <span class="comment">%    &lt;a href=&quot;matlab:help gui.stripchart&quot;&gt;gui.stripchart&lt;/a&gt;</span>
+0036 
+0037 <span class="comment">%   Copyright 2009 The MathWorks, Inc.</span>
+0038 
+0039 classdef (Sealed) <a href="daqinput.html" class="code" title="">daqinput</a> &lt; gui.widget
+0040 
+0041     properties (Dependent)
+0042         <span class="comment">% Value</span>
+0043         <span class="comment">%   A structure containing the most-recently acquired data.</span>
+0044         <span class="comment">%</span>
+0045         <span class="comment">%   The structure has two fields:</span>
+0046         <span class="comment">%    data - The acquired samples (a matrix of size BufferSize x N),</span>
+0047         <span class="comment">%          where N is the number of channels being sampled.</span>
+0048         <span class="comment">%    time - The acquisition time of each sample (a vector of length</span>
+0049         <span class="comment">%           BufferSize). The time is measured in seconds since the</span>
+0050         <span class="comment">%           start of the acquisition.</span>
+0051         <span class="comment">%</span>
+0052         <span class="comment">%   The gui.daqinput widget maintains an internal buffer (of length</span>
+0053         <span class="comment">%   BufferSize), and returns this as the Value. The internal buffer</span>
+0054         <span class="comment">%   is periodically updated with newly-acquired samples and the old</span>
+0055         <span class="comment">%   samples are overwritten. When this update occurs, the</span>
+0056         <span class="comment">%   ValueChangedFcn is invoked.</span>
+0057         <span class="comment">%</span>
+0058         <span class="comment">%  Consider the following code:</span>
+0059         <span class="comment">%        daq = gui.daqinput;</span>
+0060         <span class="comment">%        % ...</span>
+0061         <span class="comment">%        info1 = daq.Value;</span>
+0062         <span class="comment">%        pause(0.2);</span>
+0063         <span class="comment">%        info2 = daq.Value;</span>
+0064         <span class="comment">%  info1.data and info2.data will have the same length but not</span>
+0065         <span class="comment">%  the same numbers, since the internal buffer may have been</span>
+0066         <span class="comment">%  updated *one or more* times between the two calls. It is the</span>
+0067         <span class="comment">%  caller's responsibility to get the Value before data is lost.</span>
+0068         <span class="comment">%</span>
+0069         <span class="comment">%  Also see:</span>
+0070         <span class="comment">%    &lt;a href=&quot;matlab:help gui.daqinput.BufferSize&quot;&gt;BufferSize&lt;/a&gt; (property)</span>
+0071         <span class="comment">%    &lt;a href=&quot;matlab:help gui.daqinput.start&quot;&gt;start&lt;/a&gt; (method)</span>
+0072         <span class="comment">%    &lt;a href=&quot;matlab:help gui.stripchart&quot;&gt;gui.stripchart&lt;/a&gt;</span>
+0073         Value 
+0074     <span class="keyword">end</span>
+0075 
+0076     properties (Dependent, GetAccess=public, SetAccess=private)
+0077         <span class="comment">% Running</span>
+0078         <span class="comment">%   Indicates the state of the data acquisition.</span>
+0079         <span class="comment">%    true  =&gt; data acquisition engine is running</span>
+0080         <span class="comment">%    false =&gt; data acquisition is not configured or</span>
+0081         <span class="comment">%             has not been started.</span>
+0082         <span class="comment">%</span>
+0083         <span class="comment">%  Also see:</span>
+0084         <span class="comment">%    &lt;a href=&quot;matlab:help gui.daqinput.start&quot;&gt;start&lt;/a&gt; (method)</span>
+0085         <span class="comment">%    &lt;a href=&quot;matlab:help gui.daqinput.stop&quot;&gt;stop&lt;/a&gt; (method)</span>
+0086         Running
+0087     <span class="keyword">end</span>
+0088         
+0089     properties
+0090         <span class="comment">% AdaptorName</span>
+0091         <span class="comment">%   A string with the name of the adaptor to use for analog data</span>
+0092         <span class="comment">%   acquisition (supported adaptors are 'advantech', 'mcc',</span>
+0093         <span class="comment">%   'nidaq' and 'winsound'). If the user selects the adaptor using</span>
+0094         <span class="comment">%   the GUI, this property is automatically updated.</span>
+0095         <span class="comment">%</span>
+0096         <span class="comment">%   Sample usage:</span>
+0097         <span class="comment">%    daq = gui.daqinput;</span>
+0098         <span class="comment">%    daq.AdaptorName = 'winsound';</span>
+0099         <span class="comment">%</span>
+0100         <span class="comment">%  Also see:</span>
+0101         <span class="comment">%   &lt;a href=&quot;matlab:help daq/daqhwinfo&quot;&gt;daqhwinfo&lt;/a&gt;</span>
+0102         AdaptorName
+0103         
+0104         <span class="comment">% DeviceId</span>
+0105         <span class="comment">%   A string or number identifying the hardware device. If the user</span>
+0106         <span class="comment">%   selects the DeviceId using the GUI, this property is</span>
+0107         <span class="comment">%   automatically updated.</span>
+0108         <span class="comment">%</span>
+0109         <span class="comment">%   Sample usage:</span>
+0110         <span class="comment">%    daq = gui.daqinput;</span>
+0111         <span class="comment">%    daq.AdaptorName = 'winsound';</span>
+0112         <span class="comment">%    daq.DeviceId = 0;</span>
+0113         <span class="comment">%</span>
+0114         <span class="comment">%  Also see:</span>
+0115         <span class="comment">%   &lt;a href=&quot;matlab:help daq/daqhwinfo&quot;&gt;daqhwinfo&lt;/a&gt;</span>
+0116         DeviceId
+0117         
+0118         <span class="comment">% Channels</span>
+0119         <span class="comment">%   A vector of integers, identifying the channels to be sampled</span>
+0120         <span class="comment">%   from the hardware device. If the user selects the Channels</span>
+0121         <span class="comment">%   using the GUI, this property is automatically updated.</span>
+0122         <span class="comment">%</span>
+0123         <span class="comment">%   Sample usage:</span>
+0124         <span class="comment">%    daq = gui.daqinput;</span>
+0125         <span class="comment">%    daq.AdaptorName = 'winsound';</span>
+0126         <span class="comment">%    daq.DeviceId = 0;</span>
+0127         <span class="comment">%    daq.Channels = [1 2];</span>
+0128         Channels
+0129         
+0130         <span class="comment">% SampleRate</span>
+0131         <span class="comment">%   The sampling rate to be used (expressed as the number of</span>
+0132         <span class="comment">%   samples per second).</span>
+0133         <span class="comment">%</span>
+0134         <span class="comment">%   Sample usage:</span>
+0135         <span class="comment">%    daq = gui.daqinput;</span>
+0136         <span class="comment">%    daq.AdaptorName = 'winsound';</span>
+0137         <span class="comment">%    daq.SampleRate = 11025;</span>
+0138         SampleRate  
+0139         
+0140         <span class="comment">% BufferSize</span>
+0141         <span class="comment">%   The number of samples (per channel) that should be returned by</span>
+0142         <span class="comment">%   the Value property.</span>
+0143         <span class="comment">%</span>
+0144         <span class="comment">%   Example usage:</span>
+0145         <span class="comment">%    daq = gui.daqinput;</span>
+0146         <span class="comment">%    daq.BufferSize = 1024;</span>
+0147         <span class="comment">%</span>
+0148         <span class="comment">%  Also see:</span>
+0149         <span class="comment">%    &lt;a href=&quot;matlab:help gui.daqinput.Value&quot;&gt;Value&lt;/a&gt; (property)</span>
+0150         BufferSize
+0151     <span class="keyword">end</span>
+0152     
+0153     properties (Access=private)
+0154         AiObj = []
+0155         CurrentData 
+0156         CurrentDataTime
+0157         
+0158         UiTitle
+0159         UiConfigInfo
+0160         UiConfigButton
+0161         UiActionButton
+0162         
+0163         ConfigInfoWidth
+0164     <span class="keyword">end</span>
+0165         
+0166     methods
+0167         <a name="_sub0" href="#_subfunctions" class="code">function obj = daqinput(varargin)               </a>
+0168             obj = obj@gui.widget(varargin{:});
+0169             
+0170             color = obj.getParentUiColor();
+0171             
+0172             obj.UiHandle = gui.util.uiflowcontainer(<span class="string">'Parent'</span>,obj.ParentUiHandle, <span class="keyword">...</span>
+0173                 <span class="string">'units'</span>, <span class="string">'pixels'</span>, <span class="keyword">...</span>
+0174                 <span class="string">'BackgroundColor'</span>,color, <span class="keyword">...</span>
+0175                 <span class="string">'FlowDirection'</span>, <span class="string">'bottomup'</span>, <span class="keyword">...</span>
+0176                 <span class="string">'tag'</span>, <span class="string">'daqinput-uihandle'</span>, <span class="keyword">...</span>
+0177                 <span class="string">'Visible'</span>, <span class="string">'off'</span>, <span class="keyword">...</span>
+0178                 <span class="string">'DeleteFcn'</span>, @(h,e) <a href="#_sub2" class="code" title="subfunction delete(obj)">delete</a>(obj));   
+0179 
+0180             obj.UiActionButton = uicontrol(<span class="string">'Parent'</span>, obj.UiHandle, <span class="keyword">...</span>
+0181                 <span class="string">'style'</span>,<span class="string">'Pushbutton'</span>, <span class="keyword">...</span>
+0182                 <span class="string">'units'</span>, <span class="string">'pixels'</span>, <span class="keyword">...</span>
+0183                 <span class="string">'string'</span>, <span class="string">'Start'</span>, <span class="keyword">...</span>
+0184                 <span class="string">'Callback'</span>, @(h,e) <a href="#_sub17" class="code" title="subfunction startstopButtonCallback(obj)">startstopButtonCallback</a>(obj));
+0185 
+0186             obj.UiConfigButton = uicontrol(<span class="string">'Parent'</span>, obj.UiHandle, <span class="keyword">...</span>
+0187                 <span class="string">'style'</span>,<span class="string">'Pushbutton'</span>, <span class="keyword">...</span>
+0188                 <span class="string">'units'</span>, <span class="string">'pixels'</span>, <span class="keyword">...</span>
+0189                 <span class="string">'string'</span>, <span class="string">'Configure'</span>, <span class="keyword">...</span>
+0190                 <span class="string">'Callback'</span>, @(h,e) <a href="#_sub18" class="code" title="subfunction configButtonCallback(obj)">configButtonCallback</a>(obj));
+0191 
+0192             obj.UiConfigInfo = uicontrol(<span class="string">'Parent'</span>, obj.UiHandle, <span class="keyword">...</span>
+0193                 <span class="string">'style'</span>,<span class="string">'text'</span>, <span class="keyword">...</span>
+0194                 <span class="string">'units'</span>, <span class="string">'pixels'</span>, <span class="keyword">...</span>
+0195                 <span class="string">'string'</span>, {<span class="string">''</span>,<span class="string">''</span>}, <span class="keyword">...</span>
+0196                 <span class="string">'HorizontalAlignment'</span>, <span class="string">'Left'</span>, <span class="keyword">...</span>
+0197                 <span class="string">'FontAngle'</span>, <span class="string">'italic'</span>);
+0198                             
+0199             obj.UiTitle = uicontrol(<span class="string">'Parent'</span>, obj.UiHandle, <span class="keyword">...</span>
+0200                 <span class="string">'style'</span>,<span class="string">'text'</span>, <span class="keyword">...</span>
+0201                 <span class="string">'units'</span>, <span class="string">'pixels'</span>, <span class="keyword">...</span>
+0202                 <span class="string">'string'</span>, <span class="string">'Analog input'</span>, <span class="keyword">...</span>
+0203                 <span class="string">'HorizontalAlignment'</span>, <span class="string">'Left'</span>);           
+0204         
+0205             obj.AdaptorName = <span class="string">''</span>;
+0206             obj.DeviceId = <span class="string">'0'</span>;
+0207             obj.Channels = [1]; <span class="comment">%#ok&lt;NBRAK&gt;</span>
+0208             obj.SampleRate = 8000;
+0209             obj.BufferSize = 1024;
+0210             <span class="comment">% obj is the most derived class</span>
+0211             obj.Initialized = true;
+0212             obj.Visible = true;                        
+0213         <span class="keyword">end</span>
+0214         
+0215         <a name="_sub1" href="#_subfunctions" class="code">function delete(obj)       </a>
+0216             <span class="keyword">if</span> obj.Running
+0217                 <a href="#_sub12" class="code" title="subfunction stop(obj)">stop</a>(obj);
+0218             <span class="keyword">end</span>            
+0219             <a href="#_sub2" class="code" title="subfunction delete(obj)">delete</a>(obj.AiObj);
+0220         <span class="keyword">end</span>
+0221    
+0222     <span class="keyword">end</span>
+0223 
+0224     
+0225     methods
+0226         <span class="comment">% todo: add property (ConfigFile) to save &amp; load config info from.</span>
+0227         
+0228         <a name="_sub2" href="#_subfunctions" class="code">function set.BufferSize(obj, sz)</a>
+0229             <span class="keyword">if</span> ~(isnumeric(sz) &amp;&amp; isscalar(sz) &amp;&amp; isreal(sz) &amp;&amp; sz &gt; 0)
+0230                 throw(MException(<span class="string">'daqinput:InvalidBufferSize'</span>, <span class="string">'BufferSize should be a positive number'</span>));
+0231             <span class="keyword">end</span>
+0232             obj.BufferSize = round(sz);
+0233         <span class="keyword">end</span>
+0234                         
+0235         <a name="_sub3" href="#_subfunctions" class="code">function set.AdaptorName(obj,name)</a>
+0236             <span class="keyword">if</span> ~ischar(name) 
+0237                 throw(MException(<span class="string">'daqinput:InvalidAdaptorName'</span>, <span class="string">'Adaptor name should be a string'</span>));
+0238             <span class="keyword">end</span>
+0239             obj.AdaptorName = name;
+0240             <a href="#_sub21" class="code" title="subfunction clearAnalogInputObject(obj)">clearAnalogInputObject</a>(obj);
+0241             <a href="#_sub22" class="code" title="subfunction updateConfigString(obj)">updateConfigString</a>(obj);
+0242         <span class="keyword">end</span>
+0243                                
+0244         <a name="_sub4" href="#_subfunctions" class="code">function set.DeviceId(obj,id)</a>
+0245             <span class="keyword">if</span> ~(ischar(id) || (isnumeric(id) &amp;&amp; isscalar(id)))
+0246                 throw(MException(<span class="string">'daqinput:InvalidDeviceId'</span>, <span class="string">'DeviceID should be a string or a number'</span>));
+0247             <span class="keyword">end</span>
+0248             obj.DeviceId = id;
+0249             <a href="#_sub21" class="code" title="subfunction clearAnalogInputObject(obj)">clearAnalogInputObject</a>(obj);
+0250             <a href="#_sub22" class="code" title="subfunction updateConfigString(obj)">updateConfigString</a>(obj);
+0251         <span class="keyword">end</span>
+0252         
+0253         <a name="_sub5" href="#_subfunctions" class="code">function set.Channels(obj,c)</a>
+0254             <span class="keyword">if</span> ~(isnumeric(c) &amp;&amp; isvector(c))
+0255                 throw(MException(<span class="string">'daqinput:InvalidChannels'</span>, <span class="string">'Channels should be a list of channel numbers'</span>));
+0256             <span class="keyword">end</span>
+0257             obj.Channels = c;
+0258             <a href="#_sub21" class="code" title="subfunction clearAnalogInputObject(obj)">clearAnalogInputObject</a>(obj);
+0259             <a href="#_sub22" class="code" title="subfunction updateConfigString(obj)">updateConfigString</a>(obj);
+0260         <span class="keyword">end</span>
+0261         
+0262         <a name="_sub6" href="#_subfunctions" class="code">function set.SampleRate(obj,rate)</a>
+0263             <span class="keyword">if</span> ~(isnumeric(rate) &amp;&amp; isscalar(rate) &amp;&amp; isreal(rate) &amp;&amp; rate &gt; 0 &amp;&amp; fix(rate)==rate)
+0264                 throw(MException(<span class="string">'daqinput:InvalidChannels'</span>, <span class="string">'SampleRate should be a positive number'</span>));
+0265             <span class="keyword">end</span>            
+0266             <span class="keyword">if</span> ~isempty(obj.AiObj) &amp;&amp; isvalid(obj.AiObj)
+0267                 <a href="#_sub12" class="code" title="subfunction stop(obj)">stop</a>(obj);
+0268                 obj.SampleRate = setverify(obj.AiObj, <span class="string">'SampleRate'</span>, rate);
+0269             <span class="keyword">else</span>
+0270                 obj.SampleRate = rate;
+0271             <span class="keyword">end</span>
+0272             <a href="#_sub22" class="code" title="subfunction updateConfigString(obj)">updateConfigString</a>(obj);
+0273         <span class="keyword">end</span>
+0274         
+0275         <a name="_sub7" href="#_subfunctions" class="code">function set.Value(obj, val) </a><span class="comment">%#ok&lt;INUSD&gt;</span>
+0276             throw(MException(<span class="string">'daqinput:InvalidValue'</span>, <span class="string">'Value cannot be modified'</span>));
+0277         <span class="keyword">end</span>
+0278         
+0279         <a name="_sub8" href="#_subfunctions" class="code">function out = get.Value(obj)</a>
+0280             out = struct(<span class="string">'time'</span>, obj.CurrentDataTime, <span class="keyword">...</span>
+0281                          <span class="string">'data'</span>, obj.CurrentData);
+0282         <span class="keyword">end</span>            
+0283         
+0284         
+0285         <a name="_sub9" href="#_subfunctions" class="code">function out = get.Running(obj)</a>
+0286             out = ~isempty(obj.AiObj) &amp;&amp; <span class="keyword">...</span>
+0287                    isvalid(obj.AiObj) &amp;&amp; <span class="keyword">...</span>
+0288                    isrunning(obj.AiObj);
+0289         <span class="keyword">end</span>
+0290 
+0291         <a name="_sub10" href="#_subfunctions" class="code">function start(obj)</a>
+0292             <span class="comment">% start       gui.daqinput method</span>
+0293             <span class="comment">%</span>
+0294             <span class="comment">%   OBJ.start() starts the data acquisition engine for</span>
+0295             <span class="comment">%   gui.daqinput object OBJ (assuming that the acquisition</span>
+0296             <span class="comment">%   hardware is configured correctly). If the engine is already</span>
+0297             <span class="comment">%   running, this method has no effect.</span>
+0298             <span class="comment">%</span>
+0299             <span class="comment">%   Calling this method is equivalent to clicking on the</span>
+0300             <span class="comment">%   &quot;Start&quot; button on the widget.</span>
+0301             <span class="comment">%</span>
+0302             <span class="comment">%  Also see:</span>
+0303             <span class="comment">%    &lt;a href=&quot;matlab:help gui.daqinput.Running&quot;&gt;Running&lt;/a&gt; (property)</span>
+0304 
+0305             <span class="comment">% The UiActionButton is updated on StartFcn and StopFcn</span>
+0306             <span class="comment">% callbacks (so that it reflects any unanticipated stops)</span>
+0307             <span class="keyword">if</span> obj.Running, 
+0308                 <span class="keyword">return</span>;
+0309             <span class="keyword">end</span>            
+0310             <span class="keyword">if</span> isempty(obj.AiObj) || ~isvalid(obj.AiObj)
+0311                 <span class="keyword">try</span>
+0312                     <a href="#_sub13" class="code" title="subfunction initializeAnalogInput(obj)">initializeAnalogInput</a>(obj);
+0313                 <span class="keyword">catch</span> ME
+0314                     <span class="keyword">if</span> isa(obj.AiObj, <span class="string">'analoginput'</span>) &amp;&amp; isvalid(obj.AiObj)
+0315                         <a href="#_sub2" class="code" title="subfunction delete(obj)">delete</a>(obj.AiObj);
+0316                         obj.AiObj = [];
+0317                     <span class="keyword">end</span>
+0318                     errorString = {<span class="string">'Unable to create analog input object'</span>, <span class="keyword">...</span>
+0319                                     ME.message };
+0320                     errordlg(errorString, <span class="string">'Analog input'</span>, <span class="string">'modal'</span>);
+0321                     <span class="keyword">return</span>;
+0322                 <span class="keyword">end</span>
+0323             <span class="keyword">end</span>
+0324             <a href="#_sub11" class="code" title="subfunction start(obj)">start</a>(obj.AiObj); <span class="comment">% automatic trigger</span>
+0325         <span class="keyword">end</span>
+0326 
+0327         <a name="_sub11" href="#_subfunctions" class="code">function stop(obj)            </a>
+0328             <span class="comment">% stop       gui.daqinput method</span>
+0329             <span class="comment">%</span>
+0330             <span class="comment">%   OBJ.stop() stops the data acquisition engine for</span>
+0331             <span class="comment">%   gui.daqinput object OBJ. If the engine is already stopped,</span>
+0332             <span class="comment">%   this method has no effect.</span>
+0333             <span class="comment">%</span>
+0334             <span class="comment">%   Calling this method is equivalent to clicking on the</span>
+0335             <span class="comment">%   &quot;Stop&quot; button on the widget.</span>
+0336             <span class="comment">%</span>
+0337             <span class="comment">%  Also see:</span>
+0338             <span class="comment">%    &lt;a href=&quot;matlab:help gui.daqinput.Running&quot;&gt;Running&lt;/a&gt; (property)</span>
+0339             
+0340             <span class="keyword">if</span> ~obj.Running, 
+0341                 <span class="keyword">return</span>;
+0342             <span class="keyword">end</span>
+0343             <a href="#_sub12" class="code" title="subfunction stop(obj)">stop</a>(obj.AiObj);
+0344         <span class="keyword">end</span>
+0345         
+0346     <span class="keyword">end</span>
+0347     
+0348     methods(Access=private)
+0349         <span class="comment">% errors should be caught by caller</span>
+0350         <a name="_sub12" href="#_subfunctions" class="code">function initializeAnalogInput(obj)</a>
+0351             assert(isempty(obj.AiObj) || ~isvalid(obj.AiObj));
+0352             <span class="keyword">if</span> isempty(obj.AdaptorName) 
+0353                 throw(MException(<span class="string">'daqinput:InvalidConfiguration'</span>, <span class="keyword">...</span>
+0354                     <span class="string">'Adaptor name is not configured'</span>));                
+0355             <span class="keyword">end</span>
+0356             
+0357             <span class="comment">% Use a numeric device Id if possible, as it yields a more</span>
+0358             <span class="comment">% useful message in case of error</span>
+0359             devIdNum = str2double(obj.DeviceId);
+0360             <span class="keyword">if</span> ~isnan(devIdNum)
+0361                 obj.AiObj = analoginput(obj.AdaptorName, devIdNum);
+0362             <span class="keyword">else</span>
+0363                 obj.AiObj = analoginput(obj.AdaptorName, obj.DeviceId);
+0364             <span class="keyword">end</span>
+0365             set(obj.AiObj, <span class="string">'tag'</span>, <span class="string">'gui.daqinput'</span>);
+0366             addchannel(obj.AiObj, obj.Channels);
+0367             obj.SampleRate = setverify(obj.AiObj, <span class="string">'SampleRate'</span>, obj.SampleRate);
+0368             
+0369             set(obj.AiObj, <span class="string">'SamplesPerTrigger'</span>, inf);
+0370             set(obj.AiObj, <span class="string">'SamplesAcquiredFcnCount'</span>, obj.BufferSize, <span class="keyword">...</span>
+0371                            <span class="string">'SamplesAcquiredFcn'</span>, @(h,e) <a href="#_sub16" class="code" title="subfunction localDaqGetData(obj)">localDaqGetData</a>(obj), <span class="keyword">...</span>
+0372                            <span class="string">'StartFcn'</span>, @(h,e) <a href="#_sub14" class="code" title="subfunction updateAiStatus(obj, acqStarting)">updateAiStatus</a>(obj,true), <span class="keyword">...</span>
+0373                            <span class="string">'StopFcn'</span>, @(h,e) <a href="#_sub14" class="code" title="subfunction updateAiStatus(obj, acqStarting)">updateAiStatus</a>(obj,false), <span class="keyword">...</span>
+0374                            <span class="string">'RuntimeErrorFcn'</span>, @(h,e) <a href="#_sub15" class="code" title="subfunction localDaqErrorFcn(obj, event) ">localDaqErrorFcn</a>(obj,e));
+0375 
+0376             obj.CurrentData = zeros(obj.BufferSize,1);
+0377             obj.CurrentDataTime = zeros(obj.BufferSize,1);
+0378         <span class="keyword">end</span>
+0379        
+0380     <span class="keyword">end</span>
+0381 
+0382     methods(Hidden)
+0383         
+0384         <a name="_sub13" href="#_subfunctions" class="code">function updateAiStatus(obj, acqStarting)</a>
+0385             <span class="keyword">if</span> acqStarting
+0386                 set(obj.UiActionButton, <span class="string">'String'</span>, <span class="string">'Stop'</span>);
+0387             <span class="keyword">else</span>
+0388                 set(obj.UiActionButton, <span class="string">'String'</span>, <span class="string">'Start'</span>);
+0389             <span class="keyword">end</span>                
+0390         <span class="keyword">end</span>
+0391         
+0392         <span class="comment">% invoked whenever there is a runtime error in the data acquisition</span>
+0393         <span class="comment">% (the default handler for this is daqcallback.m).</span>
+0394         <a name="_sub14" href="#_subfunctions" class="code">function localDaqErrorFcn(obj, event) </a><span class="comment">%#ok&lt;INUSL&gt;</span>
+0395             msg = sprintf(<span class="string">'%s event occurred during the data acquisition'</span>, event.Type);
+0396             errordlg(msg, <span class="string">'Analog input'</span>, <span class="string">'modal'</span>);
+0397         <span class="keyword">end</span>
+0398         
+0399         <a name="_sub15" href="#_subfunctions" class="code">function localDaqGetData(obj)</a>
+0400             n = get(obj.AiObj, <span class="string">'SamplesAvailable'</span>);
+0401             <span class="keyword">if</span> n &lt; obj.BufferSize, <span class="keyword">return</span>; <span class="keyword">end</span>
+0402             <span class="comment">% obj.CurrentData will have multiple columns if # of channels &gt; 1</span>
+0403             [obj.CurrentData, obj.CurrentDataTime] = getdata(obj.AiObj, obj.BufferSize);
+0404             notify(obj, <span class="string">'ValueChanged'</span>);
+0405         <span class="keyword">end</span>
+0406         
+0407         
+0408         <a name="_sub16" href="#_subfunctions" class="code">function startstopButtonCallback(obj)</a>
+0409             <span class="keyword">if</span> ~obj.Running
+0410                 <a href="#_sub11" class="code" title="subfunction start(obj)">start</a>(obj);                
+0411             <span class="keyword">else</span>
+0412                 <a href="#_sub12" class="code" title="subfunction stop(obj)">stop</a>(obj);
+0413             <span class="keyword">end</span>
+0414         <span class="keyword">end</span>
+0415         
+0416         <a name="_sub17" href="#_subfunctions" class="code">function configButtonCallback(obj)</a>
+0417             currentConfig = struct(<span class="string">'adaptor'</span>, obj.AdaptorName, <span class="keyword">...</span>
+0418                                    <span class="string">'boardId'</span>, obj.DeviceId, <span class="keyword">...</span>
+0419                                    <span class="string">'channels'</span>, obj.Channels, <span class="keyword">...</span>
+0420                                    <span class="string">'sampleRate'</span>, obj.SampleRate);
+0421             newConfig = guiGetDaqInputParams(currentConfig);
+0422             <span class="keyword">if</span> ~isempty(newConfig)
+0423                obj.AdaptorName = newConfig.adaptor;
+0424                obj.DeviceId = newConfig.boardId;
+0425                obj.Channels = newConfig.channels;
+0426                obj.SampleRate = newConfig.sampleRate;
+0427             <span class="keyword">end</span>
+0428         <span class="keyword">end</span>        
+0429     <span class="keyword">end</span>
+0430     
+0431     methods(Access=protected)
+0432         <a name="_sub18" href="#_subfunctions" class="code">function initNotify(obj)</a>
+0433             [width,totalHeight] = <a href="#_sub23" class="code" title="subfunction [width,totalHeight] = updateSize(obj, newwidth)">updateSize</a>(obj);
+0434             obj.Position = struct(<span class="string">'width'</span>, width, <span class="string">'height'</span>, totalHeight);       
+0435             
+0436             <span class="keyword">if</span> ~license(<span class="string">'test'</span>,<span class="string">'Data_Acq_Toolbox'</span>)
+0437                 warning(<span class="string">'daqinput:MissingDataAcqToolbox'</span>, <span class="keyword">...</span>
+0438                     <span class="string">'This demo requires the Data Acquisition Toolbox'</span>);
+0439             <span class="keyword">end</span>
+0440             
+0441         <span class="keyword">end</span>
+0442         
+0443         <span class="comment">% called after position is changed</span>
+0444         <span class="comment">% pos is [x y w h] the new position.</span>
+0445         <span class="comment">% nan's indicate default (unmodified) values</span>
+0446         <a name="_sub19" href="#_subfunctions" class="code">function postPositionChange(obj, pos)   </a><span class="comment">%#ok&lt;INUSD&gt;</span>
+0447             <span class="keyword">if</span> ~isnan(pos(3))
+0448                 <span class="comment">% the -5 is a fudge factor to clean up edges</span>
+0449                 <a href="#_sub23" class="code" title="subfunction [width,totalHeight] = updateSize(obj, newwidth)">updateSize</a>(obj, pos(3)-5);
+0450                 <span class="comment">% there is no simple way to get from pixel size of the</span>
+0451                 <span class="comment">% uicontrol to number of characters (the 'characters' units</span>
+0452                 <span class="comment">% does a fixed scaling and ignores fontsize; the 'extent'</span>
+0453                 <span class="comment">% property says how big the uicontrol must be to fit the</span>
+0454                 <span class="comment">% text but not how big the text can be to fit the</span>
+0455                 <span class="comment">% uicontrol). So use a default scaling.</span>
+0456                 pixelsPerCharWidth = 7;
+0457                 obj.ConfigInfoWidth = floor(pos(3)/pixelsPerCharWidth);
+0458                 <a href="#_sub22" class="code" title="subfunction updateConfigString(obj)">updateConfigString</a>(obj);
+0459             <span class="keyword">end</span>
+0460         <span class="keyword">end</span>        
+0461     <span class="keyword">end</span>
+0462     
+0463     methods(Access=private)
+0464         <a name="_sub20" href="#_subfunctions" class="code">function clearAnalogInputObject(obj)</a>
+0465             <span class="keyword">if</span> ~isempty(obj.AiObj)
+0466                 <span class="keyword">if</span> obj.Running
+0467                     <a href="#_sub12" class="code" title="subfunction stop(obj)">stop</a>(obj);
+0468                 <span class="keyword">end</span>
+0469                 <a href="#_sub2" class="code" title="subfunction delete(obj)">delete</a>(obj.AiObj);
+0470                 obj.AiObj = [];
+0471             <span class="keyword">end</span>
+0472         <span class="keyword">end</span>
+0473         
+0474         <a name="_sub21" href="#_subfunctions" class="code">function updateConfigString(obj)</a>
+0475             <span class="keyword">switch</span> numel(obj.Channels)
+0476                 <span class="keyword">case</span> 0, channelStr = <span class="string">'No channels'</span>;
+0477                 <span class="keyword">case</span> 1, channelStr = [<span class="string">'channel '</span> num2str(obj.Channels)];
+0478                 <span class="keyword">otherwise</span>                    
+0479                     channelLst = sprintf(<span class="string">'%d,'</span>,obj.Channels);
+0480                     channelStr = [<span class="string">'channels '</span> channelLst(1:end-1)];
+0481             <span class="keyword">end</span>
+0482             
+0483             <span class="keyword">if</span> isempty(obj.AdaptorName)
+0484                 row1 = <span class="string">'No adaptor'</span>;
+0485             <span class="keyword">else</span>
+0486                 <span class="keyword">if</span> isnumeric(obj.DeviceId)
+0487                     deviceIdStr = num2str(obj.DeviceId);
+0488                 <span class="keyword">else</span>
+0489                     deviceIdStr = obj.DeviceId;
+0490                 <span class="keyword">end</span>                
+0491                 row1 = sprintf(<span class="string">'Adaptor %s (%s)'</span>, obj.AdaptorName, deviceIdStr); 
+0492             <span class="keyword">end</span>
+0493             
+0494             row2 = sprintf(<span class="string">'%s at %d Hz'</span>, channelStr, obj.SampleRate);
+0495             set(obj.UiConfigInfo, <span class="string">'string'</span>, <span class="keyword">...</span>
+0496                 {<a href="#_sub24" class="code" title="subfunction out = trimString(s, maxlen)">trimString</a>(row1,obj.ConfigInfoWidth), <span class="keyword">...</span>
+0497                  <a href="#_sub24" class="code" title="subfunction out = trimString(s, maxlen)">trimString</a>(row2,obj.ConfigInfoWidth)});
+0498         <span class="keyword">end</span>
+0499         
+0500         <a name="_sub22" href="#_subfunctions" class="code">function [width,totalHeight] = updateSize(obj, newwidth)</a>
+0501             titleExtent = get(obj.UiTitle,<span class="string">'Extent'</span>); <span class="comment">% x y w h</span>
+0502             configInfoExtent = get(obj.UiConfigInfo, <span class="string">'Extent'</span>);             
+0503             configExtent = get(obj.UiConfigButton,<span class="string">'Extent'</span>); <span class="comment">% x y w h</span>
+0504 
+0505             <span class="keyword">if</span> exist(<span class="string">'newwidth'</span>,<span class="string">'var'</span>) &amp;&amp; newwidth &gt; 0
+0506                 width = newwidth;
+0507             <span class="keyword">else</span>
+0508                 width = max([titleExtent(3) configInfoExtent(3) configExtent(3)]) + 10;
+0509             <span class="keyword">end</span>
+0510             
+0511             totalHeight = titleExtent(4) + configInfoExtent(4) + 2*configExtent(4) + 20;
+0512             
+0513             set(obj.UiTitle, <span class="string">'HeightLimits'</span>, titleExtent([4 4]), <span class="keyword">...</span>
+0514                              <span class="string">'WidthLimits'</span>,  width([1 1]));
+0515 
+0516             set(obj.UiConfigInfo, <span class="string">'HeightLimits'</span>, configInfoExtent([4 4]), <span class="keyword">...</span>
+0517                                   <span class="string">'WidthLimits'</span>,  width([1 1]));
+0518                                          
+0519             set(obj.UiConfigButton, <span class="string">'HeightLimits'</span>, configExtent([4 4]), <span class="keyword">...</span>
+0520                                     <span class="string">'WidthLimits'</span>,  width([1 1]));
+0521                                 
+0522             set(obj.UiActionButton, <span class="string">'HeightLimits'</span>, configExtent([4 4]), <span class="keyword">...</span>
+0523                                     <span class="string">'WidthLimits'</span>,  width([1 1]));
+0524         <span class="keyword">end</span>
+0525         
+0526     <span class="keyword">end</span>
+0527     
+0528 <span class="keyword">end</span>
+0529 
+0530 <a name="_sub23" href="#_subfunctions" class="code">function out = trimString(s, maxlen)</a>
+0531 <span class="keyword">if</span> numel(s) &gt; maxlen 
+0532     <span class="keyword">if</span> maxlen &lt; 3
+0533         out = s(1:maxlen);
+0534     <span class="keyword">else</span>
+0535         out = [s(1:maxlen-2) <span class="string">'..'</span>];
+0536     <span class="keyword">end</span>
+0537 <span class="keyword">else</span>
+0538     out = s;
+0539 <span class="keyword">end</span>
+0540 <span class="keyword">end</span>
+0541</pre></div>
+<hr><address>Generated on Thu 07-Aug-2014 13:40:59 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

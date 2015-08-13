@@ -1,0 +1,199 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of labeleduicontrol</title>
+  <meta name="keywords" content="labeleduicontrol">
+  <meta name="description" content="gui.labeleduicontrol">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../../index.html">Home</a> &gt;  <a href="../index.html">NetfluxSC_09b</a> &gt; <a href="index.html">+gui</a> &gt; labeleduicontrol.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../../index.html"><img alt="<" border="0" src="../../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for NetfluxSC_09b\+gui&nbsp;<img alt=">" border="0" src="../../right.png"></a></td></tr></table>-->
+
+<h1>labeleduicontrol
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="box"><strong>gui.labeleduicontrol</strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="box"><strong>This is a script file. </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="fragment"><pre class="comment"> gui.labeleduicontrol
+
+   An abstract class for widgets with a text label and a HG uicontrol.</pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../../matlabicon.gif)">
+<li><a href="labeleduicontrol.html" class="code" title="">labeleduicontrol</a>	gui.labeleduicontrol</li></ul>
+This function is called by:
+<ul style="list-style-image:url(../../matlabicon.gif)">
+<li><a href="labeleduicontrol.html" class="code" title="">labeleduicontrol</a>	gui.labeleduicontrol</li></ul>
+<!-- crossreference -->
+
+<h2><a name="_subfunctions"></a>SUBFUNCTIONS <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<ul style="list-style-image:url(../../matlabicon.gif)">
+<li><a href="#_sub1" class="code">function obj = labeleduicontrol(style,labelStr,varargin)</a></li><li><a href="#_sub2" class="code">function set.Enable(obj,makeEnable)</a></li><li><a href="#_sub3" class="code">function out = get.Enable(obj)</a></li><li><a href="#_sub4" class="code">function initNotify(obj)</a></li><li><a href="#_sub5" class="code">function postLabelLocationChange(obj, labelLoc)</a></li><li><a href="#_sub6" class="code">function postPositionChange(obj, pos)</a></li><li><a href="#_sub7" class="code">function uicontrolCallback(obj)</a></li></ul>
+
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="fragment"><pre>0001 <span class="comment">% gui.labeleduicontrol</span>
+0002 <span class="comment">%</span>
+0003 <span class="comment">%   An abstract class for widgets with a text label and a HG uicontrol.</span>
+0004 
+0005 <span class="comment">%   Copyright 2009 The MathWorks, Inc.</span>
+0006 
+0007 classdef <a href="labeleduicontrol.html" class="code" title="">labeleduicontrol</a> &lt; gui.labeledwidget
+0008 
+0009     properties (Dependent, SetObservable)
+0010         <span class="comment">%</span>
+0011         <span class="comment">% Enable - Specifies whether the widget is active or not.</span>
+0012         <span class="comment">%</span>
+0013         <span class="comment">%   Enable is a boolean property (true/false).</span>
+0014         <span class="comment">%    true =&gt; user can modify the state of the widget</span>
+0015         <span class="comment">%           (e.g., enter text into a field, move a slider)</span>
+0016         <span class="comment">%    false =&gt; the widget is &quot;grayed out&quot; and cannot be modified.</span>
+0017         <span class="comment">%</span>
+0018         <span class="comment">%   Sample usage:</span>
+0019         <span class="comment">%    w = gui.slider;</span>
+0020         <span class="comment">%    w.Enable = false;</span>
+0021         Enable        
+0022     <span class="keyword">end</span>
+0023 
+0024     properties (Access=protected)
+0025         UiControl = []
+0026     <span class="keyword">end</span>
+0027     
+0028     <span class="comment">% Main Constructor/Destructor</span>
+0029     methods
+0030         <a name="_sub0" href="#_subfunctions" class="code">function obj = labeleduicontrol(style,labelStr,varargin)</a>
+0031 
+0032             <span class="keyword">if</span> ~exist(<span class="string">'labelStr'</span>,<span class="string">'var'</span>)
+0033                 labelStr = style;
+0034             <span class="keyword">end</span>
+0035 
+0036             obj = obj@gui.labeledwidget(labelStr,varargin{:});
+0037             <span class="comment">% assert is not JIT-ed</span>
+0038             <span class="comment">% assert(~obj.Initialized &amp;&amp; ~obj.Visible);</span>
+0039             
+0040             color = obj.getParentUiColor();
+0041                 
+0042             obj.UiControl = uicontrol( <span class="string">'Style'</span>,style,<span class="string">'Parent'</span>,obj.UiHandle,<span class="keyword">...</span>
+0043                 <span class="string">'BackgroundColor'</span>,color,<span class="keyword">...</span>
+0044                 <span class="string">'units'</span>, <span class="string">'pixels'</span>, <span class="keyword">...</span><span class="comment">                </span>
+0045                 <span class="string">'HorizontalAlignment'</span>, <span class="string">'Left'</span>, <span class="keyword">...</span><span class="comment">                </span>
+0046                 <span class="string">'HandleVisibility'</span>, <span class="string">'off'</span>, <span class="keyword">...</span>
+0047                 <span class="string">'String'</span>, {<span class="string">' '</span>}, <span class="keyword">...</span><span class="comment"> % dummy initial value</span>
+0048                 <span class="string">'tag'</span>, <span class="string">'labeleduicontrol-uicontrol'</span>, <span class="keyword">...</span>
+0049                 <span class="string">'callback'</span>, @(h,e) <a href="#_sub7" class="code" title="subfunction uicontrolCallback(obj)">uicontrolCallback</a>(obj));
+0050             
+0051             <span class="comment">% assume UiHandle is a uiflowcontainer</span>
+0052             <span class="comment">% assert(strcmp(get(obj.UiHandle,'type'), 'uiflowcontainer'));</span>
+0053         <span class="keyword">end</span>
+0054 
+0055     <span class="keyword">end</span>
+0056 
+0057     <span class="comment">% Interface for properties</span>
+0058     methods
+0059 
+0060         <a name="_sub1" href="#_subfunctions" class="code">function set.Enable(obj,makeEnable)</a>
+0061             <span class="keyword">if</span> makeEnable
+0062                 set(obj.UiControl,<span class="string">'Enable'</span>,<span class="string">'on'</span>);
+0063             <span class="keyword">else</span>
+0064                 set(obj.UiControl,<span class="string">'Enable'</span>,<span class="string">'off'</span>);
+0065             <span class="keyword">end</span>
+0066         <span class="keyword">end</span>
+0067         
+0068         <a name="_sub2" href="#_subfunctions" class="code">function out = get.Enable(obj)</a>
+0069             out = strcmp(get(obj.UiControl,<span class="string">'Enable'</span>), <span class="string">'on'</span>);
+0070         <span class="keyword">end</span>
+0071         
+0072     <span class="keyword">end</span>
+0073 
+0074     
+0075     methods(Access=protected)
+0076         
+0077         <span class="comment">% called upon initialization</span>
+0078         <a name="_sub3" href="#_subfunctions" class="code">function initNotify(obj)</a>
+0079             <a href="#_sub4" class="code" title="subfunction initNotify(obj)">initNotify</a>@gui.labeledwidget(obj);
+0080             
+0081             <span class="comment">% set the initial size for the widget</span>
+0082             <span class="comment">% for defaults, assume uicontrol is same size as UiLabel</span>
+0083             labelSize = get(obj.UiLabel, <span class="string">'Extent'</span>); <span class="comment">% [0 0 width height]</span>
+0084             obj.Position = struct(<span class="string">'width'</span>,  ceil(1.5*labelSize(3)), <span class="keyword">...</span>
+0085                                   <span class="string">'height'</span>, 2*ceil(1.1*labelSize(4)) );
+0086             
+0087             obj.LabelLocation = <span class="string">'above'</span>;
+0088         <span class="keyword">end</span>
+0089                 
+0090         
+0091         <span class="comment">% override method</span>
+0092         <a name="_sub4" href="#_subfunctions" class="code">function postLabelLocationChange(obj, labelLoc)</a>
+0093             uiControlHeight = gui.util.uiposition.getHeightInFlow(obj.UiControl);            
+0094             uiLabelHeight = gui.util.uiposition.getHeightInFlow(obj.UiControl);
+0095             
+0096             <span class="keyword">switch</span> labelLoc
+0097                 <span class="keyword">case</span> <span class="string">'none'</span>
+0098                     obj.setPositionHeight( uiControlHeight );
+0099                 <span class="keyword">case</span> {<span class="string">'above'</span>,<span class="string">'below'</span>}
+0100                     obj.setPositionHeight( uiLabelHeight + uiControlHeight );
+0101                 <span class="keyword">case</span> {<span class="string">'left'</span>, <span class="string">'right'</span>}
+0102                     obj.setPositionHeight( max(uiLabelHeight, uiControlHeight) );
+0103             <span class="keyword">end</span>
+0104         <span class="keyword">end</span>
+0105 
+0106         <span class="comment">% override method</span>
+0107         <span class="comment">% pos is a vector [x y w h]</span>
+0108         <a name="_sub5" href="#_subfunctions" class="code">function postPositionChange(obj, pos) </a><span class="comment">%#ok&lt;DEFNU&gt;</span>
+0109             
+0110             nans = isnan(pos(3:4));
+0111             <span class="keyword">if</span> all(nans), <span class="keyword">return</span>; <span class="keyword">end</span>
+0112             <span class="keyword">if</span> nans(1)
+0113                 pos(3) = obj.getPositionWidth();
+0114             <span class="keyword">end</span>
+0115             <span class="keyword">if</span> nans(2)
+0116                 pos(4) = obj.getPositionHeight();
+0117             <span class="keyword">end</span>
+0118             w = pos(3); h = pos(4);
+0119             <span class="keyword">switch</span> obj.LabelLocation
+0120                 <span class="keyword">case</span> <span class="string">'none'</span>
+0121                     labelpos = [];                    
+0122                     ctrlpos = [round(0.95 * w)  round(0.95 * h)];
+0123                 <span class="keyword">case</span> {<span class="string">'above'</span>,<span class="string">'below'</span>}
+0124                     labelpos = [round(0.95 * w) round(0.45 * h)];
+0125                     ctrlpos =  [round(0.95 * w) round(0.55 * h)];
+0126                 <span class="keyword">case</span> {<span class="string">'left'</span>, <span class="string">'right'</span>}
+0127                     labelpos = [round(0.55 * w) round(0.90 * h)];
+0128                     ctrlpos =  [round(0.40 * w) round(0.90 * h)];
+0129             <span class="keyword">end</span>
+0130             
+0131             <span class="comment">% we know UiControl and UiLabel are in a flowcontainer</span>
+0132             gui.util.uiposition.setSizeInFlow(obj.UiControl, ctrlpos);            
+0133             <span class="keyword">if</span> ~isempty(labelpos)
+0134                 gui.util.uiposition.setSizeInFlow(obj.UiLabel, labelpos);
+0135             <span class="keyword">end</span>            
+0136         <span class="keyword">end</span>
+0137             
+0138             
+0139     <span class="keyword">end</span>
+0140     
+0141     methods (Hidden)
+0142         <span class="comment">% obj can be overriden by a subclass</span>
+0143         <a name="_sub6" href="#_subfunctions" class="code">function uicontrolCallback(obj)</a>
+0144             notify(obj, <span class="string">'ValueChanged'</span>);
+0145         <span class="keyword">end</span>
+0146     <span class="keyword">end</span>
+0147 
+0148 <span class="keyword">end</span></pre></div>
+<hr><address>Generated on Thu 07-Aug-2014 13:40:59 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

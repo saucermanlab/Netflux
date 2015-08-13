@@ -1,0 +1,168 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of checkbox</title>
+  <meta name="keywords" content="checkbox">
+  <meta name="description" content="gui.checkbox">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../../index.html">Home</a> &gt;  <a href="../index.html">NetfluxSC_09b</a> &gt; <a href="index.html">+gui</a> &gt; checkbox.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../../index.html"><img alt="<" border="0" src="../../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for NetfluxSC_09b\+gui&nbsp;<img alt=">" border="0" src="../../right.png"></a></td></tr></table>-->
+
+<h1>checkbox
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="box"><strong>gui.checkbox</strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="box"><strong>This is a script file. </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="fragment"><pre class="comment"> gui.checkbox
+    A checkbox widget that be toggled on or off.
+
+    W = gui.checkbox creates a checkbox widget and adds it to
+    the current autogui (if there is no current autogui, one
+    is created).
+
+    W = gui.checkbox(M) creates a checkbox widget with the
+    label string M.
+
+    W = gui.checkbox(M,G) creates a checkbox widget with the
+    label string M, and adds it to the gui container G.
+
+  Sample usage:
+     g = gui.autogui;
+    w1 = gui.checkbox;
+    w2 = gui.checkbox('Apply preemphasis');
+    w3 = gui.checkbox('Apply preemphasis',g);
+
+  Also see: 
+   &lt;a href=&quot;matlab:help gui.checkbox.Value&quot;&gt;gui.checkbox.Value&lt;/a&gt;
+   &lt;a href=&quot;matlab:help gui.togglebutton&quot;&gt;gui.togglebutton&lt;/a&gt;</pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../../matlabicon.gif)">
+<li><a href="checkbox.html" class="code" title="">checkbox</a>	gui.checkbox</li></ul>
+This function is called by:
+<ul style="list-style-image:url(../../matlabicon.gif)">
+<li><a href="checkbox.html" class="code" title="">checkbox</a>	gui.checkbox</li></ul>
+<!-- crossreference -->
+
+<h2><a name="_subfunctions"></a>SUBFUNCTIONS <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<ul style="list-style-image:url(../../matlabicon.gif)">
+<li><a href="#_sub1" class="code">function obj = checkbox(labelStr, varargin)</a></li><li><a href="#_sub2" class="code">function set.Value(obj , val)</a></li><li><a href="#_sub3" class="code">function out = get.Value(obj)</a></li><li><a href="#_sub4" class="code">function initNotify(obj)</a></li><li><a href="#_sub5" class="code">function postLabelChange(obj, str)</a></li><li><a href="#_sub6" class="code">function uicontrolCallback(obj)</a></li></ul>
+
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="fragment"><pre>0001 <span class="comment">% gui.checkbox</span>
+0002 <span class="comment">%    A checkbox widget that be toggled on or off.</span>
+0003 <span class="comment">%</span>
+0004 <span class="comment">%    W = gui.checkbox creates a checkbox widget and adds it to</span>
+0005 <span class="comment">%    the current autogui (if there is no current autogui, one</span>
+0006 <span class="comment">%    is created).</span>
+0007 <span class="comment">%</span>
+0008 <span class="comment">%    W = gui.checkbox(M) creates a checkbox widget with the</span>
+0009 <span class="comment">%    label string M.</span>
+0010 <span class="comment">%</span>
+0011 <span class="comment">%    W = gui.checkbox(M,G) creates a checkbox widget with the</span>
+0012 <span class="comment">%    label string M, and adds it to the gui container G.</span>
+0013 <span class="comment">%</span>
+0014 <span class="comment">%  Sample usage:</span>
+0015 <span class="comment">%     g = gui.autogui;</span>
+0016 <span class="comment">%    w1 = gui.checkbox;</span>
+0017 <span class="comment">%    w2 = gui.checkbox('Apply preemphasis');</span>
+0018 <span class="comment">%    w3 = gui.checkbox('Apply preemphasis',g);</span>
+0019 <span class="comment">%</span>
+0020 <span class="comment">%  Also see:</span>
+0021 <span class="comment">%   &lt;a href=&quot;matlab:help gui.checkbox.Value&quot;&gt;gui.checkbox.Value&lt;/a&gt;</span>
+0022 <span class="comment">%   &lt;a href=&quot;matlab:help gui.togglebutton&quot;&gt;gui.togglebutton&lt;/a&gt;</span>
+0023 
+0024 <span class="comment">%   Copyright 2009 The MathWorks, Inc.</span>
+0025 
+0026 classdef (Sealed) <a href="checkbox.html" class="code" title="">checkbox</a> &lt; gui.labeleduicontrol
+0027 
+0028     properties(Dependent)
+0029         <span class="comment">% Value</span>
+0030         <span class="comment">%   A boolean indicating the state of the checkbox.</span>
+0031         <span class="comment">%     true =&gt; box is checked</span>
+0032         <span class="comment">%     false =&gt; box is unchecked.</span>
+0033         <span class="comment">%</span>
+0034         <span class="comment">%   Sample usage:</span>
+0035         <span class="comment">%    s = gui.checkbox('Prefilter the signal');</span>
+0036         <span class="comment">%    if s.Value % get the value</span>
+0037         <span class="comment">%       % ...</span>
+0038         <span class="comment">%    end</span>
+0039         <span class="comment">%    s.Value = false;  % clear the checkbox</span>
+0040         Value 
+0041     <span class="keyword">end</span>
+0042     
+0043     methods
+0044         
+0045         <a name="_sub0" href="#_subfunctions" class="code">function obj = checkbox(labelStr, varargin)</a>
+0046 
+0047             <span class="keyword">if</span> ~exist(<span class="string">'labelStr'</span>, <span class="string">'var'</span>)
+0048                 labelStr = <span class="string">'Checkbox'</span>;
+0049             <span class="keyword">end</span>
+0050             
+0051             obj = obj@gui.labeleduicontrol(<span class="string">'checkbox'</span>,labelStr,varargin{:});
+0052             <span class="comment">% assert(~obj.Initialized &amp;&amp; ~obj.Visible);</span>
+0053             
+0054             obj.Initialized = true;
+0055             obj.Visible = true;            
+0056         <span class="keyword">end</span>
+0057         
+0058     <span class="keyword">end</span>
+0059 
+0060     methods
+0061         
+0062         <a name="_sub1" href="#_subfunctions" class="code">function set.Value(obj , val)</a>
+0063             <span class="keyword">if</span> islogical(val) || (isscalar(val) &amp;&amp; isnumeric(val) &amp;&amp; isreal(val))
+0064                 set(obj.UiControl,<span class="string">'Value'</span>, logical(val));
+0065             <span class="keyword">else</span>
+0066                 throw(MException(<span class="string">'checkbox:InvalidValue'</span>, <span class="string">'Value should be true(1) or false(0)'</span>));
+0067             <span class="keyword">end</span>
+0068             notify(obj, <span class="string">'ValueChanged'</span>);
+0069         <span class="keyword">end</span>
+0070         
+0071         <a name="_sub2" href="#_subfunctions" class="code">function out = get.Value(obj)</a>
+0072             out = logical(get(obj.UiControl, <span class="string">'Value'</span>));
+0073         <span class="keyword">end</span>
+0074     <span class="keyword">end</span>
+0075         
+0076         
+0077     methods(Access=protected)
+0078         <span class="comment">% override</span>
+0079         <a name="_sub3" href="#_subfunctions" class="code">function initNotify(obj)</a>
+0080             <a href="#_sub4" class="code" title="subfunction initNotify(obj)">initNotify</a>@gui.labeleduicontrol(obj);
+0081             set(obj.UiControl, <span class="string">'String'</span>, get(obj.UiLabel,<span class="string">'String'</span>));
+0082             obj.LabelLocation = <span class="string">'none'</span>;            
+0083         <span class="keyword">end</span>
+0084         
+0085         <span class="comment">% override</span>
+0086         <a name="_sub4" href="#_subfunctions" class="code">function postLabelChange(obj, str)</a>
+0087             set(obj.UiControl, <span class="string">'String'</span>, str);
+0088         <span class="keyword">end</span>        
+0089     <span class="keyword">end</span>
+0090     
+0091     methods(Hidden)
+0092         <a name="_sub5" href="#_subfunctions" class="code">function uicontrolCallback(obj)</a>
+0093             notify(obj, <span class="string">'ValueChanged'</span>);
+0094         <span class="keyword">end</span>        
+0095     <span class="keyword">end</span>
+0096     
+0097 <span class="keyword">end</span>
+0098</pre></div>
+<hr><address>Generated on Thu 07-Aug-2014 13:40:59 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of sbml2sif</title>
+  <meta name="keywords" content="sbml2sif">
+  <meta name="description" content="Converts an SBML-QUAL file to a Netflux Excel file.">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../../index.html">Home</a> &gt;  <a href="../index.html">NetfluxSC_09b</a> &gt; <a href="index.html">+util</a> &gt; sbml2sif.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../../index.html"><img alt="<" border="0" src="../../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for NetfluxSC_09b\+util&nbsp;<img alt=">" border="0" src="../../right.png"></a></td></tr></table>-->
+
+<h1>sbml2sif
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="box"><strong>Converts an SBML-QUAL file to a Netflux Excel file.</strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="box"><strong>function outputfname = sbml2sif(sbmlfname,dirname) </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="fragment"><pre class="comment"> Converts an SBML-QUAL file to a Netflux Excel file. 
+   
+   outputfname = SBML2SIF(sbmlfname) imports an SBML-QUAL file and
+   generates a folder containing the corresponding .sif, nodeAttributes,
+   and Netflux .xlsx model files in the current directory. The program
+   returns the folder location to outputfname.
+
+   outputfname = SBML2SIF(sbmlfname,dirname) outputs the converted files
+   to the specified directory given by dirname.
+
+   EXAMPLES:   
+   
+   SBML2SIF('MAPK.xml', cd);</pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../../matlabicon.gif)">
+</ul>
+This function is called by:
+<ul style="list-style-image:url(../../matlabicon.gif)">
+</ul>
+<!-- crossreference -->
+
+
+
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="fragment"><pre>0001 <a name="_sub0" href="#_subfunctions" class="code">function outputfname = sbml2sif(sbmlfname,dirname)</a>
+0002 <span class="comment">% Converts an SBML-QUAL file to a Netflux Excel file.</span>
+0003 <span class="comment">%</span>
+0004 <span class="comment">%   outputfname = SBML2SIF(sbmlfname) imports an SBML-QUAL file and</span>
+0005 <span class="comment">%   generates a folder containing the corresponding .sif, nodeAttributes,</span>
+0006 <span class="comment">%   and Netflux .xlsx model files in the current directory. The program</span>
+0007 <span class="comment">%   returns the folder location to outputfname.</span>
+0008 <span class="comment">%</span>
+0009 <span class="comment">%   outputfname = SBML2SIF(sbmlfname,dirname) outputs the converted files</span>
+0010 <span class="comment">%   to the specified directory given by dirname.</span>
+0011 <span class="comment">%</span>
+0012 <span class="comment">%   EXAMPLES:</span>
+0013 <span class="comment">%</span>
+0014 <span class="comment">%   SBML2SIF('MAPK.xml', cd);</span>
+0015 
+0016 
+0017 <span class="keyword">if</span> exist(dirname) == 0 || nargin &lt; 2
+0018     [~, default] = fileparts(sbmlfname);
+0019     dirname = fullfile(cd,default);
+0020     mkdir(dirname);
+0021 <span class="keyword">end</span>
+0022 
+0023 [~,namestr] = fileparts(sbmlfname);
+0024 namestr = cellstr(namestr);
+0025 
+0026 <span class="comment">% read the sbml file</span>
+0027 import = util.xml2struct(sbmlfname);
+0028 
+0029 <span class="comment">% Extract the species names</span>
+0030 specStruct = import.sbml.model.qual_colon_listOfQualitativeSpecies.qual_colon_qualitativeSpecies;
+0031 
+0032 <span class="comment">% loop through all species in structure array</span>
+0033 <span class="keyword">for</span> i = 1:length(specStruct)
+0034     specID{i} = specStruct{i}.Attributes.qual_colon_name;
+0035 <span class="keyword">end</span>
+0036 specID = specID';
+0037 
+0038 <span class="comment">% extract the reactions from imported struct</span>
+0039 rxnStruct = import.sbml.model.qual_colon_listOfTransitions.qual_colon_transition;
+0040 <span class="keyword">for</span> i = 1:length(rxnStruct)
+0041     inputs{i} = rxnStruct{i}.qual_colon_listOfInputs.qual_colon_input.Attributes.qual_colon_qualitativeSpecies;
+0042     type{i} = rxnStruct{i}.qual_colon_listOfInputs.qual_colon_input.Attributes.qual_colon_sign;
+0043     outputs{i} = rxnStruct{i}.qual_colon_listOfOutputs.qual_colon_output.Attributes.qual_colon_qualitativeSpecies;
+0044 <span class="keyword">end</span>
+0045 
+0046 <span class="comment">% remove qual_ from species names</span>
+0047 <span class="keyword">for</span> i = 1:length(inputs)
+0048     inputs{i} = strrep(inputs{i}, <span class="string">'qual_'</span>, <span class="string">''</span>);
+0049     outputs{i} = strrep(outputs{i}, <span class="string">'qual_'</span>, <span class="string">''</span>);
+0050 <span class="keyword">end</span>
+0051 specList = unique(vertcat(inputs, outputs));
+0052 
+0053 rxnList = {};
+0054 <span class="keyword">for</span> i = 1:length(inputs)
+0055     <span class="keyword">if</span> strcmp(type{i},<span class="string">'negative'</span>)
+0056         inputs{i} = strrep(inputs{i}, inputs{i}, [<span class="string">'!'</span>, inputs{i}]);
+0057     <span class="keyword">end</span>
+0058     <span class="keyword">if</span> ~strcmp(inputs{i},outputs{i});
+0059         <span class="comment">% construct the reaction string</span>
+0060         rxnList{end+1} = sprintf(<span class="string">'%s =&gt; %s'</span>, inputs{i}, outputs{i});
+0061     <span class="keyword">end</span>
+0062 <span class="keyword">end</span>
+0063 
+0064 <span class="comment">% need to write them to sif file in a way that importsif can build the</span>
+0065 <span class="comment">% proper xls file from.</span>
+0066 
+0067 oldcd = cd;
+0068 cd(dirname);
+0069 addpath(dirname);
+0070 outputfname = dirname;
+0071 exportName = strjoin([namestr, <span class="string">'Netflux.xlsx'</span>]);
+0072 xlsname = char(fullfile(dirname, exportName));
+0073 
+0074 util.writeXLSX(specList, rxnList, xlsname)
+0075 
+0076 <span class="comment">% create the .sif file from the exported excel file</span>
+0077 [~,~,~,~,~,CNAmodel] = util.xls2Netflux(strrep(exportName, <span class="string">'.xlsx'</span>, <span class="string">''</span>), exportName);
+0078 util.Netflux2sif(CNAmodel, dirname)
+0079 
+0080 cd(oldcd);
+0081</pre></div>
+<hr><address>Generated on Thu 07-Aug-2014 13:40:59 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

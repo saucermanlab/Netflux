@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of Netflux2sif</title>
+  <meta name="keywords" content="Netflux2sif">
+  <meta name="description" content="Converts Netflux model structure to Cytoscape .sif and node attributes file">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../../index.html">Home</a> &gt;  <a href="../index.html">NetfluxSC_09b</a> &gt; <a href="index.html">+util</a> &gt; Netflux2sif.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../../index.html"><img alt="<" border="0" src="../../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for NetfluxSC_09b\+util&nbsp;<img alt=">" border="0" src="../../right.png"></a></td></tr></table>-->
+
+<h1>Netflux2sif
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="box"><strong>Converts Netflux model structure to Cytoscape .sif and node attributes file</strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="box"><strong>function Netflux2sif(cnamodel,pname) </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="fragment"><pre class="comment">Converts Netflux model structure to Cytoscape .sif and node attributes file
+
+ Version 0.08a 08/31/2011 by JJS
+ Outputs (written to the current directory):
+ 1) SIF interaction file named 'cnap.path'.sif. Contains the interactions.
+ 2) Node attributes file named 'cnap.path'_nodeAttributes.txt. 
+    Tells cytoscape what type of node each species is for SBGN property
+    file (e.g. small molecule, connector, protein, mRNA, phenotype)
+ 
+ Notes:
+   1) Rcns with no reactants (input fluxes) are skipped.
+   2) Rcns with no products (output fluxes) are skipped.
+   3) Tested with CellNetAnalyzer 9.2 and Cytoscape 2.6.</pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../../matlabicon.gif)">
+</ul>
+This function is called by:
+<ul style="list-style-image:url(../../matlabicon.gif)">
+</ul>
+<!-- crossreference -->
+
+
+
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="fragment"><pre>0001 <a name="_sub0" href="#_subfunctions" class="code">function Netflux2sif(cnamodel,pname)</a>
+0002 <span class="comment">%Converts Netflux model structure to Cytoscape .sif and node attributes file</span>
+0003 <span class="comment">%</span>
+0004 <span class="comment">% Version 0.08a 08/31/2011 by JJS</span>
+0005 <span class="comment">% Outputs (written to the current directory):</span>
+0006 <span class="comment">% 1) SIF interaction file named 'cnap.path'.sif. Contains the interactions.</span>
+0007 <span class="comment">% 2) Node attributes file named 'cnap.path'_nodeAttributes.txt.</span>
+0008 <span class="comment">%    Tells cytoscape what type of node each species is for SBGN property</span>
+0009 <span class="comment">%    file (e.g. small molecule, connector, protein, mRNA, phenotype)</span>
+0010 <span class="comment">%</span>
+0011 <span class="comment">% Notes:</span>
+0012 <span class="comment">%   1) Rcns with no reactants (input fluxes) are skipped.</span>
+0013 <span class="comment">%   2) Rcns with no products (output fluxes) are skipped.</span>
+0014 <span class="comment">%   3) Tested with CellNetAnalyzer 9.2 and Cytoscape 2.6.</span>
+0015 
+0016 modelName = cnamodel.net_var_name;
+0017 specID = cellstr(cnamodel.specID);
+0018 interMat = cnamodel.interMat;
+0019 notMat = cnamodel.notMat;
+0020 
+0021 numRcns = size(interMat,2);
+0022 rcnList={};
+0023 connectorList={};
+0024 
+0025 <span class="comment">% Write SIF file with reactions</span>
+0026 fid = fopen(fullfile(pname, sprintf(<span class="string">'%s.sif'</span>, modelName)),<span class="string">'wt'</span>);
+0027 
+0028 <span class="keyword">for</span> rcnNum = 1:numRcns
+0029     reactants = find(interMat(:,rcnNum)==-1);
+0030     numReactants = size(reactants,1);
+0031     products = find(interMat(:,rcnNum)==1);   
+0032     numProducts = size(products,1);
+0033     <span class="keyword">if</span> (numReactants==1) &amp;&amp; (numProducts==1)    <span class="comment">% skips rcns with no reactants or products</span>
+0034         <span class="keyword">if</span> notMat(reactants,rcnNum)==1
+0035             <span class="comment">% write tab delimited line with reactant, 1 (activating) or -1, and product</span>
+0036             fprintf(fid, <span class="string">'%s\t1\t%s\n'</span>, char(specID(reactants)), char(specID(products)));
+0037         <span class="keyword">else</span>
+0038             fprintf(fid, <span class="string">'%s\t-1\t%s\n'</span>, char(specID(reactants)), char(specID(products)));
+0039         <span class="keyword">end</span>
+0040     <span class="keyword">elseif</span> (numReactants&gt;1) &amp;&amp; (numProducts==1)
+0041         connectorNode = [<span class="string">'rcn'</span>,num2str(rcnNum)];
+0042         fprintf(fid, <span class="string">'%s\t1\t%s\n'</span>, connectorNode, char(specID(products))); <span class="comment">% prints tab delimited str of type (reactant   1     product)</span>
+0043         connectorList{end+1} = connectorNode;
+0044         <span class="keyword">for</span> j=1:numReactants
+0045             <span class="keyword">if</span> notMat(reactants(j),rcnNum)==1
+0046                 fprintf(fid, <span class="string">'%s\t1\t%s\n'</span>, char(specID(reactants(j))), connectorNode);
+0047             <span class="keyword">else</span>
+0048                 fprintf(fid, <span class="string">'%s\t-1\t%s\n'</span>, char(specID(reactants(j))), connectorNode);
+0049             <span class="keyword">end</span>
+0050         <span class="keyword">end</span>
+0051     <span class="keyword">end</span>
+0052 <span class="keyword">end</span>
+0053 fclose(fid);
+0054 disp([<span class="string">'Wrote '</span>,fullfile(pname,modelName),<span class="string">'.sif'</span>]);
+0055 
+0056 <span class="comment">% Generate and export node attribute list</span>
+0057 
+0058 nfname = [modelName,<span class="string">'_nodeAttributes.txt'</span>];
+0059 nfname = fullfile(pname,nfname);
+0060 fid2 = fopen(nfname, <span class="string">'wt'</span>);
+0061 fprintf(fid2, <span class="string">'Type (class=String)\n'</span>); <span class="comment">% header</span>
+0062 type = cnamodel.type;
+0063 <span class="keyword">for</span> i = 1:length(specID)
+0064     fprintf(fid2,<span class="string">'%s = %s\n'</span>, specID{i}, type{i}); <span class="comment">% write each node</span>
+0065 <span class="keyword">end</span>
+0066 <span class="keyword">for</span> i = 1:length(connectorList);
+0067     fprintf(fid2,<span class="string">'%s = connector\n'</span>, connectorList{i}); <span class="comment">% write each connector</span>
+0068 <span class="keyword">end</span>
+0069 fclose(fid2);
+0070 
+0071 disp([<span class="string">'Wrote '</span>,fullfile(pname,modelName),<span class="string">'_nodeAttributes.txt'</span>]);</pre></div>
+<hr><address>Generated on Thu 07-Aug-2014 13:40:59 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

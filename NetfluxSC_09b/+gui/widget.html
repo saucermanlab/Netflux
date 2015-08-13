@@ -1,0 +1,381 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of widget</title>
+  <meta name="keywords" content="widget">
+  <meta name="description" content="gui.widget">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../../index.html">Home</a> &gt;  <a href="../index.html">NetfluxSC_09b</a> &gt; <a href="index.html">+gui</a> &gt; widget.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../../index.html"><img alt="<" border="0" src="../../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for NetfluxSC_09b\+gui&nbsp;<img alt=">" border="0" src="../../right.png"></a></td></tr></table>-->
+
+<h1>widget
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="box"><strong>gui.widget</strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="box"><strong>This is a script file. </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="fragment"><pre class="comment"> gui.widget
+
+   An abstract class for a generic widget. Widgets are &quot;sealed&quot; upon
+   construction, i.e., once created the  parent can't be changed.</pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../../matlabicon.gif)">
+<li><a href="widget.html" class="code" title="">widget</a>	gui.widget</li></ul>
+This function is called by:
+<ul style="list-style-image:url(../../matlabicon.gif)">
+<li><a href="monitor.html" class="code" title="">monitor</a>	gui.monitor</li><li><a href="widget.html" class="code" title="">widget</a>	gui.widget</li></ul>
+<!-- crossreference -->
+
+<h2><a name="_subfunctions"></a>SUBFUNCTIONS <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<ul style="list-style-image:url(../../matlabicon.gif)">
+<li><a href="#_sub1" class="code">function obj = widget(parent, uiParent)</a></li><li><a href="#_sub2" class="code">function set.Initialized(obj, val)</a></li><li><a href="#_sub3" class="code">function delete(obj)</a></li><li><a href="#_sub4" class="code">function setUiParent(obj, parent, h)</a></li><li><a href="#_sub5" class="code">function disp(obj)</a></li><li><a href="#_sub6" class="code">function set.UiHandle(obj, h)</a></li><li><a href="#_sub7" class="code">function set.ParentUiHandle(obj, h)</a></li><li><a href="#_sub8" class="code">function set.ValueChangedFcn(obj, f)</a></li><li><a href="#_sub9" class="code">function set.Position(obj, s)</a></li><li><a href="#_sub10" class="code">function setPositionWidth(obj, newWidth)</a></li><li><a href="#_sub11" class="code">function setPositionHeight(obj, newHeight)</a></li><li><a href="#_sub12" class="code">function s = get.Position(obj)</a></li><li><a href="#_sub13" class="code">function val = getPositionWidth(obj)</a></li><li><a href="#_sub14" class="code">function val = getPositionHeight(obj)</a></li><li><a href="#_sub15" class="code">function set.Visible(obj, makeVisible)</a></li><li><a href="#_sub16" class="code">function out = get.Visible(obj)</a></li><li><a href="#_sub17" class="code">function postPositionChange(obj, pos)</a></li><li><a href="#_sub18" class="code">function color = getParentUiColor(obj)</a></li></ul>
+
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="fragment"><pre>0001 <span class="comment">% gui.widget</span>
+0002 <span class="comment">%</span>
+0003 <span class="comment">%   An abstract class for a generic widget. Widgets are &quot;sealed&quot; upon</span>
+0004 <span class="comment">%   construction, i.e., once created the  parent can't be changed.</span>
+0005 
+0006 <span class="comment">%   Copyright 2009 The MathWorks, Inc.</span>
+0007 
+0008 classdef <a href="widget.html" class="code" title="">widget</a> &lt; handle
+0009  
+0010   
+0011     <span class="comment">% Default: GetAccess=public, SetAccess=public</span>
+0012     <span class="comment">% In the default DISP(), properties are shown in the</span>
+0013     <span class="comment">% order they are listed here.</span>
+0014     
+0015     properties (Dependent)
+0016         <span class="comment">%</span>
+0017         <span class="comment">% Position - The position of widget relative to its parent.</span>
+0018         <span class="comment">%</span>
+0019         <span class="comment">%   Position is a struct with the following fields</span>
+0020         <span class="comment">%     x, y  : the coordinates for the lower-left corner of the widget</span>
+0021         <span class="comment">%     width : the width of the widget</span>
+0022         <span class="comment">%     height: the height of the widget</span>
+0023         <span class="comment">%</span>
+0024         <span class="comment">%   Sample usage:</span>
+0025         <span class="comment">%      w = gui.slider;</span>
+0026         <span class="comment">%</span>
+0027         <span class="comment">%      % Retrieving the position</span>
+0028         <span class="comment">%      w.Position</span>
+0029         <span class="comment">%      w.Position.height</span>
+0030         <span class="comment">%</span>
+0031         <span class="comment">%      % Modifying the position</span>
+0032         <span class="comment">%      w.Position.height = 200;</span>
+0033         <span class="comment">%      w.Position = struct('width', 200, 'height', 300);</span>
+0034         <span class="comment">%</span>
+0035         <span class="comment">%      p = w.Position;</span>
+0036         <span class="comment">%      p.width = 200;</span>
+0037         <span class="comment">%      p.height = 300;</span>
+0038         <span class="comment">%      w.Position = p;</span>
+0039         <span class="comment">%</span>
+0040         <span class="comment">%   Note: if the parent of the widget does automatic layout (i.e., automatically</span>
+0041         <span class="comment">%   determines the best positioning of the widget), then some of the above</span>
+0042         <span class="comment">%   fields may not work as expected.</span>
+0043         Position 
+0044     <span class="keyword">end</span>
+0045     
+0046     properties (SetObservable, Dependent)
+0047         <span class="comment">% Visible - Specifies whether the widget should be shown or not.</span>
+0048         <span class="comment">%</span>
+0049         <span class="comment">%   Visible is a boolean property (true/false).</span>
+0050         <span class="comment">%    true =&gt; widget is displayed on screen (default)</span>
+0051         <span class="comment">%    false =&gt; widget is not displayed on screen.</span>
+0052         <span class="comment">%</span>
+0053         <span class="comment">%   Sample usage:</span>
+0054         <span class="comment">%    w = gui.slider;</span>
+0055         <span class="comment">%    w.Visible = false;</span>
+0056         Visible        
+0057     <span class="keyword">end</span>
+0058 
+0059     properties (SetObservable)
+0060         
+0061         <span class="comment">% ValueChangedFcn - Function to be called whenever Value is updated.</span>
+0062         <span class="comment">%</span>
+0063         <span class="comment">%   ValueChangedFcn specifies an optional function handle. Whenever</span>
+0064         <span class="comment">%   the Value property is updated, this function will be invoked</span>
+0065         <span class="comment">%   with one input argument (the handle to the widget).</span>
+0066         <span class="comment">%   To disable ValueChangedFcn, set it to [].</span>
+0067         <span class="comment">%</span>
+0068         <span class="comment">%   Sample usage:</span>
+0069         <span class="comment">%    w = gui.slider;</span>
+0070         <span class="comment">%    w.ValueChangedFcn = @(x) disp(w.Value);</span>
+0071         <span class="comment">%    % now try changing the slider value</span>
+0072         <span class="comment">%    w.ValueChangedFcn = []; % disable it</span>
+0073         <span class="comment">%    w.ValueChangedFcn = @myFunction;</span>
+0074         ValueChangedFcn = []   
+0075     <span class="keyword">end</span>
+0076 
+0077     properties(GetAccess=public, SetAccess=protected)
+0078         <span class="comment">%</span>
+0079         <span class="comment">% Parent - The parent object of this widget [read only]</span>
+0080         <span class="comment">%</span>
+0081         <span class="comment">%   Parent is the handle of this widget's parent (which is</span>
+0082         <span class="comment">%   an object of class gui.widget or gui.container). This</span>
+0083         <span class="comment">%   property is set when this widget is created and cannot</span>
+0084         <span class="comment">%   be modified.</span>
+0085         <span class="comment">%</span>
+0086         Parent = []
+0087     <span class="keyword">end</span>
+0088     
+0089     properties(Dependent,Abstract) 
+0090        Value 
+0091     <span class="keyword">end</span>        
+0092  
+0093     properties(Access=protected)
+0094         UiHandle = []         
+0095         ParentUiHandle = []
+0096         Initialized = false
+0097     <span class="keyword">end</span>
+0098     
+0099     properties (Access=private)
+0100       ValueChangedFcnListener = []
+0101       PostInitializationFunctions = {}
+0102       UiHandlePos 
+0103       ParentFigure
+0104     <span class="keyword">end</span>
+0105     
+0106     events
+0107         ValueChanged
+0108         PositionChanged
+0109     <span class="keyword">end</span>
+0110      
+0111     <span class="comment">% Contructor &amp; destructor</span>
+0112     methods
+0113         <span class="comment">% Constructor help for widget class 1</span>
+0114         <a name="_sub0" href="#_subfunctions" class="code">function obj = widget(parent, uiParent)                        </a>
+0115             <span class="comment">% Constructor help for widget class 2</span>
+0116             <span class="comment">% parent can be another widget or a container</span>
+0117             <span class="keyword">if</span> ~exist(<span class="string">'parent'</span>, <span class="string">'var'</span>)
+0118                 obj.Parent = gui.autogui.getCurrentInstance();
+0119                 <span class="keyword">if</span> isempty(obj.Parent)
+0120                     obj.Parent = gui.autogui(); <span class="comment">% create a new instance</span>
+0121                 <span class="keyword">end</span>                
+0122             <span class="keyword">elseif</span> isa(parent, <span class="string">'gui.container'</span>) &amp;&amp; isvalid(parent)
+0123                 obj.Parent = parent;
+0124             <span class="keyword">elseif</span> isa(parent, <span class="string">'gui.widget'</span>) &amp;&amp; isvalid(parent) 
+0125                 obj.Parent = parent;
+0126             <span class="keyword">else</span>
+0127                 throwAsCaller(MException(<span class="string">'widget:InvalidParent'</span>, <span class="string">'Parent should be a valid container or another widget'</span>));
+0128             <span class="keyword">end</span>
+0129 
+0130             <span class="keyword">if</span> exist(<span class="string">'uiParent'</span>, <span class="string">'var'</span>) 
+0131                 obj.ParentUiHandle = uiParent;
+0132             <span class="keyword">else</span>                 
+0133                 obj.ParentUiHandle = obj.Parent.UiHandle;
+0134             <span class="keyword">end</span>
+0135 
+0136             <span class="comment">% Parent.addChild() is called when Initialized is set to true</span>
+0137         <span class="keyword">end</span>
+0138                         
+0139         <a name="_sub1" href="#_subfunctions" class="code">function set.Initialized(obj, val)</a>
+0140             <span class="comment">% ensure that Initialize is only set once (to true)</span>
+0141             <span class="keyword">if</span> obj.Initialized || ~val
+0142                 throw(MException(<span class="string">'widget:Initialize'</span>, <span class="string">'Internal error'</span>));
+0143             <span class="keyword">end</span>
+0144             <span class="keyword">if</span> ~strcmp(get(obj.UiHandle, <span class="string">'units'</span>), <span class="string">'pixels'</span>)
+0145                 throw(MException(<span class="string">'widget:Initialize'</span>, <span class="string">'Internal error -- non-pixel units'</span>));
+0146             <span class="keyword">end</span>
+0147             obj.Initialized = true;
+0148             <span class="keyword">if</span> ismethod(obj.Parent, <span class="string">'addChild'</span>)
+0149                 obj.Parent.addChild(obj);
+0150             <span class="keyword">end</span>
+0151             initNotify(obj);
+0152         <span class="keyword">end</span>
+0153         
+0154         <a name="_sub2" href="#_subfunctions" class="code">function delete(obj)</a>
+0155             <span class="comment">% when an object is deleted, delete() is called on all of its</span>
+0156             <span class="comment">% component objects as well. So if the Parent is deleted,</span>
+0157             <span class="comment">% this widget will get deleted as well.</span>
+0158             <span class="keyword">if</span> ishandle(obj.UiHandle) &amp;&amp; strcmp(get(obj.UiHandle, <span class="string">'BeingDeleted'</span>), <span class="string">'off'</span>)
+0159                 <a href="#_sub3" class="code" title="subfunction delete(obj)">delete</a>(obj.UiHandle);
+0160             <span class="keyword">end</span>
+0161             <span class="keyword">if</span> ~isempty(obj.ValueChangedFcnListener) &amp;&amp; isvalid(obj.ValueChangedFcnListener)
+0162                 <a href="#_sub3" class="code" title="subfunction delete(obj)">delete</a>(obj.ValueChangedFcnListener);
+0163             <span class="keyword">end</span>
+0164         <span class="keyword">end</span>
+0165 
+0166     <span class="keyword">end</span>
+0167     
+0168     <span class="comment">%Properties</span>
+0169     methods(Hidden)
+0170         <span class="comment">% this can only be called by obj.Parent</span>
+0171         <a name="_sub3" href="#_subfunctions" class="code">function setUiParent(obj, parent, h)</a>
+0172             <span class="keyword">if</span> obj.Parent ~= parent
+0173                 throw(MException(<span class="string">'widget:InvalidUiParent'</span>, <span class="string">'Invalid UI parent!'</span>));
+0174             <span class="keyword">end</span>
+0175             <span class="comment">% When new or old parent is a uiflowcontainer</span>
+0176             <span class="comment">% the actual position of the child can change. So</span>
+0177             <span class="comment">% maintain the current position via an explicit set.</span>
+0178             pos = obj.Position; 
+0179             obj.ParentUiHandle = h;
+0180             obj.setPositionWidth(pos.width);
+0181             obj.setPositionHeight(pos.height);
+0182         <span class="keyword">end</span>             
+0183     <span class="keyword">end</span>    
+0184     
+0185     methods        
+0186 
+0187         <a name="_sub4" href="#_subfunctions" class="code">function disp(obj)</a>
+0188             gui.util.showObjectInfo.properties(obj);
+0189         <span class="keyword">end</span>
+0190         
+0191         <a name="_sub5" href="#_subfunctions" class="code">function set.UiHandle(obj, h)</a>
+0192             assert(get(h,<span class="string">'parent'</span>) == obj.ParentUiHandle);
+0193             obj.UiHandle = h;
+0194             obj.UiHandlePos = gui.util.uiposition(h);
+0195             obj.ParentFigure = ancestor(h, <span class="string">'figure'</span>);
+0196         <span class="keyword">end</span>
+0197         
+0198         <a name="_sub6" href="#_subfunctions" class="code">function set.ParentUiHandle(obj, h)</a>
+0199             <span class="keyword">if</span> ishandle(h)
+0200                 obj.ParentUiHandle = h;
+0201                 <span class="keyword">if</span> ishandle(obj.UiHandle)
+0202                     set(obj.UiHandle, <span class="string">'parent'</span>, h);
+0203                     obj.UiHandlePos = gui.util.uiposition(obj.UiHandle);
+0204                     obj.ParentFigure = ancestor(h, <span class="string">'figure'</span>);
+0205                 <span class="keyword">end</span>                
+0206             <span class="keyword">else</span>
+0207                 throw(MException(<span class="string">'widget:InvalidUiHandle'</span>, <span class="string">'Invalid HG Handle for parent'</span>));
+0208             <span class="keyword">end</span>            
+0209         <span class="keyword">end</span>
+0210         
+0211         <a name="_sub7" href="#_subfunctions" class="code">function set.ValueChangedFcn(obj, f)</a>
+0212             <span class="keyword">if</span> isa(f, <span class="string">'function_handle'</span>)
+0213                 obj.ValueChangedFcn = f;
+0214                 <span class="keyword">if</span> isempty(obj.ValueChangedFcnListener) 
+0215                     obj.ValueChangedFcnListener = event.listener(obj, <span class="string">'ValueChanged'</span>, @(src,eventdata) f(src));
+0216                     <span class="comment">% listener cannot trigger a ValueChanged event</span>
+0217                     obj.ValueChangedFcnListener.Recursive = false;
+0218                 <span class="keyword">else</span> 
+0219                     obj.ValueChangedFcnListener.Callback = @(src,eventdata) f(src);
+0220                 <span class="keyword">end</span>
+0221             <span class="keyword">elseif</span> isempty(f)
+0222                 obj.ValueChangedFcn = f;
+0223                 <span class="keyword">if</span> ~isempty(obj.ValueChangedFcnListener)
+0224                     <a href="#_sub3" class="code" title="subfunction delete(obj)">delete</a>(obj.ValueChangedFcnListener);
+0225                 <span class="keyword">end</span>
+0226                 obj.ValueChangedFcnListener = [];
+0227             <span class="keyword">else</span>
+0228                 throw(MException(<span class="string">'widget:InvalidValueChangedFcn'</span>, <span class="string">'ValueChangedFcn should be a function handle'</span>));
+0229             <span class="keyword">end</span>
+0230         <span class="keyword">end</span>
+0231 
+0232         
+0233         <a name="_sub8" href="#_subfunctions" class="code">function set.Position(obj, s)                       </a>
+0234             pos = gui.util.uiposition.structToVec(s);         
+0235             <span class="comment">% pos is [x y w h]</span>
+0236             <span class="comment">% Unspecified fields in s have a value of nan in pos.</span>
+0237             obj.UiHandlePos = obj.UiHandlePos.setVector(pos);
+0238             obj.postPositionChange(pos);
+0239             notify(obj, <span class="string">'PositionChanged'</span>);
+0240             refresh(obj.ParentFigure);
+0241         <span class="keyword">end</span>
+0242         
+0243         <a name="_sub9" href="#_subfunctions" class="code">function setPositionWidth(obj, newWidth)</a>
+0244             <span class="keyword">if</span> (newWidth == obj.UiHandlePos.Width)
+0245                 <span class="keyword">return</span>;
+0246             <span class="keyword">end</span>
+0247             obj.UiHandlePos.Width = newWidth;
+0248             obj.postPositionChange([nan nan newWidth nan]);
+0249             notify(obj, <span class="string">'PositionChanged'</span>);
+0250             refresh(obj.ParentFigure);
+0251         <span class="keyword">end</span>
+0252         
+0253         <a name="_sub10" href="#_subfunctions" class="code">function setPositionHeight(obj, newHeight)</a>
+0254             <span class="keyword">if</span> (newHeight == obj.UiHandlePos.Height)
+0255                 <span class="keyword">return</span>;
+0256             <span class="keyword">end</span>
+0257             obj.UiHandlePos.Height = newHeight;            
+0258             obj.postPositionChange([nan nan nan newHeight]);
+0259             notify(obj, <span class="string">'PositionChanged'</span>);
+0260             refresh(obj.ParentFigure);
+0261         <span class="keyword">end</span>
+0262         
+0263         <a name="_sub11" href="#_subfunctions" class="code">function s = get.Position(obj)</a>
+0264             p = obj.UiHandlePos.getVector();           
+0265             s = struct(<span class="string">'x'</span>, p(1), <span class="string">'y'</span>, p(2), <span class="string">'width'</span>, p(3), <span class="string">'height'</span>, p(4));
+0266         <span class="keyword">end</span>
+0267         
+0268         <a name="_sub12" href="#_subfunctions" class="code">function val = getPositionWidth(obj)</a>
+0269             val = obj.UiHandlePos.Width;
+0270         <span class="keyword">end</span>   
+0271         
+0272         <a name="_sub13" href="#_subfunctions" class="code">function val = getPositionHeight(obj)</a>
+0273             val = obj.UiHandlePos.Height;
+0274         <span class="keyword">end</span>
+0275         
+0276         <a name="_sub14" href="#_subfunctions" class="code">function set.Visible(obj, makeVisible)</a>
+0277             <span class="comment">% Note: uicontrols are created with 'visible'='on' by default.</span>
+0278             <span class="comment">% When they are parented to uicontainers with visible='off',</span>
+0279             <span class="comment">% they are briefly visible, leading  to a flicker.</span>
+0280             
+0281             <span class="keyword">if</span> isempty(obj.UiHandle)
+0282                 throw(MException(<span class="string">'widget:InvalidVisible'</span>, <span class="string">'Empty UiHandle'</span>));
+0283             <span class="keyword">end</span>
+0284             <span class="keyword">if</span> makeVisible
+0285                 set(obj.UiHandle, <span class="string">'Visible'</span>, <span class="string">'on'</span>);
+0286             <span class="keyword">else</span>
+0287                 set(obj.UiHandle, <span class="string">'Visible'</span>, <span class="string">'off'</span>);
+0288             <span class="keyword">end</span>
+0289         <span class="keyword">end</span>
+0290         
+0291         <a name="_sub15" href="#_subfunctions" class="code">function out = get.Visible(obj)</a>
+0292             <span class="keyword">if</span> isempty(obj.UiHandle)
+0293                 out = false;
+0294             <span class="keyword">else</span>
+0295                 out = strcmp(get(obj.UiHandle,<span class="string">'visible'</span>),<span class="string">'on'</span>);
+0296             <span class="keyword">end</span>
+0297         <span class="keyword">end</span>
+0298 
+0299         
+0300     <span class="keyword">end</span>
+0301 
+0302     methods(Access=protected)
+0303                 
+0304         <span class="comment">% called after position is changed</span>
+0305         <span class="comment">% pos is [x y w h] the new position.</span>
+0306         <span class="comment">% nan's indicate default (unmodified) values</span>
+0307         <a name="_sub16" href="#_subfunctions" class="code">function postPositionChange(obj, pos)   </a><span class="comment">%#ok&lt;INUSD&gt;</span>
+0308             <span class="comment">% no-op</span>
+0309         <span class="keyword">end</span>
+0310 
+0311         <a name="_sub17" href="#_subfunctions" class="code">function color = getParentUiColor(obj)</a>
+0312             <span class="keyword">if</span> isprop(obj.ParentUiHandle, <span class="string">'color'</span>)
+0313                 color = get(obj.ParentUiHandle, <span class="string">'Color'</span>);
+0314             <span class="keyword">else</span>
+0315                 color = get(obj.ParentUiHandle, <span class="string">'BackgroundColor'</span>);
+0316             <span class="keyword">end</span>
+0317         <span class="keyword">end</span>       
+0318     <span class="keyword">end</span>    
+0319 
+0320     methods(Access=protected,Abstract)
+0321         <span class="comment">% called when the object has completed initialization</span>
+0322         <span class="comment">% and has been added to the parent</span>
+0323         initNotify(obj)
+0324                 
+0325     <span class="keyword">end</span>
+0326                
+0327 <span class="keyword">end</span>
+0328     
+0329</pre></div>
+<hr><address>Generated on Thu 07-Aug-2014 13:40:59 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

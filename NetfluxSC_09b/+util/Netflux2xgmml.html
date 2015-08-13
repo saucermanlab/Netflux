@@ -1,0 +1,324 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of Netflux2xgmml</title>
+  <meta name="keywords" content="Netflux2xgmml">
+  <meta name="description" content="Writes Netflux model structure to an XGMML file">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../../index.html">Home</a> &gt;  <a href="../index.html">NetfluxSC_09b</a> &gt; <a href="index.html">+util</a> &gt; Netflux2xgmml.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../../index.html"><img alt="<" border="0" src="../../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for NetfluxSC_09b\+util&nbsp;<img alt=">" border="0" src="../../right.png"></a></td></tr></table>-->
+
+<h1>Netflux2xgmml
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="box"><strong>Writes Netflux model structure to an XGMML file</strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="box"><strong>function Netflux2xgmml(CNAmodel, outXGMML, refXGMML) </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="fragment"><pre class="comment"> Writes Netflux model structure to an XGMML file
+   
+   NETFLUX2XGMML(CNAmodel,outXGMML) exports the Netflux model stored in
+   CNA model to an XGMML file (specified by outXGMML) for visualization in
+   Cytoscape. Default node graphics correspond to a modified SBGN process
+   description format. outXGMML and refXGMML can be relative or absolute
+   paths.
+
+   NETFLUX2XGMML(CNAmodel,outXGMML, refXGMML) exports the Netflux model
+   (CNAmodel) to an XGMML with graphics and node positions that are
+   defined in reference XGMML. The reference XGMML must have been exported
+   from Cytoscape 2.8.3. Graphics properties are copied on the basis of a
+   string comparison between node and edge labels in CNA model and
+   refXGMML. NOTE: If a node/edge does not exist in refXGMML but exists in
+   CNAmodel, the node/edge will be written with default graphics and
+   coordinates. If a node exists in refXGMML but not CNAmodel, it will not
+   be written to the new XGMML file.
+   
+   SBGN graphics are generated from the &quot;type&quot; column of the Species sheet
+   in the Netflux Excel file. The supported categories are protein, mRNA,
+   smallMolecule, phenotype, connector, and intermediate.</pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../../matlabicon.gif)">
+</ul>
+This function is called by:
+<ul style="list-style-image:url(../../matlabicon.gif)">
+</ul>
+<!-- crossreference -->
+
+
+
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="fragment"><pre>0001 <a name="_sub0" href="#_subfunctions" class="code">function Netflux2xgmml(CNAmodel, outXGMML, refXGMML)</a>
+0002 <span class="comment">% Writes Netflux model structure to an XGMML file</span>
+0003 <span class="comment">%</span>
+0004 <span class="comment">%   NETFLUX2XGMML(CNAmodel,outXGMML) exports the Netflux model stored in</span>
+0005 <span class="comment">%   CNA model to an XGMML file (specified by outXGMML) for visualization in</span>
+0006 <span class="comment">%   Cytoscape. Default node graphics correspond to a modified SBGN process</span>
+0007 <span class="comment">%   description format. outXGMML and refXGMML can be relative or absolute</span>
+0008 <span class="comment">%   paths.</span>
+0009 <span class="comment">%</span>
+0010 <span class="comment">%   NETFLUX2XGMML(CNAmodel,outXGMML, refXGMML) exports the Netflux model</span>
+0011 <span class="comment">%   (CNAmodel) to an XGMML with graphics and node positions that are</span>
+0012 <span class="comment">%   defined in reference XGMML. The reference XGMML must have been exported</span>
+0013 <span class="comment">%   from Cytoscape 2.8.3. Graphics properties are copied on the basis of a</span>
+0014 <span class="comment">%   string comparison between node and edge labels in CNA model and</span>
+0015 <span class="comment">%   refXGMML. NOTE: If a node/edge does not exist in refXGMML but exists in</span>
+0016 <span class="comment">%   CNAmodel, the node/edge will be written with default graphics and</span>
+0017 <span class="comment">%   coordinates. If a node exists in refXGMML but not CNAmodel, it will not</span>
+0018 <span class="comment">%   be written to the new XGMML file.</span>
+0019 <span class="comment">%</span>
+0020 <span class="comment">%   SBGN graphics are generated from the &quot;type&quot; column of the Species sheet</span>
+0021 <span class="comment">%   in the Netflux Excel file. The supported categories are protein, mRNA,</span>
+0022 <span class="comment">%   smallMolecule, phenotype, connector, and intermediate.</span>
+0023 
+0024 interMat = CNAmodel.interMat;
+0025 notMat = CNAmodel.notMat;
+0026 specID = cellstr(CNAmodel.specID);
+0027 typeList = CNAmodel.type;
+0028 
+0029 refExists = false; <span class="comment">% if reference XGMML was not specified</span>
+0030 <span class="keyword">if</span> nargin == 3 <span class="comment">% if refXGMML was provided</span>
+0031     refExists = true;
+0032     
+0033     import = util.xml2struct(refXGMML);
+0034     <span class="comment">% Read each node from reference</span>
+0035     nodes = import.graph.node;
+0036     <span class="keyword">for</span> i = 1:length(nodes);
+0037         xmlspecs{i} = nodes{i}.Attributes.label;
+0038         <span class="keyword">if</span> iscell(nodes{i}.att) <span class="comment">% util.xml2struct saves data differently depending on number of attributes, if statements ensure uniform save structure for access in loop</span>
+0039             nodeAttributes{i} = nodes{i}.att; <span class="comment">% returns cell of cells of structs, each struct is a different attribute</span>
+0040         <span class="keyword">else</span>
+0041             nodes{i} = struct(<span class="string">'att'</span>, nodes{i});
+0042             nodeAttributes{i} = {nodes{i}.att};
+0043         <span class="keyword">end</span>
+0044         <span class="keyword">if</span> isfield(nodes{i},<span class="string">'graphics'</span>)
+0045             specGraphics{i} = nodes{i}.graphics;
+0046         <span class="keyword">else</span>
+0047             specGraphics{i} = nodes{i}.att.graphics; <span class="comment">%stored differently if length 1.</span>
+0048         <span class="keyword">end</span>
+0049     <span class="keyword">end</span>
+0050     
+0051     <span class="comment">% Read each edge from reference</span>
+0052     edges = import.graph.edge;
+0053     <span class="keyword">for</span> i = 1:length(edges)
+0054         xmledgeID{i} = edges{i}.Attributes.label;
+0055         edgeAttributes{i} = edges{i}.att; <span class="comment">% returns cell of structs</span>
+0056         edgeGraphics{i} = edges{i}.graphics;
+0057     <span class="keyword">end</span>
+0058 <span class="keyword">end</span>
+0059 
+0060 
+0061 <span class="comment">% Generate the edges and nodes from the excel file/ CNA model</span>
+0062 numRcns = size(interMat,2);
+0063 rcnList={};
+0064 connectorList={};
+0065 <span class="keyword">for</span> rcnNum = 1:numRcns
+0066     reactants = find(interMat(:,rcnNum)==-1);
+0067     numReactants = size(reactants,1);
+0068     products = find(interMat(:,rcnNum)==1);
+0069     numProducts = size(products,1);
+0070     <span class="keyword">if</span> (numReactants==1) &amp;&amp; (numProducts==1)    <span class="comment">% skips rcns with no reactants or products</span>
+0071         <span class="keyword">if</span> notMat(reactants,rcnNum)==1
+0072             rcnText= sprintf(<span class="string">'%s\t(1)\t%s'</span>, char(specID(reactants)), char(specID(products)));
+0073         <span class="keyword">else</span>
+0074             rcnText = sprintf(<span class="string">'%s\t(-1)\t%s'</span>, char(specID(reactants)), char(specID(products)));
+0075         <span class="keyword">end</span>
+0076         rcnList{end+1} = rcnText;
+0077     <span class="keyword">elseif</span> (numReactants&gt;1) &amp;&amp; (numProducts==1)
+0078         connectorNode = [<span class="string">'rcn'</span>,num2str(rcnNum)];
+0079         rcnText = sprintf(<span class="string">'%s\t(1)\t%s'</span>, connectorNode, char(specID(products))); <span class="comment">% prints tab delimited str of type (reactant   (1)     product)</span>
+0080         connectorList{end+1} = connectorNode;
+0081         rcnList{end+1} = rcnText;
+0082         <span class="keyword">for</span> j=1:numReactants
+0083             <span class="keyword">if</span> notMat(reactants(j),rcnNum)==1
+0084                 rcnText = sprintf(<span class="string">'%s\t(1)\t%s'</span>, char(specID(reactants(j))), connectorNode);
+0085             <span class="keyword">else</span>
+0086                 rcnText = sprintf(<span class="string">'%s\t(-1)\t%s'</span>, char(specID(reactants(j))), connectorNode);
+0087             <span class="keyword">end</span>
+0088             rcnList{end+1} = rcnText;
+0089         <span class="keyword">end</span>
+0090     <span class="keyword">end</span>
+0091 <span class="keyword">end</span>
+0092 
+0093 <span class="comment">% Generate the node list from the excel file/CNA model</span>
+0094 nodeList = cellstr(specID);
+0095 nodeLabel = nodeList; <span class="comment">% save labels in new vector so rcnx can be labeled as AND in cytoscape</span>
+0096 nodeList = vertcat(nodeList,connectorList');
+0097 
+0098 <span class="comment">% add node type &quot;connector&quot; to the end of the type list</span>
+0099 <span class="keyword">for</span> i = 1:length(connectorList);
+0100     nodeLabel{end+1} = <span class="string">'AND'</span>;
+0101     typeList{end+1} = <span class="string">'connector'</span>;
+0102 <span class="keyword">end</span>
+0103 
+0104 <span class="comment">% start writing the xgmml file for each node</span>
+0105 fid = fopen(outXGMML, <span class="string">'w'</span>);
+0106 
+0107 <span class="comment">% write the XGMML header</span>
+0108 fprintf(fid, <span class="string">'&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;\n'</span>);
+0109 fprintf(fid, <span class="string">'&lt;graph label=&quot;Cytoscape&quot; xmlns:dc=&quot;http://purl.org/dc/elements/1.1/&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot; xmlns:cy=&quot;http://www.cytoscape.org&quot; xmlns=&quot;http://www.cs.rpi.edu/XGMML&quot;  directed=&quot;1&quot;&gt;\n'</span>);
+0110 fprintf(fid, <span class="string">'&lt;att name=&quot;documentVersion&quot; value=&quot;1.1&quot;/&gt;\n'</span>);
+0111 
+0112 <span class="comment">% write each node to XGMML</span>
+0113 id = []; <span class="comment">% save the assigned xml node ids for edges later</span>
+0114 <span class="keyword">for</span> i = 1:length(nodeList)
+0115     <span class="keyword">if</span> refExists &amp;&amp; ismember(nodeList{i}, xmlspecs) <span class="comment">% if node defined in previous xgmml</span>
+0116         [~, index] = ismember(nodeList{i}, xmlspecs); <span class="comment">% index = index of match</span>
+0117         id(end+1) = i;
+0118         
+0119         <span class="comment">% write node header</span>
+0120         fprintf(fid, <span class="string">'&lt;node label=&quot;%s&quot; id=&quot;%i&quot;&gt;\n'</span>, nodeList{i}, i);
+0121         
+0122         <span class="comment">% write attributes from past xgmml</span>
+0123         <span class="keyword">for</span> j = 1:length(nodeAttributes{index}) <span class="comment">% loop over each attribute</span>
+0124             <span class="keyword">if</span> length(nodeAttributes{index}) == 1 <span class="comment">% if only 1 attribute, they are saved differently in the structure array</span>
+0125                 name = nodeAttributes{index}{1}.att.Attributes.name;
+0126                 type = nodeAttributes{index}{1}.att.Attributes.type;
+0127                 value = nodeAttributes{index}{1}.att.Attributes.value;
+0128                 fprintf(fid, <span class="string">'&lt;att type=&quot;%s&quot; name=&quot;%s&quot; value=&quot;%s&quot;/&gt;\n'</span>,type, name, value);
+0129             <span class="keyword">else</span>
+0130                 name = nodeAttributes{index}{j}.Attributes.name;
+0131                 type = nodeAttributes{index}{j}.Attributes.type;
+0132                 value = nodeAttributes{index}{j}.Attributes.value;
+0133                 fprintf(fid, <span class="string">'&lt;att type=&quot;%s&quot; name=&quot;%s&quot; value=&quot;%s&quot;/&gt;\n'</span>,type, name, value);
+0134             <span class="keyword">end</span>
+0135         <span class="keyword">end</span>
+0136         
+0137         <span class="comment">% write graphics from past xgmml</span>
+0138         g = specGraphics{index}.Attributes;
+0139         
+0140         fprintf(fid, <span class="string">'&lt;graphics type=&quot;%s&quot; h=&quot;%s&quot; w=&quot;%s&quot; x=&quot;%s&quot; y=&quot;%s&quot; fill=&quot;%s&quot; width=&quot;%s&quot; outline=&quot;%s&quot; cy:nodeTransparency=&quot;%s&quot; cy:nodeLabelFont=&quot;%s&quot; cy:nodeLabel=&quot;%s&quot; cy:borderLineType=&quot;%s&quot;/&gt;\n'</span>,<span class="keyword">...</span>
+0141             g.type, g.h, g.w, g.x, g.y, g.fill, g.width, g.outline, g.cy_colon_nodeTransparency, g.cy_colon_nodeLabelFont, <span class="keyword">...</span>
+0142             g.cy_colon_nodeLabel, g.cy_colon_borderLineType);
+0143         
+0144         <span class="comment">% close node</span>
+0145         fprintf(fid, <span class="string">'&lt;/node&gt;\n'</span>);
+0146         
+0147     <span class="keyword">else</span> <span class="comment">% write with defaults</span>
+0148         id(end+1)=i;
+0149         fprintf(fid, <span class="string">'&lt;node label=&quot;%s&quot; id=&quot;%i&quot;&gt;\n'</span>, nodeList{i}, i);
+0150         fprintf(fid, <span class="string">'&lt;att type=&quot;string&quot; name=&quot;canonicalName&quot; value=&quot;%s&quot;/&gt;\n'</span>, nodeLabel{i});
+0151         fprintf(fid, <span class="string">'&lt;att type=&quot;string&quot; name=&quot;Type&quot; value=&quot;%s&quot;/&gt;\n'</span>, typeList{i});
+0152         fprintf(fid, <span class="string">'&lt;att type=&quot;string&quot; name=&quot;HyperEdge.EntityType&quot; value=&quot;RegularNode&quot;/&gt;\n'</span>);
+0153         
+0154         <span class="comment">% write the default graphics based on node info</span>
+0155         <span class="keyword">switch</span> typeList{i}
+0156             <span class="keyword">case</span> <span class="string">''</span>
+0157                 fprintf(fid, <span class="string">'&lt;graphics type=&quot;RECTANGLE&quot; h=&quot;30&quot; w=&quot;70&quot; fill=&quot;#ffffff&quot; width=&quot;3&quot; outline=&quot;#000000&quot; cy:nodeTransparency=&quot;1.0&quot; cy:nodeLabelFont=&quot;Default-0-14&quot; cy:nodeLabel=&quot;%s&quot; cy:borderLineType=&quot;solid&quot;/&gt;\n'</span>, nodeLabel{i});
+0158             <span class="keyword">case</span> <span class="string">'connector'</span>
+0159                 fprintf(fid, <span class="string">'&lt;graphics type=&quot;ELLIPSE&quot; h=&quot;28&quot; w=&quot;28&quot; fill=&quot;#ffffff&quot; width=&quot;3&quot; outline=&quot;#000000&quot; cy:nodeTransparency=&quot;1.0&quot; cy:nodeLabelFont=&quot;Default-0-10&quot; cy:nodeLabel=&quot;AND&quot; cy:borderLineType=&quot;solid&quot;/&gt;\n'</span>);
+0160             <span class="keyword">case</span> <span class="string">'mRNA'</span>
+0161                 fprintf(fid, <span class="string">'&lt;graphics type=&quot;HEXAGON&quot; h=&quot;40&quot; w=&quot;85&quot; fill=&quot;#ffffff&quot; width=&quot;3&quot; outline=&quot;#000000&quot; cy:nodeTransparency=&quot;1.0&quot; cy:nodeLabelFont=&quot;Default-0-14&quot; cy:nodeLabel=&quot;%s&quot; cy:borderLineType=&quot;solid&quot;/&gt;\n'</span>, nodeLabel{i});
+0162             <span class="keyword">case</span> <span class="string">'phenotype'</span>
+0163                 fprintf(fid, <span class="string">'&lt;graphics type=&quot;HEXAGON&quot; h=&quot;40&quot; w=&quot;85&quot; fill=&quot;#ffffff&quot; width=&quot;3&quot; outline=&quot;#000000&quot; cy:nodeTransparency=&quot;1.0&quot; cy:nodeLabelFont=&quot;Default-0-14&quot; cy:nodeLabel=&quot;%s&quot; cy:borderLineType=&quot;solid&quot;/&gt;\n'</span>, nodeLabel{i});
+0164             <span class="keyword">case</span> <span class="string">'protein'</span>
+0165                 fprintf(fid, <span class="string">'&lt;graphics type=&quot;RECTANGLE&quot; h=&quot;30&quot; w=&quot;70&quot; fill=&quot;#ffffff&quot; width=&quot;3&quot; outline=&quot;#000000&quot; cy:nodeTransparency=&quot;1.0&quot; cy:nodeLabelFont=&quot;Default-0-14&quot; cy:nodeLabel=&quot;%s&quot; cy:borderLineType=&quot;solid&quot;/&gt;\n'</span>, nodeLabel{i});
+0166             <span class="keyword">case</span> <span class="string">'smallMolecule'</span>
+0167                 fprintf(fid, <span class="string">'&lt;graphics type=&quot;ELLIPSE&quot; h=&quot;40&quot; w=&quot;40&quot; fill=&quot;#ffffff&quot; width=&quot;3&quot; outline=&quot;#000000&quot; cy:nodeTransparency=&quot;1.0&quot; cy:nodeLabelFont=&quot;Default-0-14&quot; cy:nodeLabel=&quot;%s&quot; cy:borderLineType=&quot;solid&quot;/&gt;\n'</span>, nodeLabel{i});
+0168             <span class="keyword">case</span> <span class="string">'intermediate'</span>
+0169                 fprintf(fid, <span class="string">'&lt;graphics type=&quot;ELLIPSE&quot; h=&quot;20&quot; w=&quot;20&quot; fill=&quot;#ffffff&quot; width=&quot;3&quot; outline=&quot;#000000&quot; cy:nodeTransparency=&quot;1.0&quot; cy:nodeLabelFont=&quot;Default-0-8&quot; cy:nodeLabel=&quot;INT&quot; cy:borderLineType=&quot;solid&quot;/&gt;\n'</span>);
+0170             <span class="keyword">otherwise</span>
+0171             fprintf(fid, <span class="string">'&lt;graphics type=&quot;RECTANGLE&quot; h=&quot;30&quot; w=&quot;70&quot; fill=&quot;#ffffff&quot; width=&quot;3&quot; outline=&quot;#000000&quot; cy:nodeTransparency=&quot;1.0&quot; cy:nodeLabelFont=&quot;Default-0-14&quot; cy:nodeLabel=&quot;%s&quot; cy:borderLineType=&quot;solid&quot;/&gt;\n'</span>, nodeLabel{i});
+0172         <span class="keyword">end</span>
+0173         fprintf(fid, <span class="string">'&lt;/node&gt;\n'</span>);
+0174     <span class="keyword">end</span>
+0175 <span class="keyword">end</span>
+0176 
+0177 <span class="comment">% write each edge</span>
+0178 <span class="keyword">for</span> i = 1:length(rcnList) <span class="comment">% rcnList was generated from CNA model</span>
+0179     <span class="comment">% parse out the reactant and product, then find the indexes of each in specID,</span>
+0180     <span class="comment">% and assign the source and target IDs saved earlier</span>
+0181     rxnsplit = strsplit(rcnList{i}, <span class="string">'\t'</span>);
+0182     reactant = rxnsplit{1};
+0183     interactionType = rxnsplit{2};
+0184     product = rxnsplit{3};
+0185     
+0186     rcnCmpStr = sprintf(<span class="string">'%s %s %s'</span>, reactant, interactionType, product);
+0187     <span class="keyword">if</span> refExists &amp;&amp; ismember(rcnCmpStr, xmledgeID) <span class="comment">% if match, retain previous formatting</span>
+0188         [~, index] = ismember(rcnCmpStr, xmledgeID);<span class="comment">% matching from previousl xgmml</span>
+0189         
+0190         <span class="comment">% need to write the initial edge tag with appropriate source and</span>
+0191         <span class="comment">% target</span>
+0192         
+0193         sourceID = find(strcmp(reactant, nodeList)); <span class="comment">% ids made in order of nodeList</span>
+0194         targetID = find(strcmp(product, nodeList));
+0195         fprintf(fid, <span class="string">'&lt;edge label=&quot;%s&quot; source=&quot;%i&quot; target=&quot;%i&quot;&gt;\n'</span>, rcnList{i}, sourceID, targetID);
+0196         
+0197         <span class="comment">% write the attributes</span>
+0198         <span class="keyword">for</span> j = 1:length(edgeAttributes{index})
+0199             name = edgeAttributes{index}{j}.Attributes.name;
+0200             type = edgeAttributes{index}{j}.Attributes.type;
+0201             value = edgeAttributes{index}{j}.Attributes.value;
+0202             fprintf(fid, <span class="string">'&lt;att type=&quot;%s&quot; name=&quot;%s&quot; value=&quot;%s&quot;/&gt;\n'</span>,type, name, value);
+0203         <span class="keyword">end</span>
+0204         
+0205         <span class="comment">% write the graphics</span>
+0206         g = edgeGraphics{index}.Attributes;
+0207         
+0208         fprintf(fid, <span class="string">'&lt;graphics width=&quot;%s&quot; fill=&quot;%s&quot; cy:sourceArrow=&quot;%s&quot; cy:targetArrow=&quot;%s&quot; cy:sourceArrowColor=&quot;%s&quot; cy:targetArrowColor=&quot;%s&quot; cy:edgeLabelFont=&quot;%s&quot; cy:edgeLabel=&quot;%s&quot; cy:edgeLineType=&quot;%s&quot; cy:curved=&quot;%s&quot;&gt;\n'</span>,<span class="keyword">...</span>
+0209             g.width, g.fill, g.cy_colon_sourceArrow, g.cy_colon_targetArrow,  g.cy_colon_sourceArrowColor, g.cy_colon_targetArrowColor, g.cy_colon_edgeLabelFont, g.cy_colon_edgeLabel, g.cy_colon_edgeLineType, g.cy_colon_curved);
+0210         
+0211         <span class="keyword">if</span> isfield(edgeGraphics{index}, <span class="string">'att'</span>); <span class="comment">% if edge bends are present</span>
+0212             fprintf(fid, <span class="string">'&lt;att name=&quot;edgeBend&quot;&gt;\n'</span>);
+0213             <span class="keyword">if</span> length(edgeGraphics{index}.att.att) == 1 <span class="comment">% indexed differently if length 1</span>
+0214                 x = edgeGraphics{index}.att.att.Attributes.x;
+0215                 y = edgeGraphics{index}.att.att.Attributes.y;
+0216                 fprintf(fid, <span class="string">'&lt;att name=&quot;handle&quot; x=&quot;%s&quot; y=&quot;%s&quot;/&gt;\n'</span>, x, y);
+0217             <span class="keyword">else</span> <span class="comment">% length greater than 1</span>
+0218                 <span class="keyword">for</span> j = 1:length(edgeGraphics{index}.att.att)
+0219                     x = edgeGraphics{index}.att.att{j}.Attributes.x;
+0220                     y = edgeGraphics{index}.att.att{j}.Attributes.y;
+0221                     fprintf(fid, <span class="string">'&lt;att name=&quot;handle&quot; x=&quot;%s&quot; y=&quot;%s&quot;/&gt;\n'</span>, x, y);
+0222                 <span class="keyword">end</span>
+0223             <span class="keyword">end</span>
+0224             fprintf(fid, <span class="string">'&lt;/att&gt;\n'</span>);
+0225         <span class="keyword">end</span>
+0226         fprintf(fid, <span class="string">'&lt;/graphics&gt;\n'</span>);
+0227         
+0228     <span class="keyword">else</span> <span class="comment">% write with defaults</span>
+0229         reactantIndex = find(strcmp(reactant, nodeList));
+0230         productIndex = find(strcmp(product, nodeList));
+0231         
+0232         fprintf(fid, <span class="string">'&lt;edge label=&quot;%s&quot; source=&quot;%i&quot; target=&quot;%i&quot;&gt;\n'</span>, rcnList{i}, reactantIndex, productIndex);
+0233         fprintf(fid, <span class="string">'&lt;att type=&quot;string&quot; name=&quot;canonicalName&quot; value=&quot;%s&quot;/&gt;\n'</span>, rcnList{i});
+0234         
+0235         interactionType(1) = []; <span class="comment">% remove parentheses from string</span>
+0236         interactionType(end) = [];
+0237         fprintf(fid, <span class="string">'&lt;att type=&quot;string&quot; name=&quot;interaction&quot; value=&quot;%s&quot; cy:editable=&quot;false&quot;/&gt;\n'</span>, interactionType);
+0238         
+0239         <span class="comment">% write the default graphics</span>
+0240         <span class="comment">% inhibitor arrow = 6 for activating, 15 for inhibiting (Cytoscape</span>
+0241         <span class="comment">% syntax)</span>
+0242         <span class="keyword">if</span> strcmp(interactionType, <span class="string">'1'</span>) <span class="comment">% 1 for activating, -1 for inhibiting</span>
+0243             arrow = 6;
+0244         <span class="keyword">else</span>
+0245             arrow = 15;
+0246         <span class="keyword">end</span>
+0247         fprintf(fid, <span class="string">'&lt;graphics cy:targetArrow=&quot;%i&quot;/&gt;\n'</span>, arrow);
+0248     <span class="keyword">end</span>
+0249     
+0250     <span class="comment">% close the edge</span>
+0251     fprintf(fid, <span class="string">'&lt;/edge&gt;'</span>);
+0252 <span class="keyword">end</span>
+0253 
+0254 <span class="comment">% close the graph</span>
+0255 fprintf(fid, <span class="string">'&lt;/graph&gt;'</span>);
+0256 
+0257 fclose(fid);</pre></div>
+<hr><address>Generated on Thu 07-Aug-2014 13:40:59 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

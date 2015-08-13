@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of showObjectInfo</title>
+  <meta name="keywords" content="showObjectInfo">
+  <meta name="description" content="showObjectInfo">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../../../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../../../index.html">Home</a> &gt;  <a href="../../index.html">NetfluxSC_09b</a> &gt; <a href="../index.html">+gui</a> &gt; <a href="index.html">+util</a> &gt; showObjectInfo.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../../../index.html"><img alt="<" border="0" src="../../../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for NetfluxSC_09b\+gui\+util&nbsp;<img alt=">" border="0" src="../../../right.png"></a></td></tr></table>-->
+
+<h1>showObjectInfo
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="box"><strong>showObjectInfo</strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="box"><strong>This is a script file. </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="fragment"><pre class="comment"> showObjectInfo
+  A helper class for gui.autogui and gui.widget</pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../../../matlabicon.gif)">
+<li><a href="showObjectInfo.html" class="code" title="">showObjectInfo</a>	showObjectInfo</li></ul>
+This function is called by:
+<ul style="list-style-image:url(../../../matlabicon.gif)">
+<li><a href="showObjectInfo.html" class="code" title="">showObjectInfo</a>	showObjectInfo</li></ul>
+<!-- crossreference -->
+
+<h2><a name="_subfunctions"></a>SUBFUNCTIONS <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<ul style="list-style-image:url(../../../matlabicon.gif)">
+<li><a href="#_sub1" class="code">function properties(obj)</a></li><li><a href="#_sub2" class="code">function methods(obj)</a></li></ul>
+
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="fragment"><pre>0001 <span class="comment">% showObjectInfo</span>
+0002 <span class="comment">%  A helper class for gui.autogui and gui.widget</span>
+0003 
+0004 <span class="comment">%   Copyright 2009 The MathWorks, Inc.</span>
+0005 
+0006 classdef <a href="showObjectInfo.html" class="code" title="">showObjectInfo</a>
+0007     
+0008     <a href="#_sub2" class="code" title="subfunction methods(obj)">methods</a>(Static,Access=public)
+0009         
+0010         <span class="comment">% generic routine to display properties.</span>
+0011         <span class="comment">% Key difference from default display:</span>
+0012         <span class="comment">% 1) logical values shown as true/false instead of 1 and 0).</span>
+0013         <span class="comment">% 2) Property names are linked to relevant help command</span>
+0014         <span class="comment">%</span>
+0015         <span class="comment">% Sample output:</span>
+0016         <span class="comment">%               Value: 'aa'</span>
+0017         <span class="comment">%           MenuItems: {4x1 cell}</span>
+0018         <span class="comment">%              Enable: false</span>
+0019         <span class="comment">%      LabelAlignment: 'left'</span>
+0020         <span class="comment">%       LabelLocation: 'above'</span>
+0021         <span class="comment">%               Label: 'Algorithm'</span>
+0022         <span class="comment">%              Parent: [1x1 gui.autogui]</span>
+0023         <span class="comment">%            Position: [1x1 struct]</span>
+0024         <span class="comment">%     ValueChangedFcn: []</span>
+0025         <span class="comment">%             Visible: true</span>
+0026         <span class="comment">%               Units: 'pixels'</span>
+0027         <a name="_sub0" href="#_subfunctions" class="code">function properties(obj)</a>
+0028             mc = metaclass(obj);
+0029             p = mc.Properties;
+0030             fprintf(<span class="string">'&lt;a href=&quot;matlab:help %s&quot;&gt;%s&lt;/a&gt;\n'</span>, <span class="keyword">...</span>
+0031                     class(obj), class(obj));
+0032             
+0033             propLength = zeros(1,length(p));
+0034             hideProp = false(1,length(p));
+0035             <span class="keyword">for</span> i=1:length(p)
+0036                 hideProp(i) = p{i}.Abstract || p{i}.Hidden || ~strcmp(p{i}.GetAccess,<span class="string">'public'</span>);
+0037                 propLength(i) = length(p{i}.Name);                    
+0038             <span class="keyword">end</span>
+0039             numSpaces = 3 + max(propLength(~hideProp));
+0040             fprintf(<span class="string">'properties:\n'</span>);
+0041             <span class="keyword">for</span> i=1:length(p)
+0042                 <span class="keyword">if</span> hideProp(i)                   
+0043                     <span class="keyword">continue</span>;
+0044                 <span class="keyword">end</span>                               
+0045                     
+0046                 propname = p{i}.Name;
+0047                 propval = obj.(p{i}.Name);
+0048                 propclass = class(propval);
+0049                 
+0050                 spaces = char(<span class="string">' '</span>*ones(1,numSpaces-propLength(i)));
+0051                 fprintf(<span class="string">'%s&lt;a href=&quot;matlab:help %s.%s&quot;&gt;%s&lt;/a&gt;: '</span>, <span class="keyword">...</span>
+0052                     spaces, p{i}.DefiningClass.Name, propname, propname);
+0053 
+0054                 showDefault = true;
+0055                 <span class="keyword">switch</span> propclass
+0056                     <span class="keyword">case</span> <span class="string">'double'</span>
+0057                         <span class="keyword">if</span> isscalar(propval)
+0058                             fprintf(<span class="string">'%g\n'</span>, propval);
+0059                             showDefault = false;
+0060                         <span class="keyword">end</span>
+0061                     <span class="keyword">case</span> <span class="string">'char'</span>
+0062                         <span class="keyword">if</span> numel(propval) &lt; 32
+0063                             fprintf(<span class="string">'''%s''\n'</span>, propval);
+0064                             showDefault = false;
+0065                         <span class="keyword">end</span>
+0066                     <span class="keyword">case</span> <span class="string">'logical'</span>
+0067                         <span class="keyword">if</span> isscalar(propval)
+0068                             <span class="keyword">if</span> propval
+0069                                 fprintf(<span class="string">'true\n'</span>);
+0070                             <span class="keyword">else</span>
+0071                                 fprintf(<span class="string">'false\n'</span>);
+0072                             <span class="keyword">end</span>
+0073                             showDefault = false;
+0074                         <span class="keyword">end</span>
+0075                 <span class="keyword">end</span>
+0076                 
+0077                 <span class="keyword">if</span> showDefault
+0078                     sz = sprintf(<span class="string">'%dx'</span>,size(propval));                    
+0079                     <span class="keyword">if</span> iscell(propval)
+0080                         <span class="keyword">if</span> isempty(propval)
+0081                             fprintf(<span class="string">'{}\n'</span>);
+0082                         <span class="keyword">else</span>
+0083                             fprintf(<span class="string">'{%s cell}\n'</span>, sz(1:end-1));
+0084                         <span class="keyword">end</span>
+0085                     <span class="keyword">else</span>
+0086                         <span class="keyword">if</span> isempty(propval)
+0087                             fprintf(<span class="string">'[]\n'</span>);
+0088                         <span class="keyword">else</span>
+0089                             fprintf(<span class="string">'[%s %s]\n'</span>, sz(1:end-1), propclass);
+0090                         <span class="keyword">end</span>
+0091                     <span class="keyword">end</span>
+0092                 <span class="keyword">end</span>
+0093                 
+0094             <span class="keyword">end</span>
+0095 
+0096         <span class="keyword">end</span>        
+0097 
+0098         <span class="comment">% Display the methods on a handle object, leaving out the default</span>
+0099         <span class="comment">% implementations. Useful for debugging</span>
+0100         <a name="_sub1" href="#_subfunctions" class="code">function methods(obj)</a>
+0101             mc = metaclass(obj);
+0102             pp = mc.Methods;
+0103             <span class="keyword">for</span> i=1:numel(pp)
+0104                 <span class="keyword">if</span> ~strcmp(pp{i}.DefiningClass.Name,<span class="string">'handle'</span>)
+0105                     fprintf(<span class="string">'%-20s%-20s%-25s\n'</span>,pp{i}.Name,pp{i}.Access,pp{i}.DefiningClass.Name);
+0106                 <span class="keyword">end</span>
+0107             <span class="keyword">end</span>
+0108         <span class="keyword">end</span>
+0109             
+0110     <span class="keyword">end</span>
+0111     
+0112 <span class="keyword">end</span></pre></div>
+<hr><address>Generated on Thu 07-Aug-2014 13:40:59 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

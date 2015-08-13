@@ -1,0 +1,217 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of textmenu</title>
+  <meta name="keywords" content="textmenu">
+  <meta name="description" content="gui.textmenu">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../../index.html">Home</a> &gt;  <a href="../index.html">NetfluxSC_09b</a> &gt; <a href="index.html">+gui</a> &gt; textmenu.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../../index.html"><img alt="<" border="0" src="../../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for NetfluxSC_09b\+gui&nbsp;<img alt=">" border="0" src="../../right.png"></a></td></tr></table>-->
+
+<h1>textmenu
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="box"><strong>gui.textmenu</strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="box"><strong>This is a script file. </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="fragment"><pre class="comment"> gui.textmenu
+    A widget that displays a drop-down menu 
+
+    w = gui.textmenu creates a widget that displays a
+    drop-down menu. The widget is added to the current autogui 
+    (if there is no current autogui, one is created). 
+
+    w = gui.textmenu(M) creates the widget with the label
+    string M.
+
+    w = gui.textmenu(M,S) creates the widget with the label
+    string M, and menu items S (a cell array of strings).
+
+    w = gui.textmenu(M,S,G) creates the widget with the
+    label string M and menu items S, and adds it to the gui
+    container G.
+
+  Sample usage:
+     g = gui.autogui;
+    w1 = gui.textmenu;
+    w2 = gui.textmenu('Filter type', {'Lowpass', 'Highpass'});
+    w3 = gui.textmenu('Filter type', {'Lowpass', 'Highpass'}, g);
+
+    Also see: 
+    &lt;a href=&quot;matlab:help gui.textmenu.Value&quot;&gt;gui.textmenu.Value&lt;/a&gt;
+    &lt;a href=&quot;matlab:help gui.numericmenu&quot;&gt;gui.numericmenu&lt;/a&gt;
+    &lt;a href=&quot;matlab:help gui.listbox&quot;&gt;gui.listbox&lt;/a&gt;</pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../../matlabicon.gif)">
+<li><a href="textmenu.html" class="code" title="">textmenu</a>	gui.textmenu</li></ul>
+This function is called by:
+<ul style="list-style-image:url(../../matlabicon.gif)">
+<li><a href="textmenu.html" class="code" title="">textmenu</a>	gui.textmenu</li></ul>
+<!-- crossreference -->
+
+<h2><a name="_subfunctions"></a>SUBFUNCTIONS <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<ul style="list-style-image:url(../../matlabicon.gif)">
+<li><a href="#_sub1" class="code">function obj = textmenu(labelStr, menuItems, varargin)</a></li><li><a href="#_sub2" class="code">function set.MenuItems(obj, itemList)</a></li><li><a href="#_sub3" class="code">function out = get.MenuItems(obj)</a></li><li><a href="#_sub4" class="code">function set.Value(obj , val)</a></li><li><a href="#_sub5" class="code">function out = get.Value(obj)</a></li><li><a href="#_sub6" class="code">function initNotify(obj)</a></li></ul>
+
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="fragment"><pre>0001 <span class="comment">% gui.textmenu</span>
+0002 <span class="comment">%    A widget that displays a drop-down menu</span>
+0003 <span class="comment">%</span>
+0004 <span class="comment">%    w = gui.textmenu creates a widget that displays a</span>
+0005 <span class="comment">%    drop-down menu. The widget is added to the current autogui</span>
+0006 <span class="comment">%    (if there is no current autogui, one is created).</span>
+0007 <span class="comment">%</span>
+0008 <span class="comment">%    w = gui.textmenu(M) creates the widget with the label</span>
+0009 <span class="comment">%    string M.</span>
+0010 <span class="comment">%</span>
+0011 <span class="comment">%    w = gui.textmenu(M,S) creates the widget with the label</span>
+0012 <span class="comment">%    string M, and menu items S (a cell array of strings).</span>
+0013 <span class="comment">%</span>
+0014 <span class="comment">%    w = gui.textmenu(M,S,G) creates the widget with the</span>
+0015 <span class="comment">%    label string M and menu items S, and adds it to the gui</span>
+0016 <span class="comment">%    container G.</span>
+0017 <span class="comment">%</span>
+0018 <span class="comment">%  Sample usage:</span>
+0019 <span class="comment">%     g = gui.autogui;</span>
+0020 <span class="comment">%    w1 = gui.textmenu;</span>
+0021 <span class="comment">%    w2 = gui.textmenu('Filter type', {'Lowpass', 'Highpass'});</span>
+0022 <span class="comment">%    w3 = gui.textmenu('Filter type', {'Lowpass', 'Highpass'}, g);</span>
+0023 <span class="comment">%</span>
+0024 <span class="comment">%    Also see:</span>
+0025 <span class="comment">%    &lt;a href=&quot;matlab:help gui.textmenu.Value&quot;&gt;gui.textmenu.Value&lt;/a&gt;</span>
+0026 <span class="comment">%    &lt;a href=&quot;matlab:help gui.numericmenu&quot;&gt;gui.numericmenu&lt;/a&gt;</span>
+0027 <span class="comment">%    &lt;a href=&quot;matlab:help gui.listbox&quot;&gt;gui.listbox&lt;/a&gt;</span>
+0028 
+0029 <span class="comment">%   Copyright 2009 The MathWorks, Inc.</span>
+0030 
+0031 classdef (Sealed) <a href="textmenu.html" class="code" title="">textmenu</a> &lt; gui.labeleduicontrol
+0032 
+0033     properties(Dependent)
+0034         <span class="comment">% Value</span>
+0035         <span class="comment">%   A string indicating the current menu selection. The MenuItems</span>
+0036         <span class="comment">%   property specifies the list of choices.</span>
+0037         <span class="comment">%</span>
+0038         <span class="comment">%   Sample usage:</span>
+0039         <span class="comment">%    s = gui.textmenu('Choose a filter', {'Lowpass', 'Highpass', 'Bandpass'});</span>
+0040         <span class="comment">%    if strcmp(s.Value, 'Lowpass')  % get the value</span>
+0041         <span class="comment">%          % ...</span>
+0042         <span class="comment">%    end</span>
+0043         <span class="comment">%    s.Value = 'Bandpass';  % set the current selection</span>
+0044         <span class="comment">%    % invalid assignment, since 'Notch' is not one of the menu options</span>
+0045         <span class="comment">%    s.Value = 'Notch';</span>
+0046         Value 
+0047     <span class="keyword">end</span>
+0048     
+0049     properties(Dependent)
+0050         <span class="comment">% MenuItems</span>
+0051         <span class="comment">%   A cell array of strings specifying the menu options. Whenever</span>
+0052         <span class="comment">%   the MenuItems property is modified, the Value property is reset</span>
+0053         <span class="comment">%   to the first item in the array.</span>
+0054         <span class="comment">%</span>
+0055         <span class="comment">%   Sample usage:</span>
+0056         <span class="comment">%    initialMenuItems = {'Lowpass', 'Highpass'};</span>
+0057         <span class="comment">%    s = gui.textmenu('Choose a filter', initialMenuItems);</span>
+0058         <span class="comment">%    % change the menu items</span>
+0059         <span class="comment">%    s.MenuItems = {'Lowpass-1', 'Lowpass-2', 'Lowpass-3'};</span>
+0060         <span class="comment">%    s.Value % automatically reset to 'Lowpass-1'</span>
+0061         MenuItems
+0062     <span class="keyword">end</span>
+0063     
+0064     methods
+0065         <a name="_sub0" href="#_subfunctions" class="code">function obj = textmenu(labelStr, menuItems, varargin)</a>
+0066 
+0067             <span class="keyword">if</span> ~exist(<span class="string">'labelStr'</span>, <span class="string">'var'</span>)
+0068                 labelStr = <span class="string">'Choose a menu item'</span>;
+0069             <span class="keyword">end</span>
+0070             <span class="keyword">if</span> ~exist(<span class="string">'menuItems'</span>, <span class="string">'var'</span>)
+0071                 menuItems = {<span class="string">'Option 1'</span>, <span class="string">'Option 2'</span>, <span class="string">'Option 3'</span>};
+0072             <span class="keyword">end</span>
+0073 
+0074             obj = obj@gui.labeleduicontrol(<span class="string">'popupmenu'</span>,labelStr,varargin{:});
+0075             assert(~obj.Initialized &amp;&amp; ~obj.Visible);
+0076             obj.MenuItems = menuItems;
+0077             
+0078             obj.Initialized = true;
+0079             obj.Visible = true;
+0080         <span class="keyword">end</span>
+0081         
+0082     <span class="keyword">end</span>
+0083 
+0084     methods
+0085          <span class="comment">% resets value, but does not notify ValueChanged</span>
+0086         <a name="_sub1" href="#_subfunctions" class="code">function set.MenuItems(obj, itemList)</a>
+0087             <span class="keyword">if</span> isempty(itemList) || ~(ischar(itemList) || iscellstr(itemList))
+0088                 throw(MException(<span class="string">'textmenu:InvalidMenuItems'</span>, <span class="string">'MenuItems should be a string or a cell array of strings'</span>));
+0089             <span class="keyword">end</span>
+0090             itemList = cellstr(itemList);
+0091             <span class="comment">% get unique items in the same order as their occurrence in itemlist</span>
+0092             [uniqueItems,indices] = unique(itemList,<span class="string">'first'</span>);
+0093             <span class="keyword">if</span> numel(uniqueItems) &lt; numel(itemList)
+0094                 warning(<span class="string">'textmenu:DuplicateMenuItems'</span>, <span class="string">'Ignoring duplicate menu items'</span>);
+0095                 itemList = itemList(sort(indices));
+0096             <span class="keyword">end</span>
+0097             set(obj.UiControl,<span class="string">'String'</span>, itemList);
+0098             set(obj.UiControl, <span class="string">'Value'</span>, 1);
+0099         <span class="keyword">end</span>
+0100 
+0101         <a name="_sub2" href="#_subfunctions" class="code">function out = get.MenuItems(obj)</a>
+0102             out = get(obj.UiControl, <span class="string">'String'</span>);
+0103         <span class="keyword">end</span>
+0104         
+0105         <a name="_sub3" href="#_subfunctions" class="code">function set.Value(obj , val)</a>
+0106             items = obj.MenuItems;
+0107             <span class="keyword">if</span> ischar(val)
+0108                 index = strmatch(val, items);
+0109             <span class="keyword">else</span>
+0110                 index = [];
+0111             <span class="keyword">end</span>
+0112 
+0113             <span class="keyword">if</span> isempty(index)
+0114                 itemsString = sprintf(<span class="string">' ''%s''\n'</span>, items{:});                
+0115                 throw(MException(<span class="string">'textmenu:InvalidValue'</span>, <span class="keyword">...</span>
+0116                     <span class="string">'Value should match one of the menu items:\n%s'</span>, <span class="keyword">...</span>
+0117                     itemsString));
+0118             <span class="keyword">end</span>
+0119 
+0120             set(obj.UiControl,<span class="string">'Value'</span>, index(1));
+0121             notify(obj, <span class="string">'ValueChanged'</span>);
+0122         <span class="keyword">end</span>
+0123         
+0124         <a name="_sub4" href="#_subfunctions" class="code">function out = get.Value(obj)</a>
+0125             index = get(obj.UiControl, <span class="string">'Value'</span>);
+0126             items = obj.MenuItems;
+0127             out = items{index};
+0128         <span class="keyword">end</span>
+0129     <span class="keyword">end</span>
+0130 
+0131     
+0132     methods(Access=protected)
+0133        
+0134         <a name="_sub5" href="#_subfunctions" class="code">function initNotify(obj)</a>
+0135             <a href="#_sub6" class="code" title="subfunction initNotify(obj)">initNotify</a>@gui.labeleduicontrol(obj);
+0136             obj.LabelLocation = <span class="string">'above'</span>;
+0137         <span class="keyword">end</span>
+0138         
+0139     <span class="keyword">end</span>    
+0140         
+0141 <span class="keyword">end</span>
+0142</pre></div>
+<hr><address>Generated on Thu 07-Aug-2014 13:40:59 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

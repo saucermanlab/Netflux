@@ -1,0 +1,170 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of editnumber</title>
+  <meta name="keywords" content="editnumber">
+  <meta name="description" content="gui.editnumber">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../../index.html">Home</a> &gt;  <a href="../index.html">NetfluxSC_09b</a> &gt; <a href="index.html">+gui</a> &gt; editnumber.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../../index.html"><img alt="<" border="0" src="../../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for NetfluxSC_09b\+gui&nbsp;<img alt=">" border="0" src="../../right.png"></a></td></tr></table>-->
+
+<h1>editnumber
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="box"><strong>gui.editnumber</strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="box"><strong>This is a script file. </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="fragment"><pre class="comment"> gui.editnumber
+    A text input widget that only accepts numbers.
+
+    w = gui.editnumber creates a widget for entering numbers
+    and adds it to the current autogui (if there is no current
+    autogui, one is created).
+
+    w = gui.editnumber(m) creates the widget with the label
+    string m.
+
+    w = gui.editnumber(m, g) creates the widget with the
+    label string m, and adds it to the gui container g.
+
+  Sample usage:
+     g = gui.autogui;
+    w1 = gui.editnumber;
+    w2 = gui.editnumber('Frequency (Hz)');
+    w3 = gui.editnumber('Frequency (Hz)',g);
+
+    Also see: 
+    &lt;a href=&quot;matlab:help gui.editnumber.Value&quot;&gt;gui.editnumber.Value&lt;/a&gt;
+    &lt;a href=&quot;matlab:help gui.numericmenu&quot;&gt;gui.numericmenu&lt;/a&gt;</pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../../matlabicon.gif)">
+<li><a href="editnumber.html" class="code" title="">editnumber</a>	gui.editnumber</li></ul>
+This function is called by:
+<ul style="list-style-image:url(../../matlabicon.gif)">
+<li><a href="editnumber.html" class="code" title="">editnumber</a>	gui.editnumber</li></ul>
+<!-- crossreference -->
+
+<h2><a name="_subfunctions"></a>SUBFUNCTIONS <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<ul style="list-style-image:url(../../matlabicon.gif)">
+<li><a href="#_sub1" class="code">function obj = editnumber(labelStr, varargin)</a></li><li><a href="#_sub2" class="code">function set.Value(obj,val)</a></li><li><a href="#_sub3" class="code">function out = get.Value(obj)</a></li><li><a href="#_sub4" class="code">function uicontrolCallback(obj)</a></li><li><a href="#_sub5" class="code">function valueOkay = ensureValidNumber(val, str)</a></li></ul>
+
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="fragment"><pre>0001 <span class="comment">% gui.editnumber</span>
+0002 <span class="comment">%    A text input widget that only accepts numbers.</span>
+0003 <span class="comment">%</span>
+0004 <span class="comment">%    w = gui.editnumber creates a widget for entering numbers</span>
+0005 <span class="comment">%    and adds it to the current autogui (if there is no current</span>
+0006 <span class="comment">%    autogui, one is created).</span>
+0007 <span class="comment">%</span>
+0008 <span class="comment">%    w = gui.editnumber(m) creates the widget with the label</span>
+0009 <span class="comment">%    string m.</span>
+0010 <span class="comment">%</span>
+0011 <span class="comment">%    w = gui.editnumber(m, g) creates the widget with the</span>
+0012 <span class="comment">%    label string m, and adds it to the gui container g.</span>
+0013 <span class="comment">%</span>
+0014 <span class="comment">%  Sample usage:</span>
+0015 <span class="comment">%     g = gui.autogui;</span>
+0016 <span class="comment">%    w1 = gui.editnumber;</span>
+0017 <span class="comment">%    w2 = gui.editnumber('Frequency (Hz)');</span>
+0018 <span class="comment">%    w3 = gui.editnumber('Frequency (Hz)',g);</span>
+0019 <span class="comment">%</span>
+0020 <span class="comment">%    Also see:</span>
+0021 <span class="comment">%    &lt;a href=&quot;matlab:help gui.editnumber.Value&quot;&gt;gui.editnumber.Value&lt;/a&gt;</span>
+0022 <span class="comment">%    &lt;a href=&quot;matlab:help gui.numericmenu&quot;&gt;gui.numericmenu&lt;/a&gt;</span>
+0023 
+0024 <span class="comment">%   Copyright 2009 The MathWorks, Inc.</span>
+0025 
+0026 classdef (Sealed) <a href="editnumber.html" class="code" title="">editnumber</a> &lt; gui.labeleduicontrol
+0027     properties(Dependent)
+0028         <span class="comment">% Value</span>
+0029         <span class="comment">%   The number entered by the user. This property can also be set</span>
+0030         <span class="comment">%   programmatically.</span>
+0031         <span class="comment">%</span>
+0032         <span class="comment">%   Sample usage:</span>
+0033         <span class="comment">%    s = gui.editnumber('Number of samples');</span>
+0034         <span class="comment">%    s.Value % get the value</span>
+0035         <span class="comment">%    s.Value = s.Value + 100; % increment the value</span>
+0036         Value
+0037     <span class="keyword">end</span>    
+0038     
+0039     properties(Access=private)
+0040         OldString = <span class="string">'0.0'</span>
+0041     <span class="keyword">end</span>
+0042     
+0043     <span class="comment">% Main Constructor</span>
+0044     methods
+0045         <a name="_sub0" href="#_subfunctions" class="code">function obj = editnumber(labelStr, varargin)            </a>
+0046             <span class="keyword">if</span> ~exist(<span class="string">'labelStr'</span>, <span class="string">'var'</span>)
+0047                 labelStr = <span class="string">'Enter a number:'</span>;
+0048             <span class="keyword">end</span>
+0049             
+0050             obj = obj@gui.labeleduicontrol(<span class="string">'edit'</span>,labelStr,varargin{:});
+0051             <span class="comment">% assert(~obj.Initialized &amp;&amp; ~obj.Visible);</span>
+0052             <span class="comment">% assert(strcmp(obj.LabelLocation, 'above'));</span>
+0053             
+0054             set(obj.UiControl, <span class="string">'BackgroundColor'</span>, [0.95 .95 .95]);
+0055             obj.Value = 0;
+0056             
+0057             <span class="comment">% obj is the most derived class</span>
+0058             obj.Initialized = true;
+0059             obj.Visible = true;
+0060         <span class="keyword">end</span>
+0061     <span class="keyword">end</span>
+0062     
+0063     <span class="comment">% Interface to properties</span>
+0064     methods 
+0065         <a name="_sub1" href="#_subfunctions" class="code">function set.Value(obj,val)</a>
+0066             <a href="#_sub5" class="code" title="subfunction valueOkay = ensureValidNumber(val, str)">ensureValidNumber</a>(val, <span class="string">'Value'</span>);            
+0067             newStr = num2str(val,10);
+0068             set(obj.UiControl,<span class="string">'String'</span>,newStr);
+0069             obj.OldString = newStr;
+0070             notify(obj,<span class="string">'ValueChanged'</span>);
+0071         <span class="keyword">end</span>
+0072         
+0073         <a name="_sub2" href="#_subfunctions" class="code">function out = get.Value(obj)</a>
+0074             out = str2double(get(obj.UiControl,<span class="string">'String'</span>));            
+0075         <span class="keyword">end</span>
+0076     <span class="keyword">end</span>
+0077 
+0078     methods (Hidden)       
+0079         <a name="_sub3" href="#_subfunctions" class="code">function uicontrolCallback(obj)</a>
+0080             newStr = get(obj.UiControl, <span class="string">'string'</span>);
+0081             newVal = str2double(newStr);
+0082             <span class="keyword">if</span> isnan(newVal) || ~<a href="#_sub5" class="code" title="subfunction valueOkay = ensureValidNumber(val, str)">ensureValidNumber</a>(newVal)
+0083                 set(obj.UiControl, <span class="string">'string'</span>, obj.OldString);
+0084             <span class="keyword">else</span>
+0085                 obj.OldString = newStr;
+0086                 notify(obj, <span class="string">'ValueChanged'</span>);
+0087             <span class="keyword">end</span>
+0088         <span class="keyword">end</span>
+0089             
+0090     <span class="keyword">end</span>
+0091     
+0092 <span class="keyword">end</span>
+0093 
+0094 
+0095 <a name="_sub4" href="#_subfunctions" class="code">function valueOkay = ensureValidNumber(val, str)</a>
+0096 valueOkay = isscalar(val) &amp;&amp; isnumeric(val) &amp;&amp; isreal(val) &amp;&amp; ~isnan(val);
+0097 <span class="keyword">if</span> nargout==0 &amp;&amp; ~valueOkay
+0098     throwAsCaller(MException(<span class="string">'editnumber:InvalidValue'</span>, <span class="string">'%s should be a real number'</span>, str));
+0099 <span class="keyword">end</span>
+0100 <span class="keyword">end</span></pre></div>
+<hr><address>Generated on Thu 07-Aug-2014 13:40:59 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of SBMLgui</title>
+  <meta name="keywords" content="SBMLgui">
+  <meta name="description" content="GUI for SBML conversion tool">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../../index.html">Home</a> &gt;  <a href="../index.html">NetfluxSC_09b</a> &gt; <a href="index.html">subgui</a> &gt; SBMLgui.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../../index.html"><img alt="<" border="0" src="../../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for NetfluxSC_09b\subgui&nbsp;<img alt=">" border="0" src="../../right.png"></a></td></tr></table>-->
+
+<h1>SBMLgui
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="box"><strong>GUI for SBML conversion tool</strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="box"><strong>function varargout = SBMLgui(varargin) </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="fragment"><pre class="comment"> GUI for SBML conversion tool
+      SBMLgui, by itself, creates a new SBMLgui or raises the existing
+      singleton*.
+
+      H = SBMLgui returns the handle to a new SBMLgui or the handle to
+      the existing singleton*.
+
+      SBMLgui('CALLBACK',hObject,eventData,handles,...) calls the local
+      function named CALLBACK in SBMLgui.M with the given input arguments.
+
+      SBMLgui('Property','Value',...) creates a new SBMLgui or raises the
+      existing singleton*.  Starting from the left, property value pairs are
+      applied to the GUI before SBMLgui_OpeningFcn gets called.  An
+      unrecognized property name or invalid value makes property application
+      stop.  All inputs are passed to SBMLgui_OpeningFcn via varargin.
+
+      *See GUI Options on GUIDE's Tools menu.  Choose &quot;GUI allows only one
+      instance to run (singleton)&quot;.
+
+ See also: GUIDE, GUIDATA, GUIHANDLES</pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../../matlabicon.gif)">
+</ul>
+This function is called by:
+<ul style="list-style-image:url(../../matlabicon.gif)">
+</ul>
+<!-- crossreference -->
+
+<h2><a name="_subfunctions"></a>SUBFUNCTIONS <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<ul style="list-style-image:url(../../matlabicon.gif)">
+<li><a href="#_sub1" class="code">function SBMLgui_OpeningFcn(hObject, eventdata, handles, varargin)</a></li><li><a href="#_sub2" class="code">function varargout = SBMLgui_OutputFcn(hObject, eventdata, handles)</a></li><li><a href="#_sub3" class="code">function SBMLname_Callback(hObject, eventdata, handles)</a></li><li><a href="#_sub4" class="code">function SBMLname_CreateFcn(hObject, eventdata, handles)</a></li><li><a href="#_sub5" class="code">function edit2_Callback(hObject, eventdata, handles)</a></li><li><a href="#_sub6" class="code">function edit2_CreateFcn(hObject, eventdata, handles)</a></li><li><a href="#_sub7" class="code">function setSBML_Callback(hObject, eventdata, handles)</a></li><li><a href="#_sub8" class="code">function setOutputFolder_Callback(hObject, eventdata, handles)</a></li><li><a href="#_sub9" class="code">function cancelButton_Callback(hObject, eventdata, handles)</a></li><li><a href="#_sub10" class="code">function convertButton_Callback(hObject, eventdata, handles)</a></li><li><a href="#_sub11" class="code">function outputFolder_Callback(hObject, eventdata, handles)</a></li><li><a href="#_sub12" class="code">function outputFolder_CreateFcn(hObject, eventdata, handles)</a></li></ul>
+
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="fragment"><pre>0001 <a name="_sub0" href="#_subfunctions" class="code">function varargout = SBMLgui(varargin)</a>
+0002 <span class="comment">% GUI for SBML conversion tool</span>
+0003 <span class="comment">%      SBMLgui, by itself, creates a new SBMLgui or raises the existing</span>
+0004 <span class="comment">%      singleton*.</span>
+0005 <span class="comment">%</span>
+0006 <span class="comment">%      H = SBMLgui returns the handle to a new SBMLgui or the handle to</span>
+0007 <span class="comment">%      the existing singleton*.</span>
+0008 <span class="comment">%</span>
+0009 <span class="comment">%      SBMLgui('CALLBACK',hObject,eventData,handles,...) calls the local</span>
+0010 <span class="comment">%      function named CALLBACK in SBMLgui.M with the given input arguments.</span>
+0011 <span class="comment">%</span>
+0012 <span class="comment">%      SBMLgui('Property','Value',...) creates a new SBMLgui or raises the</span>
+0013 <span class="comment">%      existing singleton*.  Starting from the left, property value pairs are</span>
+0014 <span class="comment">%      applied to the GUI before SBMLgui_OpeningFcn gets called.  An</span>
+0015 <span class="comment">%      unrecognized property name or invalid value makes property application</span>
+0016 <span class="comment">%      stop.  All inputs are passed to SBMLgui_OpeningFcn via varargin.</span>
+0017 <span class="comment">%</span>
+0018 <span class="comment">%      *See GUI Options on GUIDE's Tools menu.  Choose &quot;GUI allows only one</span>
+0019 <span class="comment">%      instance to run (singleton)&quot;.</span>
+0020 <span class="comment">%</span>
+0021 <span class="comment">% See also: GUIDE, GUIDATA, GUIHANDLES</span>
+0022 
+0023 <span class="comment">% Edit the above text to modify the response to help SBMLgui</span>
+0024 
+0025 <span class="comment">% Last Modified by GUIDE v2.5 01-Jul-2014 10:53:11</span>
+0026 
+0027 <span class="comment">% Begin initialization code - DO NOT EDIT</span>
+0028 gui_Singleton = 1;
+0029 gui_State = struct(<span class="string">'gui_Name'</span>,       mfilename, <span class="keyword">...</span>
+0030                    <span class="string">'gui_Singleton'</span>,  gui_Singleton, <span class="keyword">...</span>
+0031                    <span class="string">'gui_OpeningFcn'</span>, @<a href="#_sub1" class="code" title="subfunction SBMLgui_OpeningFcn(hObject, eventdata, handles, varargin)">SBMLgui_OpeningFcn</a>, <span class="keyword">...</span>
+0032                    <span class="string">'gui_OutputFcn'</span>,  @<a href="#_sub2" class="code" title="subfunction varargout = SBMLgui_OutputFcn(hObject, eventdata, handles)">SBMLgui_OutputFcn</a>, <span class="keyword">...</span>
+0033                    <span class="string">'gui_LayoutFcn'</span>,  [] , <span class="keyword">...</span>
+0034                    <span class="string">'gui_Callback'</span>,   []);
+0035 <span class="keyword">if</span> nargin &amp;&amp; ischar(varargin{1})
+0036     gui_State.gui_Callback = str2func(varargin{1});
+0037 <span class="keyword">end</span>
+0038 
+0039 <span class="keyword">if</span> nargout
+0040     [varargout{1:nargout}] = gui_mainfcn(gui_State, varargin{:});
+0041 <span class="keyword">else</span>
+0042     gui_mainfcn(gui_State, varargin{:});
+0043 <span class="keyword">end</span>
+0044 <span class="comment">% End initialization code - DO NOT EDIT</span>
+0045 
+0046 
+0047 <span class="comment">% --- Executes just before SBMLgui is made visible.</span>
+0048 <a name="_sub1" href="#_subfunctions" class="code">function SBMLgui_OpeningFcn(hObject, eventdata, handles, varargin)</a>
+0049 <span class="comment">% This function has no output args, see OutputFcn.</span>
+0050 <span class="comment">% hObject    handle to figure</span>
+0051 <span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+0052 <span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+0053 <span class="comment">% varargin   command line arguments to SBMLgui (see VARARGIN)</span>
+0054 
+0055 set(hObject, <span class="string">'name'</span>, <span class="string">'Convert SBML-QUAL'</span>);
+0056 set(hObject, <span class="string">'Color'</span>, [.8 .9 .9]);
+0057 set(handles.text1, <span class="string">'BackgroundColor'</span>, [.8 .9 .9]);
+0058 set(handles.text2, <span class="string">'BackgroundColor'</span>, [.8 .9 .9]);
+0059 movegui(hObject, <span class="string">'center'</span>);
+0060 
+0061 <span class="comment">% Choose default command line output for SBMLgui</span>
+0062 handles.output = hObject;
+0063 
+0064 <span class="comment">% Update handles structure</span>
+0065 guidata(hObject, handles);
+0066 
+0067 <span class="comment">% UIWAIT makes SBMLgui wait for user response (see UIRESUME)</span>
+0068 uiwait(handles.figure1);
+0069 
+0070 
+0071 <span class="comment">% --- Outputs from this function are returned to the command line.</span>
+0072 <a name="_sub2" href="#_subfunctions" class="code">function varargout = SBMLgui_OutputFcn(hObject, eventdata, handles) </a>
+0073 <span class="comment">% varargout  cell array for returning output args (see VARARGOUT);</span>
+0074 <span class="comment">% hObject    handle to figure</span>
+0075 <span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+0076 <span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+0077 
+0078 <span class="comment">% Assign output from handles structure</span>
+0079 <span class="keyword">try</span> 
+0080     fnames.xml = get(handles.SBMLname, <span class="string">'String'</span>);
+0081     fnames.outputfolder = get(handles.outputFolder, <span class="string">'String'</span>);
+0082     fnames.userCanceled = false;
+0083     varargout{1} = fnames;
+0084     delete(handles.figure1);
+0085 <span class="keyword">catch</span> e <span class="comment">% something went wrong</span>
+0086     fnames.xml = <span class="string">''</span>;
+0087     fnames.outputfolder = <span class="string">''</span>;
+0088     fnames.userCanceled = true;
+0089     varargout{1} = fnames;
+0090     <span class="keyword">try</span>
+0091         delete(handles.figure1);
+0092     <span class="keyword">catch</span>
+0093     <span class="keyword">end</span>
+0094 <span class="keyword">end</span>
+0095     
+0096 
+0097 <a name="_sub3" href="#_subfunctions" class="code">function SBMLname_Callback(hObject, eventdata, handles)</a>
+0098 <span class="comment">% hObject    handle to SBMLname (see GCBO)</span>
+0099 <span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+0100 <span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+0101 
+0102 <span class="comment">% Hints: get(hObject,'String') returns contents of SBMLname as text</span>
+0103 <span class="comment">%        str2double(get(hObject,'String')) returns contents of SBMLname as a double</span>
+0104 
+0105 
+0106 <span class="comment">% --- Executes during object creation, after setting all properties.</span>
+0107 <a name="_sub4" href="#_subfunctions" class="code">function SBMLname_CreateFcn(hObject, eventdata, handles)</a>
+0108 <span class="comment">% hObject    handle to SBMLname (see GCBO)</span>
+0109 <span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+0110 <span class="comment">% handles    empty - handles not created until after all CreateFcns called</span>
+0111 
+0112 <span class="comment">% Hint: edit controls usually have a white background on Windows.</span>
+0113 <span class="comment">%       See ISPC and COMPUTER.</span>
+0114 <span class="keyword">if</span> ispc &amp;&amp; isequal(get(hObject,<span class="string">'BackgroundColor'</span>), get(0,<span class="string">'defaultUicontrolBackgroundColor'</span>))
+0115     set(hObject,<span class="string">'BackgroundColor'</span>,<span class="string">'white'</span>);
+0116 <span class="keyword">end</span>
+0117 
+0118 
+0119 
+0120 <a name="_sub5" href="#_subfunctions" class="code">function edit2_Callback(hObject, eventdata, handles)</a>
+0121 <span class="comment">% hObject    handle to edit2 (see GCBO)</span>
+0122 <span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+0123 <span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+0124 
+0125 <span class="comment">% Hints: get(hObject,'String') returns contents of edit2 as text</span>
+0126 <span class="comment">%        str2double(get(hObject,'String')) returns contents of edit2 as a double</span>
+0127 
+0128 
+0129 <span class="comment">% --- Executes during object creation, after setting all properties.</span>
+0130 <a name="_sub6" href="#_subfunctions" class="code">function edit2_CreateFcn(hObject, eventdata, handles)</a>
+0131 <span class="comment">% hObject    handle to edit2 (see GCBO)</span>
+0132 <span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+0133 <span class="comment">% handles    empty - handles not created until after all CreateFcns called</span>
+0134 
+0135 <span class="comment">% Hint: edit controls usually have a white background on Windows.</span>
+0136 <span class="comment">%       See ISPC and COMPUTER.</span>
+0137 <span class="keyword">if</span> ispc &amp;&amp; isequal(get(hObject,<span class="string">'BackgroundColor'</span>), get(0,<span class="string">'defaultUicontrolBackgroundColor'</span>))
+0138     set(hObject,<span class="string">'BackgroundColor'</span>,<span class="string">'white'</span>);
+0139 <span class="keyword">end</span>
+0140 
+0141 
+0142 <span class="comment">% --- Executes on button press in setSBML.</span>
+0143 <a name="_sub7" href="#_subfunctions" class="code">function setSBML_Callback(hObject, eventdata, handles)</a>
+0144 <span class="comment">% hObject    handle to setSBML (see GCBO)</span>
+0145 <span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+0146 <span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+0147 [fname, pname] = uigetfile(<span class="string">'*.xml;*.sbml'</span>, <span class="string">'Select SBML-QUAL file'</span>);
+0148 set(handles.SBMLname, <span class="string">'string'</span>, fullfile(pname,fname));
+0149 
+0150 
+0151 <span class="comment">% --- Executes on button press in setOutputFolder.</span>
+0152 <a name="_sub8" href="#_subfunctions" class="code">function setOutputFolder_Callback(hObject, eventdata, handles)</a>
+0153 <span class="comment">% hObject    handle to setOutputFolder (see GCBO)</span>
+0154 <span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+0155 <span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+0156 [folderName] = uigetdir(cd,<span class="string">'Select Output Folder'</span>);
+0157 set(handles.outputFolder, <span class="string">'string'</span>, folderName);
+0158 
+0159 <span class="comment">% --- Executes on button press in cancelButton.</span>
+0160 <a name="_sub9" href="#_subfunctions" class="code">function cancelButton_Callback(hObject, eventdata, handles)</a>
+0161 <span class="comment">% hObject    handle to cancelButton (see GCBO)</span>
+0162 <span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+0163 <span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+0164 delete(handles.figure1);
+0165 
+0166 <span class="comment">% --- Executes on button press in convertButton.</span>
+0167 <a name="_sub10" href="#_subfunctions" class="code">function convertButton_Callback(hObject, eventdata, handles)</a>
+0168 <span class="comment">% hObject    handle to convertButton (see GCBO)</span>
+0169 <span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+0170 <span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+0171 uiresume(handles.figure1);
+0172 
+0173 
+0174 <a name="_sub11" href="#_subfunctions" class="code">function outputFolder_Callback(hObject, eventdata, handles)</a>
+0175 <span class="comment">% hObject    handle to outputFolder (see GCBO)</span>
+0176 <span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+0177 <span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+0178 
+0179 <span class="comment">% Hints: get(hObject,'String') returns contents of outputFolder as text</span>
+0180 <span class="comment">%        str2double(get(hObject,'String')) returns contents of outputFolder as a double</span>
+0181 
+0182 
+0183 <span class="comment">% --- Executes during object creation, after setting all properties.</span>
+0184 <a name="_sub12" href="#_subfunctions" class="code">function outputFolder_CreateFcn(hObject, eventdata, handles)</a>
+0185 <span class="comment">% hObject    handle to outputFolder (see GCBO)</span>
+0186 <span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+0187 <span class="comment">% handles    empty - handles not created until after all CreateFcns called</span>
+0188 
+0189 <span class="comment">% Hint: edit controls usually have a white background on Windows.</span>
+0190 <span class="comment">%       See ISPC and COMPUTER.</span>
+0191 <span class="keyword">if</span> ispc &amp;&amp; isequal(get(hObject,<span class="string">'BackgroundColor'</span>), get(0,<span class="string">'defaultUicontrolBackgroundColor'</span>))
+0192     set(hObject,<span class="string">'BackgroundColor'</span>,<span class="string">'white'</span>);
+0193 <span class="keyword">end</span></pre></div>
+<hr><address>Generated on Thu 07-Aug-2014 13:40:59 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

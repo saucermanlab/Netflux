@@ -1,0 +1,202 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of importsif</title>
+  <meta name="keywords" content="importsif">
+  <meta name="description" content="Converts a sif file to a Netflux Excel file">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../../index.html">Home</a> &gt;  <a href="../index.html">NetfluxSC_09b</a> &gt; <a href="index.html">+util</a> &gt; importsif.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../../index.html"><img alt="<" border="0" src="../../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for NetfluxSC_09b\+util&nbsp;<img alt=">" border="0" src="../../right.png"></a></td></tr></table>-->
+
+<h1>importsif
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="box"><strong>Converts a sif file to a Netflux Excel file</strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="box"><strong>function importsif(sifFile, outputFileName) </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="fragment"><pre class="comment"> Converts a sif file to a Netflux Excel file
+   
+   IMPORTSIF(sifFile, outputFileName) writes a Netflux .xlsx file to the
+   location specified by outputFileName. outputFileName can be an absolute
+   or relative path.
+   
+   NOTE: The program makes a number of assumptions about the structure of
+   the SIF file: 
+       1) Each line must be tab delimited with format 
+       'reactant     #      product'
+       where #=1 corresponds to an activating relationship and #=-1
+       corresponds to an inhibiting relationship.
+
+           EXAMPLE: 
+                AC    1    cAMP
+                CaMK    -1    HDAC
+
+             will be translated to: 
+                AC =&gt; cAMP
+                !CaMK =&gt; HDAC
+
+       2) AND relationships must be written in the SIF file with the
+       following the format:
+              'connector     #      output'
+              'input1        #      connector'
+              'input2        #      connector'
+              ...
+              'inputN        #      connector'
+          where connector is an alphanumeric string with the format 'rcn#'
+
+       EXAMPLE: 
+               rcn22    1    SERCA
+               cFos    -1    rcn22
+               cJun    -1    rcn22
+               NFAT    -1    rcn22
+
+          will be translated to: 
+              !cFos &amp; !cJun &amp; !NFAT =&gt; SERCA</pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../../matlabicon.gif)">
+</ul>
+This function is called by:
+<ul style="list-style-image:url(../../matlabicon.gif)">
+</ul>
+<!-- crossreference -->
+
+
+
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="fragment"><pre>0001 <a name="_sub0" href="#_subfunctions" class="code">function importsif(sifFile, outputFileName)</a>
+0002 <span class="comment">% Converts a sif file to a Netflux Excel file</span>
+0003 <span class="comment">%</span>
+0004 <span class="comment">%   IMPORTSIF(sifFile, outputFileName) writes a Netflux .xlsx file to the</span>
+0005 <span class="comment">%   location specified by outputFileName. outputFileName can be an absolute</span>
+0006 <span class="comment">%   or relative path.</span>
+0007 <span class="comment">%</span>
+0008 <span class="comment">%   NOTE: The program makes a number of assumptions about the structure of</span>
+0009 <span class="comment">%   the SIF file:</span>
+0010 <span class="comment">%       1) Each line must be tab delimited with format</span>
+0011 <span class="comment">%       'reactant     #      product'</span>
+0012 <span class="comment">%       where #=1 corresponds to an activating relationship and #=-1</span>
+0013 <span class="comment">%       corresponds to an inhibiting relationship.</span>
+0014 <span class="comment">%</span>
+0015 <span class="comment">%           EXAMPLE:</span>
+0016 <span class="comment">%                AC    1    cAMP</span>
+0017 <span class="comment">%                CaMK    -1    HDAC</span>
+0018 <span class="comment">%</span>
+0019 <span class="comment">%             will be translated to:</span>
+0020 <span class="comment">%                AC =&gt; cAMP</span>
+0021 <span class="comment">%                !CaMK =&gt; HDAC</span>
+0022 <span class="comment">%</span>
+0023 <span class="comment">%       2) AND relationships must be written in the SIF file with the</span>
+0024 <span class="comment">%       following the format:</span>
+0025 <span class="comment">%              'connector     #      output'</span>
+0026 <span class="comment">%              'input1        #      connector'</span>
+0027 <span class="comment">%              'input2        #      connector'</span>
+0028 <span class="comment">%              ...</span>
+0029 <span class="comment">%              'inputN        #      connector'</span>
+0030 <span class="comment">%          where connector is an alphanumeric string with the format 'rcn#'</span>
+0031 <span class="comment">%</span>
+0032 <span class="comment">%       EXAMPLE:</span>
+0033 <span class="comment">%               rcn22    1    SERCA</span>
+0034 <span class="comment">%               cFos    -1    rcn22</span>
+0035 <span class="comment">%               cJun    -1    rcn22</span>
+0036 <span class="comment">%               NFAT    -1    rcn22</span>
+0037 <span class="comment">%</span>
+0038 <span class="comment">%          will be translated to:</span>
+0039 <span class="comment">%              !cFos &amp; !cJun &amp; !NFAT =&gt; SERCA</span>
+0040 
+0041 sif = textread(sifFile, <span class="string">'%s'</span>, <span class="string">'delimiter'</span>, <span class="string">'\n'</span>);
+0042 sif2 = {};
+0043 <span class="keyword">for</span> i = 1:length(sif); <span class="comment">% convert to cell array of strings</span>
+0044     split = strsplit(sif{i},<span class="string">'\t'</span>);
+0045     sif2 = vertcat(sif2, split);
+0046 <span class="keyword">end</span> 
+0047 sif2 = cellstr(sif2);
+0048 sif = sif2;
+0049 
+0050 temp = regexp(sif(:,1), <span class="string">'rcn'</span>); <span class="comment">% find where and relationships start</span>
+0051 temp2 = cellfun(@(x)~isempty(x),temp); <span class="comment">% convert to array of logicals</span>
+0052 andIndex = find(temp2 == 1); <span class="comment">% find the line number indices of the and relationships</span>
+0053 
+0054 i = 1; <span class="comment">%tracks line number</span>
+0055 rxnStrings = {};
+0056 
+0057 specs = vertcat(sif(:,1), sif(:,3));
+0058 temp = regexp(specs, <span class="string">'rcn'</span>);
+0059 connectorNodeIndex = cellfun(@(x)~isempty(x), temp);
+0060 specs(connectorNodeIndex) = [];
+0061 specs = unique(specs);
+0062 specID = specs;
+0063 atEndSif = false;
+0064 
+0065 <span class="comment">% read the formatted cell array</span>
+0066 <span class="keyword">while</span> ~atEndSif
+0067     <span class="keyword">if</span> any(i == andIndex) <span class="comment">%if you are at the start of an AND relationship</span>
+0068         
+0069         output = sif(i,3);
+0070         atEndRcn = false;
+0071         connectorNodeStr = sif(i, 1);
+0072         inputs = {};
+0073         rxnType = {};
+0074         
+0075         <span class="keyword">while</span> ~atEndRcn
+0076             i = i+1;
+0077             inputs(end+1) = sif(i, 1);
+0078             inhibitor = isequal(cell2mat(sif(i,2)),<span class="string">'-1'</span>);
+0079             
+0080             <span class="keyword">if</span> inhibitor <span class="comment">%append ! to species</span>
+0081                 inputs{end} = sprintf(<span class="string">'!%s'</span>, inputs{end});
+0082             <span class="keyword">end</span>
+0083             
+0084             atEndRcn = ~strcmp(sif(i+1, 3), connectorNodeStr); <span class="comment">%if at end reaction strings don't match</span>
+0085             
+0086             <span class="keyword">if</span> ~atEndRcn
+0087                 inputs(end+1) = cellstr(<span class="string">'&amp;'</span>);
+0088             <span class="keyword">end</span>
+0089         <span class="keyword">end</span>
+0090         
+0091         rxnStrings{end+1} = sprintf(<span class="string">'%s =&gt; %s'</span>, strjoin(inputs), char(output));
+0092         
+0093         i = i+1;
+0094         
+0095     <span class="keyword">else</span>
+0096         input = sif(i,1);
+0097         output = sif(i,3);
+0098         rxnType = sif(i,2);
+0099         
+0100         inhibitor = isequal(cell2mat(sif(i,2)),<span class="string">'-1'</span>);
+0101         
+0102         <span class="keyword">if</span> inhibitor <span class="comment">%append ! to species</span>
+0103             input = sprintf(<span class="string">'!%s'</span>, char(input));
+0104         <span class="keyword">end</span>
+0105         
+0106         i = i+1;
+0107         rxnStrings{end+1} = sprintf(<span class="string">'%s =&gt; %s'</span>, char(input), char(output));
+0108         
+0109     <span class="keyword">end</span>
+0110     
+0111     <span class="keyword">if</span> i&gt;size(sif,1)
+0112         atEndSif = true;
+0113     <span class="keyword">end</span>
+0114 <span class="keyword">end</span>
+0115 
+0116 util.writeXLSX(specID, rxnStrings, outputFileName)
+0117 
+0118</pre></div>
+<hr><address>Generated on Thu 07-Aug-2014 13:40:59 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>
