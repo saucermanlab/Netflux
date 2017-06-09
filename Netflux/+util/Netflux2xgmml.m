@@ -227,6 +227,7 @@ for i = 1:length(nodeList)
                 fprintf(fid, '<att type="string" name="name" value="%s" cy:type="String"/>\n', nodeList{i});
                 fprintf(fid, '<att type="string" name="Type" value="%s" cy:type="String"/>\n', typeList{i});
                 fprintf(fid, '<att type="string" name="HyperEdge.EntityType" value="RegularNode" cy:type="String"/>\n');
+
         
         % write the default graphics based on node info
         switch typeList{i}
