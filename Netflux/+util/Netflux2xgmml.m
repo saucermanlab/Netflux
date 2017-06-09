@@ -222,11 +222,13 @@ for i = 1:length(nodeList)
     else % write with defaults
         id(end+1)=i;
         fprintf(fid, '<node label="%s" id="%i">\n', nodeList{i}, i);
+
                 fprintf(fid, '<att type="string" name="shared name" value="%s" cy:type="String"/>\n', nodeList{i});
                 fprintf(fid, '<att type="string" name="canonicalName" value="%s" cy:type="String"/>\n', nodeLabel{i});
                 fprintf(fid, '<att type="string" name="name" value="%s" cy:type="String"/>\n', nodeList{i});
                 fprintf(fid, '<att type="string" name="Type" value="%s" cy:type="String"/>\n', typeList{i});
                 fprintf(fid, '<att type="string" name="HyperEdge.EntityType" value="RegularNode" cy:type="String"/>\n');
+
         
         % write the default graphics based on node info
         switch typeList{i}
