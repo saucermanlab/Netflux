@@ -222,38 +222,11 @@ for i = 1:length(nodeList)
     else % write with defaults
         id(end+1)=i;
         fprintf(fid, '<node label="%s" id="%i">\n', nodeList{i}, i);
-        for j = 1:length(vname) % loop over each attribute
-            if strcmp(vname{j}.name,'shared name')==1
                 fprintf(fid, '<att type="string" name="shared name" value="%s" cy:type="String"/>\n', nodeList{i});
-            elseif strcmp(vname{j}.name,'canonicalName')==1
                 fprintf(fid, '<att type="string" name="canonicalName" value="%s" cy:type="String"/>\n', nodeLabel{i});
-            elseif strcmp(vname{j}.name,'name')==1
                 fprintf(fid, '<att type="string" name="name" value="%s" cy:type="String"/>\n', nodeList{i});
-            elseif strcmp(vname{j}.name,'Type')==1
                 fprintf(fid, '<att type="string" name="Type" value="%s" cy:type="String"/>\n', typeList{i});
-            else
                 fprintf(fid, '<att type="string" name="HyperEdge.EntityType" value="RegularNode" cy:type="String"/>\n');
-% %  uncomment the following block if returning default values for all the
-% % attributes in reference
-%                 name = vname{j}.name;
-%                 type = vname{j}.type;
-%                 if isfield(vname{j},'value')==1
-%                     value = vname{j}.value;
-%                 else
-%                     if strcmp(type,'string')==1
-%                         value = ' ';
-%                     elseif strcmp(type,'real')==1
-%                         value = '0.0';
-%                     elseif strcmp(type,'integer')==1
-%                         value = '0';
-%                     elseif strcmp(type,'boolean')==1
-%                         value = '0';
-%                     end
-%                 end
-%                 cytype = vname{j}.cy_colon_type;
-%                 fprintf(fid, '<att type="%s" name="%s" value="%s" cy:type="%s"/>\n',type, name, value,cytype);
-            end
-        end
         
         % write the default graphics based on node info
         switch typeList{i}
