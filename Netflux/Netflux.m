@@ -420,9 +420,11 @@ ylabel('Fractional Species Activation');
                 for j = 1:length(specID)                               
                     yi = yCum;           
                     %yi = round(yi*10^4)./10^4; %rounds the output to 4 decimal places
-                    yi = num2cell(yi);
+                    %yi = num2cell(yi);
                     label = specID(j);
-                    label = horzcat(label,yi(:,j)'); % concats species header to the y values from t0 to tend 
+                    for iCol = 1:length(yi(:,j))
+                        label = horzcat(label,sprintf('%0.4f',yi(iCol,j)')); % concats species header to the y values from t0 to tend
+                    end
                     write = cat(1,write,label);
                 end
                 util.textwrite(nfilename,write);
