@@ -418,7 +418,7 @@ ylabel('Fractional Species Activation');
                 tDCum = tCum;  %D stands for Data
                 yDCum = yCum;         
                 for j = 1:length(specID)                               
-                    yi = yCum;           
+                    yi = real(yCum); % convert activity values to real numbers           
                     %yi = round(yi*10^4)./10^4; %rounds the output to 4 decimal places
                     %yi = num2cell(yi);
                     label = specID(j);
