@@ -491,9 +491,10 @@ ylabel('Fractional Species Activation');
         default = 'NetfluxODE';
         [nfname,pathname,filterindex]=uiputfile('*.m','Save Data as...',[default]);
         nfilename = fullfile(pathname,nfname);
-
-        commandLine = util.exportODE(specID,paramList,ODElist);
-        util.textwrite(nfilename,commandLine);
+        nfnameshort = nfname(1:end-2);
+        [commandLine,commandLine2] = util.exportODE(specID,paramList,ODElist,nfnameshort);
+        util.textwrite(nfilename,commandLine); % export ODE file
+        util.textwrite([nfnameshort '_params.m'],commandLine2); % export params file
         statusLabel.MenuItems = 'Matlab ODEfile exported!'; 
         statusLabel.Value = [];
     end
