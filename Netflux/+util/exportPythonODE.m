@@ -48,7 +48,7 @@ commandLine3{end+1} = sprintf(['[speciesNames, tau, ymax, y0, w, n, EC50] = ',nf
 commandLine3{end+1} = sprintf('# Run single simulation');
 commandLine3{end+1} = sprintf('tspan = [0, 10]');
 commandLine3{end+1} = sprintf('t = []');
-commandLine3{end+1} = sprintf('dt = tspan[1]/150');
+commandLine3{end+1} = sprintf('dt = tspan[1]/150.');
 commandLine3{end+1} = sprintf(['r = ode(',nfilename,'.ODEfunc).set_integrator(''vode'', method=''adams'', order=10, rtol=0, atol=1e-6, with_jacobian=False)']);
 commandLine3{end+1} = sprintf('r.set_initial_value(y0,tspan[0]).set_f_params(tau,ymax,w,n,EC50)');
 commandLine3{end+1} = sprintf('results = np.empty([0,len(speciesNames)])');
