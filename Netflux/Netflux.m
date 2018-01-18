@@ -34,6 +34,7 @@ file_menu = uimenu('Label','&File');
             uimenu(cy,'Label','As SIF','Callback',@cytoscapeSIF,'Accelerator','Y');
             uimenu(cy,'Label','As XGMML','Callback',@cytoscapeXGMML,'Accelerator','X');
             uimenu(file_menu,'Label','Export MATLAB ODE','Callback',@exportODE,'Accelerator','O');
+            uimenu(file_menu,'Label','Export Python ODE','Callback',@exportPythonODE,'Accelerator','P');
             uimenu(file_menu,'Label', 'Exit','Callback','close(gcf)', 'Accelerator','Z','Separator','on');    
 tools_menu = uimenu('Label', '&Tools');
             uimenu(tools_menu,'Label','Convert SBML-QUAL','Callback',@convertSBML, 'Accelerator', 'B');
@@ -500,6 +501,20 @@ ylabel('Fractional Species Activation');
         % onwards. This is not present in commandLine3 so I'm not sure why
         % it does this.
         statusLabel.MenuItems = ['MATLAB files ',nfilename,', ',nfilenameLoadParams,', and ',nfilenameRun,' exported!']; 
+        statusLabel.Value = [];
+    end
+function exportPythonODE(~,e)
+        % note: this function was derived from exportODE, modified for python
+        % prompt for filename
+        default = 'NetfluxODE';
+        [nfilename,pathname,filterindex]=uiputfile('*.py','Export Python ODEs as...',[default]);
+        [commandLine,commandLine2,commandLine3] = util.exportPythonODE(specID,paramList,CNAmodel,nfilename(1:end-3));
+        util.textwrite(fullfile(pathname,nfilename),commandLine); % export ODE file
+        nfilenameLoadParams = [nfilename(1:end-3) '_params.py'];
+        util.textwrite(fullfile(pathname,nfilenameLoadParams),commandLine2); % export params file
+        nfilenameRun = [nfilename(1:end-3) '_run.py'];
+        util.textwrite(fullfile(pathname,nfilenameRun),commandLine3); % export run file
+        statusLabel.MenuItems = ['Python files ',nfilename,', ',nfilenameLoadParams,', and ',nfilenameRun,' exported!']; 
         statusLabel.Value = [];
     end
     function about(obj,e)
