@@ -1,10 +1,10 @@
 function Netflux
-% Launches Netflux GUI
-% Version: 0.09d
+% Netflux.m
+% Version: 1.0
+% run this file to start the Netflux GUI
+% last updated 2015-01-15 by JJS
 
 global w n K tau ymax y0 specID reactionIDs reactionRules paramList ODElist CNAmodel tstep tUnit tUnitLabel myAxes
-
-% if (isdeployed) %if using MCR *** IS THIS NEEDED??
 
 %% setup the gui
 %%
@@ -34,6 +34,7 @@ file_menu = uimenu('Label','&File');
             uimenu(cy,'Label','As SIF','Callback',@cytoscapeSIF,'Accelerator','Y');
             uimenu(cy,'Label','As XGMML','Callback',@cytoscapeXGMML,'Accelerator','X');
             uimenu(file_menu,'Label','Export MATLAB ODE','Callback',@exportODE,'Accelerator','O');
+            uimenu(file_menu,'Label','Export Python ODE','Callback',@exportPythonODE,'Accelerator','P');
             uimenu(file_menu,'Label', 'Exit','Callback','close(gcf)', 'Accelerator','Z','Separator','on');    
 tools_menu = uimenu('Label', '&Tools');
             uimenu(tools_menu,'Label','Convert SBML-QUAL','Callback',@convertSBML, 'Accelerator', 'B');
@@ -489,13 +490,31 @@ ylabel('Fractional Species Activation');
     function exportODE(~,e)
         %prompt for filename
         default = 'NetfluxODE';
-        [nfname,pathname,filterindex]=uiputfile('*.m','Save Data as...',[default]);
-        nfilename = fullfile(pathname,nfname);
-        nfnameshort = nfname(1:end-2);
-        [commandLine,commandLine2] = util.exportODE(specID,paramList,ODElist,nfnameshort);
-        util.textwrite(nfilename,commandLine); % export ODE file
-        util.textwrite([nfnameshort '_params.m'],commandLine2); % export params file
-        statusLabel.MenuItems = 'Matlab ODEfile exported!'; 
+        [nfilename,pathname,filterindex]=uiputfile('*.m','Export MATLAB ODEs as...',[default]);
+        [commandLine,commandLine2,commandLine3] = util.exportODE(specID,paramList,ODElist,nfilename(1:end-2));
+        util.textwrite(fullfile(pathname,nfilename),commandLine); % export ODE file
+        nfilenameLoadParams = [nfilename(1:end-2) '_loadParams.m'];
+        util.textwrite(fullfile(pathname,nfilenameLoadParams),commandLine2); % export params file
+        nfilenameRun = [nfilename(1:end-2) '_run.m'];
+        util.textwrite(fullfile(pathname,nfilenameRun),commandLine3); % export run file
+        % JS: minor bug 2018-01-15: the _run file has extra spaces from line 2
+        % onwards. This is not present in commandLine3 so I'm not sure why
+        % it does this.
+        statusLabel.MenuItems = ['MATLAB files ',nfilename,', ',nfilenameLoadParams,', and ',nfilenameRun,' exported!']; 
+        statusLabel.Value = [];
+    end
+function exportPythonODE(~,e)
+        % note: this function was derived from exportODE, modified for python
+        % prompt for filename
+        default = 'NetfluxODE';
+        [nfilename,pathname,filterindex]=uiputfile('*.py','Export Python ODEs as...',[default]);
+        [commandLine,commandLine2,commandLine3] = util.exportPythonODE(specID,paramList,CNAmodel,nfilename(1:end-3));
+        util.textwrite(fullfile(pathname,nfilename),commandLine); % export ODE file
+        nfilenameLoadParams = [nfilename(1:end-3) '_params.py'];
+        util.textwrite(fullfile(pathname,nfilenameLoadParams),commandLine2); % export params file
+        nfilenameRun = [nfilename(1:end-3) '_run.py'];
+        util.textwrite(fullfile(pathname,nfilenameRun),commandLine3); % export run file
+        statusLabel.MenuItems = ['Python files ',nfilename,', ',nfilenameLoadParams,', and ',nfilenameRun,' exported!']; 
         statusLabel.Value = [];
     end
     function about(obj,e)
