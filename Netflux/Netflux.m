@@ -153,8 +153,8 @@ kLabel.Position = struct('x',col2, 'y', bm+130-2, 'width', 175,'height',40); % s
 % create and position the axes
 myAxes = axes('units', 'pixels', 'position', [480 80 410 400]);
 %Needs to update figure after it is drawn
-tUnitLabel.Value = 'sec';
-ylabel('Fractional Species Activation');
+tUnitLabel.Value = 'a.u.';
+ylabel('Activity');
 %% GUI subfunctions
     function updateTend(hWidget)
         tspan = [tNow tNow+tEnd.Value];
@@ -255,7 +255,7 @@ ylabel('Fractional Species Activation');
         selectedVars = ismember(specID,speciesListbox.Value);
         set(gcf,'DefaultLineLineWidth',1.7); % set the width of the lines in the plot
         plot(tCum,yCum(:,selectedVars)); 
-        xlabel(sprintf('Time (%s)',tUnit)); ylabel('Fractional species activation');
+        xlabel(sprintf('Time (%s)',tUnit)); ylabel('Activity');
         legend(speciesListbox.Value);
         signal = 2;
         if ~isequal(signal,1) 
@@ -271,7 +271,7 @@ ylabel('Fractional Species Activation');
             statusLabel.Value = [];
         else
             plot(tCum,yCum(:,selectedVars));        
-            xlabel(sprintf('Time (%s)',tUnit)); ylabel('Fractional species activation');
+            xlabel(sprintf('Time (%s)',tUnit)); ylabel('Activity');
             legend(speciesListbox.Value);
             statusLabel.MenuItems = 'Plot Successful!'; 
             statusLabel.Value = [];
@@ -285,7 +285,7 @@ ylabel('Fractional Species Activation');
         count = 0; 
         y0 = paramList{6};
         plot(0,0); axis([0 1 0 1]); 
-        xlabel(sprintf('Time (%s)',tUnit));ylabel('Fractional species activation');
+        xlabel(sprintf('Time (%s)',tUnit));ylabel('Activity');
         updateDisplayedSpeciesParams;
         updateDisplayedReactionParams;
         statusLabel.MenuItems = 'Simulation has been reset';
