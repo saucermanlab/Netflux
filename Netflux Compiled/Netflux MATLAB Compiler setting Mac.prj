@@ -1,0 +1,158 @@
+<deployment-project plugin="plugin.ezdeploy" plugin-version="1.0">
+  <configuration file="/Users/stevenlmchristiansen/Desktop/Netflux-master/Netflux MATLAB Compiler setting Mac.prj" location="/Users/stevenlmchristiansen/Desktop/Netflux-master" name="Netflux MATLAB Compiler setting Mac" target="target.ezdeploy.standalone" target-name="Application Compiler">
+    <param.appname>Netflux</param.appname>
+    <param.icon />
+    <param.icons />
+    <param.version>1.0</param.version>
+    <param.authnamewatermark>Cardiac Systems Biology Lab</param.authnamewatermark>
+    <param.email />
+    <param.company>University of Virginia</param.company>
+    <param.summary />
+    <param.description>Netflux is a user-friendly software for developing dynamic computational models of biological networks.</param.description>
+    <param.screenshot>/Users/stevenlmchristiansen/Downloads/Netflux logo.png</param.screenshot>
+    <param.guid />
+    <param.installpath.string>/Netflux/</param.installpath.string>
+    <param.installpath.combo>option.installpath.systemwideapp</param.installpath.combo>
+    <param.logo />
+    <param.install.notes />
+    <param.target.install.notes>In the following directions, replace MR/v96 by the directory on the target machine where MATLAB is installed, or MR by the directory where the MATLAB Runtime is installed.
+
+If the environment variable DYLD_LIBRARY_PATH is undefined, set it to the following string:
+
+MR/v96/runtime/maci64:MR/v96/sys/os/maci64:MR/v96/bin/maci64
+
+If it is defined, set it to the following:
+
+${DYLD_LIBRARY_PATH}:MR/v96/runtime/maci64:MR/v96/sys/os/maci64:MR/v96/bin/maci64</param.target.install.notes>
+    <param.intermediate>${PROJECT_ROOT}/Netflux MATLAB Compiler setting Mac/for_testing</param.intermediate>
+    <param.files.only>${PROJECT_ROOT}/Netflux MATLAB Compiler setting Mac/for_redistribution_files_only</param.files.only>
+    <param.output>${PROJECT_ROOT}/Netflux MATLAB Compiler setting Mac/for_redistribution</param.output>
+    <param.logdir>${PROJECT_ROOT}/Netflux MATLAB Compiler setting Mac</param.logdir>
+    <param.enable.clean.build>false</param.enable.clean.build>
+    <param.user.defined.mcr.options />
+    <param.target.type>subtarget.standalone</param.target.type>
+    <param.support.packages />
+    <param.web.mcr>true</param.web.mcr>
+    <param.package.mcr>false</param.package.mcr>
+    <param.no.mcr>false</param.no.mcr>
+    <param.web.mcr.name>Netflux_Installer_MacOS</param.web.mcr.name>
+    <param.package.mcr.name>MyAppInstaller_mcr</param.package.mcr.name>
+    <param.no.mcr.name>MyAppInstaller_app</param.no.mcr.name>
+    <param.windows.command.prompt>false</param.windows.command.prompt>
+    <param.create.log>false</param.create.log>
+    <param.log.file />
+    <param.native.matlab>false</param.native.matlab>
+    <param.checkbox>false</param.checkbox>
+    <param.example />
+    <param.help.text>Syntax 
+	  -? 
+	 
+ Input Arguments 
+	 -?  print help on how to use the application 
+	 input arguments 
+ Description 
+ 	 Netflux is a user-friendly software for developing dynamic computational models of biological networks.</param.help.text>
+    <unset>
+      <param.icon />
+      <param.icons />
+      <param.version />
+      <param.email />
+      <param.summary />
+      <param.guid />
+      <param.installpath.combo />
+      <param.logo />
+      <param.install.notes />
+      <param.intermediate />
+      <param.files.only />
+      <param.output />
+      <param.logdir />
+      <param.enable.clean.build />
+      <param.user.defined.mcr.options />
+      <param.target.type />
+      <param.support.packages />
+      <param.web.mcr />
+      <param.package.mcr />
+      <param.no.mcr />
+      <param.package.mcr.name />
+      <param.no.mcr.name />
+      <param.windows.command.prompt />
+      <param.create.log />
+      <param.log.file />
+      <param.native.matlab />
+      <param.checkbox />
+      <param.example />
+    </unset>
+    <fileset.main>
+      <file>${PROJECT_ROOT}/Netflux/Netflux.m</file>
+    </fileset.main>
+    <fileset.resources />
+    <fileset.package>
+      <file>${PROJECT_ROOT}/Netflux/Netflux Documentation.docx</file>
+      <file>${PROJECT_ROOT}/Netflux/Netflux SBGN style.xml</file>
+      <file>${PROJECT_ROOT}/Netflux/license.txt</file>
+      <file>${PROJECT_ROOT}/Netflux/models</file>
+    </fileset.package>
+    <fileset.depfun>
+      <file>${PROJECT_ROOT}/Netflux/+gui/+util/showObjectInfo.m</file>
+      <file>${PROJECT_ROOT}/Netflux/+gui/+util/uicontainer.m</file>
+      <file>${PROJECT_ROOT}/Netflux/+gui/+util/uiflowcontainer.m</file>
+      <file>${PROJECT_ROOT}/Netflux/+gui/+util/uiposition.m</file>
+      <file>${PROJECT_ROOT}/Netflux/+gui/autogui.m</file>
+      <file>${PROJECT_ROOT}/Netflux/+gui/container.m</file>
+      <file>${PROJECT_ROOT}/Netflux/+gui/editnumber.m</file>
+      <file>${PROJECT_ROOT}/Netflux/+gui/edittext.m</file>
+      <file>${PROJECT_ROOT}/Netflux/+gui/label.m</file>
+      <file>${PROJECT_ROOT}/Netflux/+gui/labeleduicontrol.m</file>
+      <file>${PROJECT_ROOT}/Netflux/+gui/labeledwidget.m</file>
+      <file>${PROJECT_ROOT}/Netflux/+gui/listbox.m</file>
+      <file>${PROJECT_ROOT}/Netflux/+gui/manualgui.m</file>
+      <file>${PROJECT_ROOT}/Netflux/+gui/monitor.m</file>
+      <file>${PROJECT_ROOT}/Netflux/+gui/pushbutton.m</file>
+      <file>${PROJECT_ROOT}/Netflux/+gui/slider.m</file>
+      <file>${PROJECT_ROOT}/Netflux/+gui/textmenu.m</file>
+      <file>${PROJECT_ROOT}/Netflux/+gui/widget.m</file>
+      <file>${PROJECT_ROOT}/Netflux/+util/Netflux2ODE.m</file>
+      <file>${PROJECT_ROOT}/Netflux/+util/Netflux2pythonODE.m</file>
+      <file>${PROJECT_ROOT}/Netflux/+util/Netflux2sif.m</file>
+      <file>${PROJECT_ROOT}/Netflux/+util/Netflux2xgmml.m</file>
+      <file>${PROJECT_ROOT}/Netflux/+util/ODE.m</file>
+      <file>${PROJECT_ROOT}/Netflux/+util/exportODE.m</file>
+      <file>${PROJECT_ROOT}/Netflux/+util/exportPythonODE.m</file>
+      <file>${PROJECT_ROOT}/Netflux/+util/findjobj.m</file>
+      <file>${PROJECT_ROOT}/Netflux/+util/getNetfluxParams.m</file>
+      <file>${PROJECT_ROOT}/Netflux/+util/importsif.m</file>
+      <file>${PROJECT_ROOT}/Netflux/+util/repval.m</file>
+      <file>${PROJECT_ROOT}/Netflux/+util/sbml2sif.m</file>
+      <file>${PROJECT_ROOT}/Netflux/+util/textwrite.m</file>
+      <file>${PROJECT_ROOT}/Netflux/+util/writeXLSX.m</file>
+      <file>${PROJECT_ROOT}/Netflux/+util/xls2Netflux.m</file>
+      <file>${PROJECT_ROOT}/Netflux/+util/xml2struct.m</file>
+    </fileset.depfun>
+    <build-deliverables>
+      <file location="${PROJECT_ROOT}/Netflux MATLAB Compiler setting Mac/for_testing" name="Netflux.app" optional="false">/Users/stevenlmchristiansen/Desktop/Netflux-master/Netflux MATLAB Compiler setting Mac/for_testing/Netflux.app</file>
+      <file location="${PROJECT_ROOT}/Netflux MATLAB Compiler setting Mac/for_testing" name="run_Netflux.sh" optional="false">/Users/stevenlmchristiansen/Desktop/Netflux-master/Netflux MATLAB Compiler setting Mac/for_testing/run_Netflux.sh</file>
+      <file location="${PROJECT_ROOT}/Netflux MATLAB Compiler setting Mac/for_testing" name="readme.txt" optional="true">/Users/stevenlmchristiansen/Desktop/Netflux-master/Netflux MATLAB Compiler setting Mac/for_testing/readme.txt</file>
+      <file location="${PROJECT_ROOT}/Netflux MATLAB Compiler setting Mac/for_testing" name="splash.png" optional="false">/Users/stevenlmchristiansen/Desktop/Netflux-master/Netflux MATLAB Compiler setting Mac/for_testing/splash.png</file>
+    </build-deliverables>
+    <workflow />
+    <matlab>
+      <root>/Applications/MATLAB_R2019a.app</root>
+      <toolboxes />
+    </matlab>
+    <platform>
+      <unix>true</unix>
+      <mac>true</mac>
+      <windows>false</windows>
+      <win2k>false</win2k>
+      <winxp>false</winxp>
+      <vista>false</vista>
+      <linux>false</linux>
+      <solaris>false</solaris>
+      <osver>10.14.3</osver>
+      <os32>false</os32>
+      <os64>true</os64>
+      <arch>maci64</arch>
+      <matlab>true</matlab>
+    </platform>
+  </configuration>
+</deployment-project>
