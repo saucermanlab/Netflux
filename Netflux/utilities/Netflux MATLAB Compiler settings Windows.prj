@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.ezdeploy" plugin-version="1.0">
-  <configuration build-checksum="312730090" file="C:\Users\jjs3g.BME-PF0YS0YK\Documents\GitHub\Netflux\Netflux\utilities\Netflux MATLAB Compiler settings.prj" location="C:\Users\jjs3g.BME-PF0YS0YK\Documents\GitHub\Netflux\Netflux\utilities" name="Netflux MATLAB Compiler settings" preferred-package-location="C:\Users\jjs3g.BME-PF0YS0YK\Documents\GitHub\Netflux\Netflux\utilities\Netflux MATLAB Compiler settings\for_redistribution" preferred-package-type="package.type.exe" target="target.ezdeploy.standalone" target-name="Application Compiler">
+  <configuration build-checksum="2826733456" file="C:\Users\jjs3g.BME-PF0YS0YK\Documents\GitHub\Netflux\Netflux\utilities\Netflux MATLAB Compiler settings.prj" location="C:\Users\jjs3g.BME-PF0YS0YK\Documents\GitHub\Netflux\Netflux\utilities" name="Netflux MATLAB Compiler settings" preferred-package-location="C:\Users\jjs3g.BME-PF0YS0YK\Documents\GitHub\Netflux\Netflux\utilities\Netflux MATLAB Compiler settings\for_redistribution" preferred-package-type="package.type.exe" target="target.ezdeploy.standalone" target-name="Application Compiler">
     <param.appname>Netflux</param.appname>
     <param.icon />
     <param.icons />
