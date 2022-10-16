@@ -41,7 +41,7 @@ commandLine3{end+1} = sprintf(['[params,y0] = ',nfname,'_loadParams();\n\n']);
 commandLine3{end+1} = sprintf('%% Run single simulation\n');
 commandLine3{end+1} = sprintf('tspan = [0 10];\n');
 commandLine3{end+1} = sprintf('options = [];\n');
-commandLine3{end+1} = sprintf(['[t,y] = ode23(@',nfname,',tspan,y0,options,params);\n\n']);
+commandLine3{end+1} = sprintf(['[t,y] = ode15s(@',nfname,',tspan,y0,options,params);\n\n']);
 commandLine3{end+1} = sprintf('%% Plot results\n');
 commandLine3{end+1} = sprintf('figure;\n');
 commandLine3{end+1} = sprintf('plot(t,y);\n');
