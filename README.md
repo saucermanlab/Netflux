@@ -24,3 +24,7 @@ Open the “Netflux Compiled” folder, extract “Netflux_Installer_MacOS”, a
 
 ## Documentation
 "Netflux Documentation.docx" is in the Netflux directory.
+
+## Video Tutorials
+Video tutorials are available on Youtube at:
+https://www.youtube.com/watch?v=tU2gU8d5hvQ&list=PLTbDE7ZQfKy-ijd5ZrCQJ7eB-NSCQKIBi
