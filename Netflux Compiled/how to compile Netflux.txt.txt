@@ -1,0 +1,13 @@
+Compiling Netflux so that it can be run stand-alone, without MATLAB
+Jeff Saucerman
+4/27/204
+
+Windows
+1) Open MATLAB
+2) Open "Netflux MATLAB Compiler settings Windows.prj"
+3) Adjust the text fields, add "Netflux logo.png" as the splash screen
+4) All other files are default
+5) Select "Package"
+6) Get the "Netflux Installation Windows.exe" file from the "for distribution" folder
+
+When the user runs "Netflux Installation Windows.exe", it will do a fairly large download (~700 MB) of the MATLAB Component Runtime, which contains the base functionality of MATLAB. 
