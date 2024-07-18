@@ -5,6 +5,7 @@ function [pythonODElist,CNAerror] = Netflux2pythonODE(cnamodel)
 %   generates the system of normalized Hill differential equations. Outputs
 %   ODElist and paramList are send to ODE to solve. Version 0.08a
 %   08/30/2011 by JJS
+%   07/01/2024 updated by Kaitlyn Wintruba
 
 %% pull in info from cnamodel
 
@@ -54,17 +55,17 @@ for i = 1:numrxns
         str = ['w[' reactNumStr ']'];
     elseif length(reactants)==1,            % single reactant, of the form: act(y[A],w[3],n[3],EC50[3])
         if notMat(reactants,i) == 0
-            str = ['inhib(y[' speciesNames{reactants} '],w[',reactNumStr,'],n[',reactNumStr,'],EC50[',reactNumStr,'])'];
+            str = ['inhib(y[' speciesNames{reactants} '],rpar[:,',reactNumStr,'])'];
         else
-            str = ['act(y[' speciesNames{reactants} '],w[',reactNumStr,'],n[',reactNumStr,'],EC50[',reactNumStr,'])'];
+            str = ['act(y[' speciesNames{reactants} '],rpar[:,',reactNumStr,'])'];
         end
     else,                                   % multiple reactants, of the form: AND(w[3],[act(y[A],w[3],n[3],EC50[3]),inhib(y[B],w[3],n[3],EC50[3])])
         str = ['AND(w[',reactNumStr,'],['];
         for j = 1:length(reactants)         % loop over each reactant
             if notMat(reactants(j),i) == 0
-                str = [str 'inhib(y[' speciesNames{reactants(j)} '],w[',reactNumStr,'],n[',reactNumStr,'],EC50[',reactNumStr,'])'];
+                str = [str 'inhib(y[' speciesNames{reactants(j)} '],rpar[:,',reactNumStr,'])'];
             else
-                str = [str 'act(y[' speciesNames{reactants(j)} '],w[',reactNumStr,'],n[',reactNumStr,'],EC50[',reactNumStr,'])'];
+                str = [str 'act(y[' speciesNames{reactants(j)} '],rpar[:,',reactNumStr,'])'];
             end
             if j<length(reactants), % more reactants to come
                 str = [str ','];
