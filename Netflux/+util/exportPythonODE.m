@@ -112,5 +112,5 @@ commandLine{end+1} = sprintf('\tif w == 0:');
 commandLine{end+1} = sprintf('\t\tz = 0'); 
 commandLine{end+1} = sprintf('\telse:');
 commandLine{end+1} = sprintf('\t\tp = np.array(reactList).prod()'); 
-commandLine{end+1} = sprintf('\t\tz = p/w**(len(reactList)-2)');        
+commandLine{end+1} = sprintf('\t\tz = p/w**(len(reactList)-1)');        
 commandLine{end+1} = sprintf('\treturn z\n');
