@@ -20,7 +20,7 @@ Windows users that do not have MATLAB:
 Open the “Netflux Compiled” folder and run “Netflux Installer Windows.exe”. This installer will automatically download and install the MATLAB Compiler Runtime, which will take some time as that file is about 800 MB. Netflux will be installed to the C:\Program Files\Netflux folder. Note installation may require administrator privileges on your computer. An exception to Windows firewall may also be needed, but we are checking on this.
 
 MacOS users with Apple Silicon chips (M1 or M2) that do not have MATLAB:
-Open the “Netflux Compiled” folder, extract “Netflux_Installer_MacOS”, and install by running ./Netflux_Installer_macOS.app at the terminal. This installer will automatically download and install the MATLAB Compiler Runtime, which will take some time as that file is about 800 MB. Netflux will be installed to the Applications\Netflux folder. You may need to run Netflux.app from the terminal in admin mode. MacOS with older Intel chips are not currently supported.
+Open the “Netflux Compiled” folder, extract “Netflux_Installer_MacOS”, and install by running ./Netflux_Installer_macOS.app at the terminal. This installer will automatically download and install the MATLAB Compiler Runtime, which will take some time as that file is about 800 MB. Netflux will be installed to the Applications\Netflux folder. Run Netflux.app from the terminal, in admin mode if necessary. MacOS with older Intel chips are not currently supported. Note Jan 2025: users have been encountering an error when running Netflux.app. If this is not fixed, you will need to use the MATLAB version (see above).
 
 For detailed instructions on installing without MATLAB, see:
 https://www.mathworks.com/help/compiler/install-deployed-application.html
