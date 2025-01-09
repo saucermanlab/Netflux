@@ -13,14 +13,14 @@ Netflux has been used to develop large-scale computational models of signaling n
 ## Installation
 Click on the button labeled "Clone or download" and then "Download ZIP". This ZIP file contains the MATLAB version of Netflux as well as binary versions for Windows or MacOS users that do not have MATLAB installed.
 
-Users with MATLAB version 2009b or higher
-Extract the “Netflux” folder from within the ZIP file and move it to your desired location.
+Users with MATLAB:
+Extract the “Netflux” folder from within the ZIP file and move it to your desired location. Run Netflux.m in MATLAB.
 
-Windows users that do not have MATLAB
+Windows users that do not have MATLAB:
 Open the “Netflux Compiled” folder and run “Netflux Installer Windows.exe”. This installer will automatically download and install the MATLAB Compiler Runtime, which will take some time as that file is about 800 MB. Netflux will be installed to the C:\Program Files\Netflux folder. Note installation may require administrator privileges on your computer. An exception to Windows firewall may also be needed, but we are checking on this.
 
-MacOS users with Apple Silicon (M1 or M2 chips) that do not have MATLAB
-Open the “Netflux Compiled” folder, extract “Netflux_Installer_MacOS”, and install by running ./Netflux_Installer_macOS.app at the terminal. This installer will automatically download and install the MATLAB Compiler Runtime, which will take some time as that file is about 800 MB. Netflux will be installed to the Applications\Netflux folder. You may need to run Netflux.app from the terminal in admin mode. MacOS with Intel chips are not currently supported.
+MacOS users with Apple Silicon chips (M1 or M2) that do not have MATLAB:
+Open the “Netflux Compiled” folder, extract “Netflux_Installer_MacOS”, and install by running ./Netflux_Installer_macOS.app at the terminal. This installer will automatically download and install the MATLAB Compiler Runtime, which will take some time as that file is about 800 MB. Netflux will be installed to the Applications\Netflux folder. You may need to run Netflux.app from the terminal in admin mode. MacOS with older Intel chips are not currently supported.
 
 For detailed instructions on installing without MATLAB, see:
 https://www.mathworks.com/help/compiler/install-deployed-application.html
